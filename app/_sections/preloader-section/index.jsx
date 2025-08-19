@@ -30,8 +30,8 @@ const PreloaderSection = ({ onAnimationComplete }) => {
         { opacity: 1, y: 0, duration: 1, ease: "power3.out" },
       )
       .to(".brand-name", {
-        scale: 54,
-        y: 195,
+        scale: 56,
+        y: 200,
         duration: 4,
         delay: 2,
         ease: "power3.out",
