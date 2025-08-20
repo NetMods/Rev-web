@@ -1,7 +1,17 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useMediaQuery } from "react-responsive";
 
 const PreloaderSection = ({ onAnimationComplete }) => {
+  // Media queries for responsive scaling
+  const isMobile = useMediaQuery({ maxWidth: 639 });
+  const isTablet = useMediaQuery({ minWidth: 640, maxWidth: 1023 });
+
+  // Set scale based on device
+  const brandNameScale = isMobile || isTablet ? 200 : 65;
+
+  console.log(brandNameScale);
+
   useGSAP(() => {
     const animationTimeline = gsap.timeline({
       onComplete: () => {
@@ -44,10 +54,10 @@ const PreloaderSection = ({ onAnimationComplete }) => {
       .to(
         ".brand-name",
         {
-          scale: 65,
+          scale: brandNameScale,
           y: 205,
-          duration: 3,
-          delay: 1,
+          duration: 2.5,
+          delay: 0.5,
           ease: "power3.out",
         },
         "scaleAndCount",
@@ -68,25 +78,25 @@ const PreloaderSection = ({ onAnimationComplete }) => {
           }
         },
       },
-      0, // start at the very beginning of the timeline
+      0,
     );
-  }, []);
+  }, [brandNameScale]); // Re-run animation if brandNameScale changes
 
   return (
-    <div className="absolute inset-0 flex min-h-screen w-screen flex-col items-center justify-center gap-4 bg-white text-black">
-      <div className="timer absolute right-0 bottom-0 z-10 text-9xl text-red-800 opacity-0">
+    <div className="absolute inset-0 flex min-h-screen w-screen flex-col items-center justify-center gap-2 bg-white px-4 text-black sm:gap-3 md:gap-4">
+      <div className="timer absolute right-2 bottom-2 z-10 text-4xl text-red-800 opacity-0 sm:right-4 sm:bottom-4 sm:text-6xl md:right-6 md:bottom-6 md:text-8xl lg:text-9xl">
         0
       </div>
-      <div className="brand-name flex w-full translate-y-[30px] scale-50 items-center justify-center text-center text-9xl font-bold opacity-0">
+      <div className="brand-name flex w-full translate-y-[30px] scale-50 items-center justify-center text-center text-4xl font-bold opacity-0 sm:text-6xl md:text-8xl lg:text-9xl">
         REV
       </div>
-      <div className="tagline-first w-full translate-y-[20px] text-center text-2xl font-semibold opacity-0">
+      <div className="tagline-first w-full max-w-2xl translate-y-[20px] text-center text-base font-semibold opacity-0 sm:text-lg md:text-xl lg:text-2xl">
         ✨ Record, annotate, and capture — all in one seamless flow.
       </div>
-      <div className="tagline-second w-full translate-y-[20px] text-center text-2xl font-semibold opacity-0">
+      <div className="tagline-second w-full max-w-2xl translate-y-[20px] text-center text-base font-semibold opacity-0 sm:text-lg md:text-xl lg:text-2xl">
         🖊️ Don’t just record your screen, tell your story with annotations.
       </div>
-      <div className="tagline-third w-full translate-y-[20px] text-center text-2xl font-semibold opacity-0">
+      <div className="tagline-third w-full max-w-2xl translate-y-[20px] text-center text-base font-semibold opacity-0 sm:text-lg md:text-xl lg:text-2xl">
         📸 Snap. Mark. Share. The smarter way to screen record.
       </div>
     </div>
