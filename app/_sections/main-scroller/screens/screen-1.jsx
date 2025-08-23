@@ -53,7 +53,7 @@ const Screen1 = () => {
       xPercent: -25,
       scrollTrigger: {
         trigger: "#screen-1",
-        markers: true,
+        markers: false,
         scrub: true,
         start: "top top",
       },
