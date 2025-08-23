@@ -90,13 +90,13 @@ const PreloaderSection = ({ onAnimationComplete }) => {
       <div className="brand-name flex w-full translate-y-[30px] scale-50 items-center justify-center text-center text-4xl font-bold opacity-0 sm:text-6xl md:text-8xl lg:text-9xl">
         REV
       </div>
-      <div className="tagline-first w-full max-w-2xl translate-y-[20px] text-center text-base font-semibold opacity-0 sm:text-lg md:text-xl lg:text-2xl">
+      <div className="tagline-first w-full max-w-3xl translate-y-[20px] text-center text-base font-semibold opacity-0 sm:text-lg md:text-xl lg:text-2xl">
         ✨ Record, annotate, and capture — all in one seamless flow.
       </div>
-      <div className="tagline-second w-full max-w-2xl translate-y-[20px] text-center text-base font-semibold opacity-0 sm:text-lg md:text-xl lg:text-2xl">
+      <div className="tagline-second w-full max-w-3xl translate-y-[20px] text-center text-base font-semibold opacity-0 sm:text-lg md:text-xl lg:text-2xl">
         🖊️ Don’t just record your screen, tell your story with annotations.
       </div>
-      <div className="tagline-third w-full max-w-2xl translate-y-[20px] text-center text-base font-semibold opacity-0 sm:text-lg md:text-xl lg:text-2xl">
+      <div className="tagline-third w-full max-w-3xl translate-y-[20px] text-center text-base font-semibold opacity-0 sm:text-lg md:text-xl lg:text-2xl">
         📸 Snap. Mark. Share. The smarter way to screen record.
       </div>
     </div>

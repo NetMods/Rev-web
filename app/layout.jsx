@@ -1,10 +1,13 @@
-import "@/styles/globals.css"
-import { fontSans, fontSerif } from "./fonts";
+import "@/styles/globals.css";
+
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "next-themes";
-import { cn } from "@/lib/utils";
+
 import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+
+import { fontSans, fontSerif } from "./fonts";
 
 export const metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
@@ -44,12 +47,9 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn(
-        fontSans.variable,
-        fontSerif.variable,
-      )}
+      className={cn(fontSans.variable, fontSerif.variable)}
     >
-      <body className="relative overflow-x-hidden bg-background text-foreground antialiased debug-screens">
+      <body className="bg-background text-foreground debug-screens relative antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
