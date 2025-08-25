@@ -5,16 +5,14 @@ const heading = "Your Screen StorY. Told With ClaritY";
 
 const Screen1 = () => {
   useGSAP(() => {
-    // Animate heading letters
     gsap.from(".heading-letter", {
       opacity: 0,
       y: 40,
-      stagger: 0.05, // each letter animates one after the other
+      stagger: 0.05,
       ease: "power3.out",
       duration: 0.8,
     });
 
-    // Animate "Share it..."
     gsap.from(".share-text", {
       x: -100,
       opacity: 0,
@@ -43,8 +41,8 @@ const Screen1 = () => {
       xPercent: -30,
       scrollTrigger: {
         trigger: "#screen-1",
-        markers: true,
-        scrub: true,
+        markers: false,
+        scrub: 4,
         start: "top top",
       },
     });
@@ -54,7 +52,7 @@ const Screen1 = () => {
       scrollTrigger: {
         trigger: "#screen-1",
         markers: false,
-        scrub: true,
+        scrub: 4,
         start: "top top",
       },
     });
@@ -89,9 +87,9 @@ const Screen1 = () => {
         <div className="w-screen flex-1 p-1">
           <div className="flex h-full w-full gap-4 p-4">
             {/* Left Column - Image */}
-            <div className="gif-box flex h-full flex-1 items-center justify-center overflow-hidden rounded-xl">
+            <div className="gif-box flex h-[500px] w-[400px] flex-1 items-center justify-center overflow-hidden rounded-xl">
               <img
-                src="./2.gif"
+                src="1.gif"
                 alt="Demo"
                 className="h-full w-full rounded-xl object-cover"
               />

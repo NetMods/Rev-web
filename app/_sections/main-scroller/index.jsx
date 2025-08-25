@@ -4,6 +4,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Screen1 from "./screens/screen-1";
 import Screen2 from "./screens/screen-2";
+import Screen3 from "./screens/screen-3";
+import Screen4 from "./screens/screen-4";
+import Screen5 from "./screens/screen-5";
 import Navbar from "./shared/navbar";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,11 +27,24 @@ const MainScroller = () => {
     });
   }, []);
 
+  // if (true) {
+  //   return (
+  //     <div className="w-screen h-auto overflow-x-hidden m-0 bg-black">
+  //       <Navbar />
+  //       <Screen1 />
+  //       <Screen2 />
+  //     </div>
+  //   )
+  // }
+
   return (
     <div className="main-scroller flex h-screen overflow-x-hidden overflow-y-hidden bg-black text-white">
       <Navbar />
       <Screen1 />
       <Screen2 />
+      <Screen3 />
+      <Screen4 />
+      <Screen5 />
     </div>
   );
 };
