@@ -54,7 +54,7 @@ const Screen3 = () => {
         </div>
         <div className="absolute flex h-[900px] w-[650px] items-center justify-center rounded-lg text-white">
           <img
-            src="3.gif"
+            src="4.gif"
             alt="Placeholder 1"
             className="h-full w-full rounded-lg object-cover"
           />

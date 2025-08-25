@@ -73,7 +73,7 @@ const Screen4 = () => {
         </div>
         <div className="absolute flex h-[900px] w-[600px] items-center justify-center rounded-lg text-white">
           <img
-            src="4.gif"
+            src="3.gif"
             alt="Placeholder 1"
             className="h-full w-full rounded-lg object-cover"
           />
