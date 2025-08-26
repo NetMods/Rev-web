@@ -27,18 +27,8 @@ const MainScroller = () => {
     });
   }, []);
 
-  // if (true) {
-  //   return (
-  //     <div className="w-screen h-auto overflow-x-hidden m-0 bg-black">
-  //       <Navbar />
-  //       <Screen1 />
-  //       <Screen2 />
-  //     </div>
-  //   )
-  // }
-
   return (
-    <div className="main-scroller flex h-screen overflow-x-hidden overflow-y-hidden bg-black text-white">
+    <div className="main-scroller flex h-[100vh] w-[100vw] overflow-x-hidden overflow-y-hidden bg-black text-white">
       <Navbar />
       <Screen1 />
       <Screen2 />
@@ -48,5 +38,11 @@ const MainScroller = () => {
     </div>
   );
 };
+
+// <Screen1 />
+// <Screen2 />
+// <Screen3 />
+// <Screen4 />
+// <Screen5 />
 
 export default MainScroller;

@@ -21,24 +21,24 @@ const Screen2 = () => {
   });
 
   return (
-    <div
-      id="screen-2"
-      className="screen relative flex h-full w-screen shrink-0 items-center justify-center bg-black"
-    >
+    <div id="screen-2" className="screen relative h-full w-screen shrink-0">
       <div className="flex h-full w-full gap-2 p-1">
         <div className="relative h-full w-full">
           {/* Moving label with blend mode */}
-          <div className="moving-label absolute top-7/12 left-10/12 z-20 max-w-64 text-center text-5xl font-extrabold text-white mix-blend-difference">
-            One Tool For Everything
-          </div>
 
           {/* Image container */}
-          <div className="absolute top-48 left-14 z-10 h-[700px] w-[600px] overflow-hidden rounded-2xl">
-            <img
-              src="2.gif"
-              alt="Tool visual"
-              className="h-full w-full object-cover"
-            />
+          <div className="2xl: absolute z-10 rounded-2xl xl:top-3/12 xl:left-1/12 xl:h-[90vh] xl:w-[40vw]">
+            <div className="relative h-full w-full">
+              <div className="moving-label 3xl:text-8xl 4xl:text-9xl 4xl:left-10/12 absolute top-5/12 left-9/12 text-center text-5xl font-extrabold text-white mix-blend-difference">
+                One Tool
+                <br /> For <br /> Everything
+              </div>
+              <img
+                src="2.gif"
+                alt="Tool visual"
+                className="h-full w-full rounded-xl object-cover"
+              />
+            </div>
           </div>
         </div>
 

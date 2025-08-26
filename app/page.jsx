@@ -6,7 +6,7 @@ import MainScroller from "./_sections/main-scroller";
 import PreloaderSection from "./_sections/preloader-section";
 
 export default function HomePage() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAnimationComplete = () => {
     setIsLoading(false);

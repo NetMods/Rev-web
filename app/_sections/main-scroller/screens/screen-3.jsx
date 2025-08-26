@@ -48,26 +48,30 @@ const Screen3 = () => {
       id="screen-3"
       className="screen relative flex h-full w-screen shrink-0 bg-black text-white"
     >
-      <div className="relative flex h-full w-full items-center justify-center">
-        <div className="screen-3-text absolute top-7/12 left-10/12 z-20 min-w-xl text-7xl font-extrabold mix-blend-difference">
-          Screen Recorder
-        </div>
-        <div className="absolute flex h-[900px] w-[650px] items-center justify-center rounded-lg text-white">
-          <img
-            src="4.gif"
-            alt="Placeholder 1"
-            className="h-full w-full rounded-lg object-cover"
-          />
+      <div className="h-full w-full">
+        <div className="h-full w-full rounded-lg pr-8 pl-8 text-white">
+          <div className="relative h-full w-full">
+            <img
+              src="4.gif"
+              alt="Placeholder 1"
+              className="h-full w-full rounded-lg object-cover"
+            />
+
+            <div className="screen-3-text screen-3-text 4xl:text-[10rem] absolute top-1/2 left-10/12 z-20 text-7xl font-extrabold mix-blend-difference">
+              Screen <br /> Recorder
+            </div>
+          </div>
         </div>
       </div>
+
       <div className="h-full w-full overflow-hidden p-1">
         <div className="relative h-full w-full">
-          <div className="screen-3-main-content absolute top-40 left-56 rounded-lg p-1">
+          <div className="screen-3-main-content absolute top-2/12 left-4/12 rounded-lg p-1">
             <div className="relative rounded-lg p-8">
-              <h2 className="relative z-10 text-9xl font-bold text-white">
+              <h2 className="3xl:text-[10rem] 4xl:text-[20rem] relative z-10 text-9xl font-bold text-white">
                 Edit & <br /> Merge
               </h2>
-              <span className="screen-3-floatingtext absolute top-56 left-48 z-20 text-4xl font-bold text-rose-400">
+              <span className="screen-3-floatingtext 4xl:top-7/12 4xl:left-8/12 absolute top-5/12 left-4/12 z-20 text-4xl font-bold text-rose-400">
                 Built-In Editor
               </span>
               <p className="relative z-10 mt-6 max-w-md text-right text-2xl text-white">

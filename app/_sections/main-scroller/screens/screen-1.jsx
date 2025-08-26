@@ -65,11 +65,8 @@ const Screen1 = () => {
     >
       <div className="flex h-full w-screen flex-col">
         {/* Heading */}
-        <div className="relative mt-36 flex w-screen items-center justify-center">
-          <div className="share-text absolute right-[460px] bottom-10 text-[2rem] font-bold text-white">
-            Record it ....
-          </div>
-          <div className="heading-group flex flex-wrap justify-center text-center text-[4rem] leading-tight font-bold">
+        <div className="mt-20 flex min-h-[30vh] w-screen items-center justify-center">
+          <div className="heading-group relative flex flex-wrap justify-center text-center text-[3rem] font-bold xl:text-[4rem] 2xl:text-[5rem]">
             {heading.split("").map((char, i) => (
               <span
                 key={i}
@@ -80,24 +77,27 @@ const Screen1 = () => {
                 {char === " " ? "\u00A0" : char}
               </span>
             ))}
+            <div className="share-text absolute top-7/12 left-8/12 text-white xl:text-[2rem] 2xl:text-[4rem]">
+              Record it .....
+            </div>
           </div>
         </div>
 
         {/* Content Section */}
-        <div className="w-screen flex-1 p-1">
+        <div className="w-screen flex-1">
           <div className="flex h-full w-full gap-4 p-4">
-            {/* Left Column - Image */}
-            <div className="gif-box flex h-[500px] w-[400px] flex-1 items-center justify-center overflow-hidden rounded-xl">
+            {/* Left Column - img */}
+            <div className="gif-box flex h-[58vh] w-full flex-1 items-center justify-center overflow-hidden rounded-xl">
               <img
                 src="1.gif"
-                alt="Demo"
-                className="h-full w-full rounded-xl object-cover"
+                alt="Something Is Coming"
+                className="h-full w-full object-cover"
               />
             </div>
 
             {/* Right Column - Text */}
-            <div className="flex h-full flex-1 items-center justify-center rounded-xl p-6">
-              <p className="lorem-text text-justify text-lg leading-relaxed text-white">
+            <div className="flex h-full flex-1 items-center justify-center p-6">
+              <p className="lorem-text text-justify text-3xl leading-relaxed text-white 2xl:text-5xl">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                 feugiat, risus nec aliquam gravida, eros urna laoreet elit,
                 vitae accumsan odio arcu a nunc. Donec suscipit augue et metus

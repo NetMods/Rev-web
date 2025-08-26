@@ -4,7 +4,7 @@ import gsap from "gsap";
 const Screen4 = () => {
   useGSAP(() => {
     gsap.to(".screen-4-text", {
-      x: -120,
+      x: -50,
       scrollTrigger: {
         trigger: "#screen-4",
         scrub: 4,
@@ -47,19 +47,19 @@ const Screen4 = () => {
   return (
     <div
       id="screen-4"
-      className="screen relative flex h-full w-screen shrink-0 text-white"
+      className="screen relative flex h-full w-screen shrink-0 bg-black text-white"
     >
       <div className="h-full w-full overflow-hidden p-1">
         <div className="relative h-full w-full">
-          <div className="screen-4-main-content absolute top-40 right-2/12 rounded-lg p-1">
+          <div className="screen-4-main-content absolute top-2/12 rounded-lg p-1">
             <div className="relative rounded-lg p-8">
-              <h2 className="relative z-10 text-9xl font-bold text-white">
+              <h2 className="3xl:text-[10rem] 4xl:text-[20rem] relative z-10 text-9xl font-bold text-white">
                 Lively & <br /> Colorfull
               </h2>
-              <span className="screen-4-floatingtext absolute top-56 left-10 z-20 text-4xl font-bold text-rose-400">
+              <span className="screen-4-floatingtext 4xl:top-7/12 4xl:left-8/12 absolute top-5/12 left-4/12 z-20 text-4xl font-bold text-rose-400">
                 Just Draw it
               </span>
-              <p className="relative z-10 mt-6 max-w-md text-left text-2xl text-white">
+              <p className="relative z-10 mt-6 max-w-md text-right text-2xl text-white">
                 Highlight, draw, and point with ease while recording or
                 presenting — make your screen talk, not just show.
               </p>
@@ -67,16 +67,20 @@ const Screen4 = () => {
           </div>
         </div>
       </div>
-      <div className="relative flex h-full w-full items-center justify-center">
-        <div className="screen-4-text absolute top-9/12 z-20 min-w-xl text-7xl font-extrabold mix-blend-difference">
-          Annotate
-        </div>
-        <div className="absolute flex h-[900px] w-[600px] items-center justify-center rounded-lg text-white">
-          <img
-            src="3.gif"
-            alt="Placeholder 1"
-            className="h-full w-full rounded-lg object-cover"
-          />
+
+      <div className="h-full w-full">
+        <div className="h-full w-full rounded-lg pr-8 pl-8 text-white">
+          <div className="relative h-full w-full">
+            <img
+              src="3.gif"
+              alt="Placeholder 1"
+              className="h-full w-full rounded-lg object-cover"
+            />
+
+            <div className="screen-4-text 4xl:right-9/12 4xl:text-[10rem] absolute top-1/2 right-8/12 z-20 text-7xl font-extrabold mix-blend-difference">
+              Annotation <br /> Panel
+            </div>
+          </div>
         </div>
       </div>
     </div>

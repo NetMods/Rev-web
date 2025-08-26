@@ -65,23 +65,28 @@ const FeatureButton = ({ className, title }) => {
   return (
     <div
       ref={featureButtonRef}
-      className={cn("feature-button relative flex p-1", className)}
+      className={cn("feature-button relative flex items-center p-1", className)}
     >
       <div
         ref={firstButtonAnimationRef}
-        className="first-arrow flex h-28 w-28 items-center justify-center rounded-[50%] bg-white"
+        className="first-arrow 3xl:h-28 3xl:w-28 4xl:h-32 4xl:w-32 flex h-16 w-16 items-center justify-center rounded-full bg-white xl:h-20 xl:w-20 2xl:h-24 2xl:w-24"
         style={{ opacity: 0, transform: "translateX(-20px)" }}
       >
-        <FaArrowRight className="text-black" />
+        <FaArrowRight className="3xl:text-3xl 4xl:text-4xl text-lg text-black xl:text-xl 2xl:text-2xl" />
       </div>
-      <button className="min-h-28 min-w-72 rounded-4xl bg-white p-1 text-4xl font-bold text-black">
-        {title}
+      <button
+        className={cn(
+          "3xl:h-28 3xl:w-[28rem] 4xl:h-32 4xl:w-[32rem] 3xl:text-4xl 4xl:text-5xl flex h-16 w-64 items-center justify-center overflow-hidden rounded-full bg-white p-1 text-lg font-bold text-black xl:h-20 xl:w-80 xl:text-2xl 2xl:h-24 2xl:w-96 2xl:text-3xl",
+          className,
+        )}
+      >
+        <span className="truncate">{title}</span>
       </button>
       <div
         ref={secondButtonAnimationRef}
-        className="second-arrow flex h-28 w-28 items-center justify-center rounded-[50%] bg-white"
+        className="second-arrow 3xl:h-28 3xl:w-28 4xl:h-32 4xl:w-32 flex h-16 w-16 items-center justify-center rounded-full bg-white xl:h-20 xl:w-20 2xl:h-24 2xl:w-24"
       >
-        <FaArrowRight className="text-black" />
+        <FaArrowRight className="3xl:text-3xl 4xl:text-4xl text-lg text-black xl:text-xl 2xl:text-2xl" />
       </div>
     </div>
   );
