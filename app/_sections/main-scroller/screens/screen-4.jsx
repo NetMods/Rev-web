@@ -53,13 +53,13 @@ const Screen4 = () => {
         <div className="relative h-full w-full">
           <div className="screen-4-main-content absolute top-2/12 rounded-lg p-1">
             <div className="relative rounded-lg p-8">
-              <h2 className="3xl:text-[10rem] 4xl:text-[20rem] relative z-10 text-9xl font-bold text-white">
+              <h2 className="3xl:text-[10rem] 5xl:text-[20rem] relative z-10 text-8xl font-bold text-white">
                 Lively & <br /> Colorfull
               </h2>
-              <span className="screen-4-floatingtext 4xl:top-7/12 4xl:left-8/12 absolute top-5/12 left-4/12 z-20 text-4xl font-bold text-rose-400">
+              <span className="screen-4-floatingtext 4xl:top-5/12 4xl:left-8/12 3xl:text-5xl 4xl:text-6xl 5xl:text-7xl absolute top-5/12 left-4/12 z-20 text-4xl font-bold text-rose-400">
                 Just Draw it
               </span>
-              <p className="relative z-10 mt-6 max-w-md text-right text-2xl text-white">
+              <p className="3xl:max-w-2xl 4xl:max-w-5xl 3xl:text-3xl 4xl:text-4xl 5xl:text-5xl relative z-10 mt-6 max-w-md text-left text-2xl text-white 2xl:max-w-xl">
                 Highlight, draw, and point with ease while recording or
                 presenting — make your screen talk, not just show.
               </p>

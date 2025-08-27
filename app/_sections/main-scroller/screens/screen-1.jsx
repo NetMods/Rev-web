@@ -66,18 +66,18 @@ const Screen1 = () => {
       <div className="flex h-full w-screen flex-col">
         {/* Heading */}
         <div className="mt-20 flex min-h-[30vh] w-screen items-center justify-center">
-          <div className="heading-group relative flex flex-wrap justify-center text-center text-[3rem] font-bold xl:text-[4rem] 2xl:text-[5rem]">
+          <div className="heading-group relative flex flex-wrap justify-center text-center text-[1rem] font-bold xl:text-[3rem] 2xl:text-[4rem]">
             {heading.split("").map((char, i) => (
               <span
                 key={i}
                 className={`heading-letter inline-block ${
-                  char === "Y" ? "text-[11rem] leading-none" : ""
+                  char === "Y" ? "text-[10rem] leading-none" : ""
                 }`}
               >
                 {char === " " ? "\u00A0" : char}
               </span>
             ))}
-            <div className="share-text absolute top-7/12 left-8/12 text-white xl:text-[2rem] 2xl:text-[4rem]">
+            <div className="share-text absolute top-7/12 left-8/12 text-white xl:text-[2rem] 2xl:text-[3rem]">
               Record it .....
             </div>
           </div>
@@ -97,7 +97,7 @@ const Screen1 = () => {
 
             {/* Right Column - Text */}
             <div className="flex h-full flex-1 items-center justify-center p-6">
-              <p className="lorem-text text-justify text-3xl leading-relaxed text-white 2xl:text-5xl">
+              <p className="lorem-text 3xl:text-5xl 4xl:text-6xl 5xl:text-7xl text-justify text-3xl leading-relaxed text-white">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                 feugiat, risus nec aliquam gravida, eros urna laoreet elit,
                 vitae accumsan odio arcu a nunc. Donec suscipit augue et metus

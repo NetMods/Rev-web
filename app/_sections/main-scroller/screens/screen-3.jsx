@@ -68,13 +68,13 @@ const Screen3 = () => {
         <div className="relative h-full w-full">
           <div className="screen-3-main-content absolute top-2/12 left-4/12 rounded-lg p-1">
             <div className="relative rounded-lg p-8">
-              <h2 className="3xl:text-[10rem] 4xl:text-[20rem] relative z-10 text-9xl font-bold text-white">
+              <h2 className="3xl:text-[10rem] 5xl:text-[20rem] relative z-10 text-8xl font-bold text-white">
                 Edit & <br /> Merge
               </h2>
-              <span className="screen-3-floatingtext 4xl:top-7/12 4xl:left-8/12 absolute top-5/12 left-4/12 z-20 text-4xl font-bold text-rose-400">
+              <span className="screen-3-floatingtext 3xl:top-7/12 3xl:left-8/12 4xl:top-5/12 3xl:text-5xl 4xl:text-6xl 5xl:text-7xl absolute top-5/12 left-4/12 z-20 text-4xl font-bold text-rose-400">
                 Built-In Editor
               </span>
-              <p className="relative z-10 mt-6 max-w-md text-right text-2xl text-white">
+              <p className="3xl:min-w-4xl 4xl:min-w-6xl 3xl:text-3xl 4xl:text-4xl 5xl:text-5xl relative z-10 mt-6 max-w-md text-right text-2xl text-white 2xl:min-w-xl">
                 Record in crisp quality, add edits and doodles on the fly, and
                 zoom right into the action — perfect for creators who want to
                 teach, share, or just show off in style.
