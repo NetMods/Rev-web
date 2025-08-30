@@ -7,7 +7,7 @@ import { ThemeProvider } from "next-themes";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import { fontSans, fontSerif } from "./fonts";
+import { fontCursive, fontSans, fontSerif } from "./fonts";
 
 export const metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
@@ -25,7 +25,7 @@ export const metadata = {
     locale: "en_US",
     type: "website",
   },
-  keywords: ["Screen recorder", "Annotation"],
+  keywords: ["Screen recorder", "Annotation", "Screenshot"],
   robots: {
     index: true,
     follow: true,
@@ -47,9 +47,18 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn(fontSans.variable, fontSerif.variable)}
+      className={cn(
+        fontSans.variable,
+        fontSerif.variable,
+        fontCursive.variable,
+      )}
     >
-      <body className="bg-background text-foreground debug-screens relative antialiased">
+      <body
+        className={cn(
+          `bg-background text-foreground relative h-screen overflow-x-hidden antialiased`,
+          process.env.NODE_ENV === "development" && "debug-screens",
+        )}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -1,7 +1,9 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-const heading = "Your Screen StorY. Told With ClaritY";
+import { cn } from "@/lib/utils";
+
+const heading = "Your Screen Story, Told With Clarity";
 
 const Screen1 = () => {
   useGSAP(() => {
@@ -59,52 +61,47 @@ const Screen1 = () => {
   }, []);
 
   return (
-    <div
-      id="screen-1"
-      className="screen flex h-full w-screen shrink-0 items-center justify-center bg-black text-white"
-    >
-      <div className="flex h-full w-screen flex-col">
-        {/* Heading */}
-        <div className="mt-20 flex min-h-[30vh] w-screen items-center justify-center">
-          <div className="heading-group relative flex flex-wrap justify-center text-center text-[1rem] font-bold xl:text-[3rem] 2xl:text-[4rem]">
-            {heading.split("").map((char, i) => (
-              <span
-                key={i}
-                className={`heading-letter inline-block ${
-                  char === "Y" ? "text-[10rem] leading-none" : ""
-                }`}
-              >
-                {char === " " ? "\u00A0" : char}
-              </span>
-            ))}
-            <div className="share-text absolute top-7/12 left-8/12 text-white xl:text-[2rem] 2xl:text-[3rem]">
-              Record it .....
-            </div>
-          </div>
+    <div id="screen-1" className="screen flex h-full min-w-full flex-col pt-32">
+      <div className="flex w-full items-center justify-center">
+        <div className="heading-group relative my-20 font-bold">
+          {heading.split("").map((char, i) => (
+            <span
+              key={i}
+              className={cn(
+                `heading-letter`,
+                char === "S"
+                  ? "font-cursive pr-1 text-[6rem] leading-none"
+                  : "text-5xl",
+              )}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+
+          <span className="share-text font-cursive block text-right text-3xl font-bold">
+            <span className="text-3xl text-red-400">S</span>pread it
+          </span>
         </div>
+      </div>
 
-        {/* Content Section */}
-        <div className="w-screen flex-1">
-          <div className="flex h-full w-full gap-4 p-4">
-            {/* Left Column - img */}
-            <div className="gif-box flex h-[58vh] w-full flex-1 items-center justify-center overflow-hidden rounded-xl">
-              <img
-                src="1.gif"
-                alt="Something Is Coming"
-                className="h-full w-full object-cover"
-              />
-            </div>
+      <div className="h-full">
+        <div className="flex size-full">
+          <div className="gif-box inline-flex w-1/2 justify-center">
+            <img
+              src="1.gif"
+              alt="Something Is Coming"
+              className="rounded-xl object-cover"
+            />
+          </div>
 
-            {/* Right Column - Text */}
-            <div className="flex h-full flex-1 items-center justify-center p-6">
-              <p className="lorem-text 3xl:text-5xl 4xl:text-6xl 5xl:text-7xl text-justify text-3xl leading-relaxed text-white">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                feugiat, risus nec aliquam gravida, eros urna laoreet elit,
-                vitae accumsan odio arcu a nunc. Donec suscipit augue et metus
-                placerat, nec malesuada sapien iaculis. Integer nec ex eget
-                massa porta viverra sit amet nec urna. Suspendisse potenti.
-              </p>
-            </div>
+          <div className="w-1/2">
+            <p className="lorem-text text-xl text-balance">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              feugiat, risus nec aliquam gravida, eros urna laoreet elit, vitae
+              accumsan odio arcu a nunc. Donec suscipit augue et metus placerat,
+              nec malesuada sapien iaculis. Integer nec ex eget massa porta
+              viverra sit amet nec urna. Suspendisse potenti.
+            </p>
           </div>
         </div>
       </div>

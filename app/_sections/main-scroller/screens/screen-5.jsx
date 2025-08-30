@@ -1,7 +1,10 @@
 const Screen5 = () => {
   return (
-    <div className="screen h-screen w-screen shrink-0 bg-black p-1">
-      <div className="flex h-full w-full items-center justify-center text-9xl text-white">
+    <div
+      id="screen-4"
+      className="screen relative flex size-full min-w-full pt-32"
+    >
+      <div className="flex h-full w-full items-center justify-center text-3xl">
         Screen5
       </div>
     </div>

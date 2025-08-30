@@ -47,40 +47,32 @@ const Screen4 = () => {
   return (
     <div
       id="screen-4"
-      className="screen relative flex h-full w-screen shrink-0 bg-black text-white"
+      className="screen relative flex size-full min-w-full pt-32"
     >
-      <div className="h-full w-full overflow-hidden p-1">
-        <div className="relative h-full w-full">
-          <div className="screen-4-main-content absolute top-2/12 rounded-lg p-1">
-            <div className="relative rounded-lg p-8">
-              <h2 className="3xl:text-[10rem] 5xl:text-[20rem] relative z-10 text-8xl font-bold text-white">
-                Lively & <br /> Colorfull
-              </h2>
-              <span className="screen-4-floatingtext 4xl:top-5/12 4xl:left-8/12 3xl:text-5xl 4xl:text-6xl 5xl:text-7xl absolute top-5/12 left-4/12 z-20 text-4xl font-bold text-rose-400">
+      <div className="screen-4-main-content flex h-full w-1/2 flex-col items-center justify-center overflow-hidden">
+        <div>
+          <div className="relative max-w-fit">
+            <h2 className="text-7xl font-bold text-white">
+              Lively & <br /> Colorful
+            </h2>
+            <div className="absolute top-1/2 left-5/6 rotate-6">
+              <span className="screen-3-floatingtext top-1/2 left-full z-20 w-full rotate-6 transform bg-rose-600 px-2 text-xl font-bold text-nowrap">
                 Just Draw it
               </span>
-              <p className="3xl:max-w-2xl 4xl:max-w-5xl 3xl:text-3xl 4xl:text-4xl 5xl:text-5xl relative z-10 mt-6 max-w-md text-left text-2xl text-white 2xl:max-w-xl">
-                Highlight, draw, and point with ease while recording or
-                presenting — make your screen talk, not just show.
-              </p>
             </div>
           </div>
+          <p className="mt-7 max-w-96 text-xl">
+            Highlight, draw, and point with ease while recording or presenting —
+            make your screen talk, not just show.
+          </p>
         </div>
       </div>
 
-      <div className="h-full w-full">
-        <div className="h-full w-full rounded-lg pr-8 pl-8 text-white">
-          <div className="relative h-full w-full">
-            <img
-              src="3.gif"
-              alt="Placeholder 1"
-              className="h-full w-full rounded-lg object-cover"
-            />
+      <div className="relative flex w-1/2 justify-center">
+        <img src="3.gif" alt="Placeholder 1" className="rounded-xl" />
 
-            <div className="screen-4-text 4xl:right-9/12 4xl:text-[10rem] absolute top-1/2 right-8/12 z-20 text-7xl font-extrabold mix-blend-difference">
-              Annotation <br /> Panel
-            </div>
-          </div>
+        <div className="screen-3-text absolute right-3/5 bottom-1/12 z-20 text-6xl font-extrabold mix-blend-difference">
+          Annotation <br /> Panel
         </div>
       </div>
     </div>

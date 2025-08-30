@@ -1,8 +1,9 @@
 import { useRef } from "react";
-import { cn } from "@/utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { FaArrowRight } from "react-icons/fa6";
+import { FaArrowRight as Arrow } from "react-icons/fa";
+
+import { cn } from "@/lib/utils";
 
 const FeatureButton = ({ className, title }) => {
   const firstButtonAnimationRef = useRef(null);
@@ -69,24 +70,24 @@ const FeatureButton = ({ className, title }) => {
     >
       <div
         ref={firstButtonAnimationRef}
-        className="first-arrow 3xl:h-28 3xl:w-28 4xl:h-32 4xl:w-32 flex h-16 w-16 items-center justify-center rounded-full bg-white xl:h-20 xl:w-20 2xl:h-24 2xl:w-24"
+        className="first-arrow bg-foreground flex h-16 w-16 items-center justify-center rounded-full"
         style={{ opacity: 0, transform: "translateX(-20px)" }}
       >
-        <FaArrowRight className="3xl:text-3xl 4xl:text-4xl text-lg text-black xl:text-xl 2xl:text-2xl" />
+        <Arrow className="text-background text-lg" />
       </div>
       <button
         className={cn(
-          "3xl:h-28 3xl:w-[28rem] 4xl:h-32 4xl:w-[32rem] 3xl:text-4xl 4xl:text-5xl flex h-16 w-64 items-center justify-center overflow-hidden rounded-full bg-white p-1 text-lg font-bold text-black xl:h-20 xl:w-80 xl:text-2xl 2xl:h-24 2xl:w-96 2xl:text-3xl",
+          "bg-foreground text-background flex h-16 w-80 items-center justify-center overflow-hidden rounded-full p-1 text-xl font-bold",
           className,
         )}
       >
-        <span className="truncate">{title}</span>
+        {title}
       </button>
       <div
         ref={secondButtonAnimationRef}
-        className="second-arrow 3xl:h-28 3xl:w-28 4xl:h-32 4xl:w-32 flex h-16 w-16 items-center justify-center rounded-full bg-white xl:h-20 xl:w-20 2xl:h-24 2xl:w-24"
+        className="second-arrow bg-foreground flex h-16 w-16 items-center justify-center rounded-full"
       >
-        <FaArrowRight className="3xl:text-3xl 4xl:text-4xl text-lg text-black xl:text-xl 2xl:text-2xl" />
+        <Arrow className="text-background text-lg" />
       </div>
     </div>
   );

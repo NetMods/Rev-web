@@ -11,9 +11,11 @@ export default function Error({ error }) {
   useEffect(() => console.error(error), [error]);
 
   return (
-    <div>
+    <section className="flex h-screen flex-col items-center justify-center">
       <p>Oops! Something went wrong... maybe try refreshing?</p>
-      <pre>{JSON.stringify(error.message, null, 2)}</pre>
-    </div>
+      <div className="bg-foreground/10 m-3 p-3">
+        <pre>{JSON.stringify(error.message, null, 2)}</pre>
+      </div>
+    </section>
   );
 }

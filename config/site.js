@@ -8,7 +8,7 @@ export const socialLinks = {
 };
 
 export const siteConfig = {
-  title: "Rev | Next-gen screen recorder",
+  title: "Rev | Demo screen recorder",
   name: "Rev",
   baseUrl: site_url,
   description: "About our screen recorder",

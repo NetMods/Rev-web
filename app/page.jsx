@@ -3,21 +3,20 @@
 import { useState } from "react";
 
 import MainScroller from "./_sections/main-scroller";
-import PreloaderSection from "./_sections/preloader-section";
+import Preloader from "./_sections/preloader";
 
 export default function HomePage() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(
+    process.env.NODE_ENV === "production",
+  );
 
   const handleAnimationComplete = () => {
     setIsLoading(false);
   };
 
-  return (
-    <>
-      {isLoading && (
-        <PreloaderSection onAnimationComplete={handleAnimationComplete} />
-      )}
-      {!isLoading && <MainScroller />}
-    </>
-  );
+  if (isLoading) {
+    return <Preloader onAnimationComplete={handleAnimationComplete} />;
+  }
+
+  return <MainScroller />;
 }

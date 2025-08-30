@@ -46,41 +46,32 @@ const Screen3 = () => {
   return (
     <div
       id="screen-3"
-      className="screen relative flex h-full w-screen shrink-0 bg-black text-white"
+      className="screen bg-background relative z-50 flex size-full min-w-full pt-32"
     >
-      <div className="h-full w-full">
-        <div className="h-full w-full rounded-lg pr-8 pl-8 text-white">
-          <div className="relative h-full w-full">
-            <img
-              src="4.gif"
-              alt="Placeholder 1"
-              className="h-full w-full rounded-lg object-cover"
-            />
-
-            <div className="screen-3-text screen-3-text 4xl:text-[10rem] absolute top-1/2 left-10/12 z-20 text-7xl font-extrabold mix-blend-difference">
-              Screen <br /> Recorder
-            </div>
-          </div>
+      <div className="relative flex w-1/2 justify-center">
+        <img src="4.gif" alt="Placeholder 1" className="rounded-xl" />
+        <div className="screen-3-text absolute bottom-1/12 left-4/5 z-20 text-6xl font-extrabold mix-blend-difference">
+          Screen <br /> Recorder
         </div>
       </div>
 
-      <div className="h-full w-full overflow-hidden p-1">
-        <div className="relative h-full w-full">
-          <div className="screen-3-main-content absolute top-2/12 left-4/12 rounded-lg p-1">
-            <div className="relative rounded-lg p-8">
-              <h2 className="3xl:text-[10rem] 5xl:text-[20rem] relative z-10 text-8xl font-bold text-white">
-                Edit & <br /> Merge
-              </h2>
-              <span className="screen-3-floatingtext 3xl:top-7/12 3xl:left-8/12 4xl:top-5/12 3xl:text-5xl 4xl:text-6xl 5xl:text-7xl absolute top-5/12 left-4/12 z-20 text-4xl font-bold text-rose-400">
+      <div className="screen-3-main-content flex w-1/2 flex-col items-center justify-center">
+        <div>
+          <div className="relative max-w-fit">
+            <h2 className="z-10 text-7xl font-bold text-white">
+              Edit & <br /> Merge
+            </h2>
+            <div className="absolute top-1/2 left-5/6 -rotate-6">
+              <span className="screen-3-floatingtext top-1/2 left-full z-20 w-full rotate-6 transform bg-rose-600 px-2 text-xl font-bold text-nowrap">
                 Built-In Editor
               </span>
-              <p className="3xl:min-w-4xl 4xl:min-w-6xl 3xl:text-3xl 4xl:text-4xl 5xl:text-5xl relative z-10 mt-6 max-w-md text-right text-2xl text-white 2xl:min-w-xl">
-                Record in crisp quality, add edits and doodles on the fly, and
-                zoom right into the action — perfect for creators who want to
-                teach, share, or just show off in style.
-              </p>
             </div>
           </div>
+          <p className="mt-7 max-w-96 text-xl">
+            Record in crisp quality, add edits and doodles on the fly, and zoom
+            right into the action — perfect for creators who want to teach,
+            share, or just show off in style.
+          </p>
         </div>
       </div>
     </div>
