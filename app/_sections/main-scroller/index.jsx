@@ -1,5 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Navbar from "@/components/layout/navbar";
@@ -10,11 +11,17 @@ import Screen3 from "./screens/screen-3";
 import Screen4 from "./screens/screen-4";
 import Screen5 from "./screens/screen-5";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const MainScroller = () => {
   useGSAP(() => {
     const screens = gsap.utils.toArray(".screen");
+
+    ScrollSmoother.create({
+      smooth: 3,
+      effects: true,
+      smoothTouch: 0.4,
+    });
 
     gsap.to(screens, {
       xPercent: -100 * (screens.length - 1),
@@ -29,13 +36,17 @@ const MainScroller = () => {
   }, []);
 
   return (
-    <div className="main-scroller flex h-screen w-screen overflow-x-hidden overflow-y-hidden">
-      <Navbar className="h-32" />
-      <Screen1 />
-      <Screen2 />
-      <Screen3 />
-      <Screen4 />
-      <Screen5 />
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <div className="main-scroller flex h-screen w-screen overflow-x-hidden overflow-y-hidden">
+          <Navbar className="h-32" />
+          <Screen1 />
+          <Screen2 />
+          <Screen3 />
+          <Screen4 />
+          <Screen5 />
+        </div>
+      </div>
     </div>
   );
 };

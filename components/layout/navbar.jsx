@@ -1,8 +1,43 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import SplitText from "gsap/SplitText";
+
 import { cn } from "@/lib/utils";
 
 import { MenuIcon } from "./menu-icon";
 
+gsap.registerPlugin(SplitText);
+
 const Navbar = ({ className }) => {
+  useGSAP(() => {
+    const splitlogo = new SplitText(".word-logo", { type: "chars" });
+    const splitword = new SplitText(".navbar-word", { type: "chars" });
+
+    gsap.fromTo(
+      splitlogo.chars,
+      { yPercent: 100, opacity: 0 },
+      {
+        yPercent: 0,
+        opacity: 1,
+        stagger: 0.1,
+        duration: 1,
+        ease: "power3.out",
+      },
+    );
+
+    gsap.fromTo(
+      splitword.chars,
+      { yPercent: 100, opacity: 0 },
+      {
+        yPercent: 0,
+        opacity: 1,
+        stagger: 0.1,
+        duration: 1,
+        ease: "power3.out",
+      },
+    );
+  });
+
   return (
     <div
       className={cn(
@@ -10,16 +45,14 @@ const Navbar = ({ className }) => {
         className,
       )}
     >
-      <div className="relative">
-        <img
-          src="/rev-w.svg"
-          alt="logo"
-          className="size-20 mix-blend-difference"
-        />
+      <div className="word-logo font-cursive relative text-4xl text-white">
+        REV
       </div>
+
       <div className="pointer-events-auto relative hidden text-4xl font-bold sm:block">
-        <div className="text-white mix-blend-difference">Krynn</div>
+        <div className="navbar-word text-white mix-blend-difference">Krynn</div>
       </div>
+
       <div className="pointer-events-auto relative mix-blend-difference sm:hidden">
         <MenuIcon className={"scale-x-[-1]"} />
       </div>

@@ -41,13 +41,37 @@ const Screen3 = () => {
         markers: false,
       },
     });
+
+    gsap.fromTo(
+      ".parallax-bg-3",
+      {
+        backgroundPosition: "0% 50%",
+      },
+      {
+        backgroundPosition: "40% 50%",
+        scrollTrigger: {
+          trigger: "#screen-3",
+          scrub: 3,
+          markers: false,
+          start: "300% top",
+          end: "500% bottom",
+        },
+      },
+    );
   });
 
   return (
     <div id="screen-3" className="screen relative flex size-full min-w-full">
-      <div className="relative flex w-1/2 justify-center">
-        <img src="4.gif" alt="Placeholder 1" className="rounded-xl" />
-        <div className="screen-3-text absolute bottom-1/12 left-4/5 z-20 text-6xl font-extrabold mix-blend-difference">
+      <div
+        style={{
+          backgroundImage: "url('/3.gif')",
+          backgroundPosition: "0% 50%",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+        className="parallax-bg-3 relative flex w-1/2 justify-center"
+      >
+        <div className="screen-3-text absolute -right-2/6 bottom-1/12 z-20 text-6xl font-extrabold mix-blend-difference">
           Screen <br /> Recorder
         </div>
       </div>
@@ -58,8 +82,8 @@ const Screen3 = () => {
             <h2 className="z-10 text-7xl font-bold text-white">
               Edit & <br /> Merge
             </h2>
-            <div className="absolute top-1/2 left-5/6 -rotate-6">
-              <span className="screen-3-floatingtext top-1/2 left-full z-20 w-full rotate-6 transform bg-rose-600 px-2 text-xl font-bold text-nowrap">
+            <div className="screen-3-floatingtext absolute top-1/2 left-5/6 -rotate-6">
+              <span className="z-20 w-full rotate-6 transform bg-rose-600 px-2 text-xl font-bold text-nowrap">
                 Built-In Editor
               </span>
             </div>
