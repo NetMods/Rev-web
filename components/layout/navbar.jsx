@@ -45,8 +45,8 @@ const Navbar = ({ className }) => {
         className,
       )}
     >
-      <div className="word-logo font-cursive relative text-4xl text-white">
-        REV
+      <div className="word-logo relative text-4xl font-semibold text-white">
+        Rev
       </div>
 
       <div className="pointer-events-auto relative hidden text-4xl font-bold sm:block">

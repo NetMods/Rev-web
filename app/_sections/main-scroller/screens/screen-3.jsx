@@ -17,9 +17,11 @@ const Screen3 = () => {
 
     gsap.fromTo(
       ".screen-3-main-content",
-      { xPercent: 120 },
       {
-        xPercent: 0,
+        x: 700,
+      },
+      {
+        x: 0,
         ease: "power3.out",
         scrollTrigger: {
           trigger: "#screen-3",
@@ -76,8 +78,8 @@ const Screen3 = () => {
         </div>
       </div>
 
-      <div className="screen-3-main-content flex w-1/2 flex-col items-center justify-center pt-32">
-        <div>
+      <div className="flex w-1/2 flex-col items-center justify-center pt-32">
+        <div className="screen-3-main-content">
           <div className="relative max-w-fit">
             <h2 className="z-10 text-7xl font-bold text-white">
               Edit & <br /> Merge

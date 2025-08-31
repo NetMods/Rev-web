@@ -36,3 +36,7 @@ body {
 .kerning-none {
   font-kerning: none;
 }
+
+.screen-4-main-content {
+  transform: translateX(-120%);
+}

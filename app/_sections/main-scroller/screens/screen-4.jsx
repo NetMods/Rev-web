@@ -17,10 +17,10 @@ const Screen4 = () => {
     gsap.fromTo(
       ".screen-4-main-content",
       {
-        xPercent: -120,
+        x: -800,
       },
       {
-        xPercent: 0,
+        x: 0,
         ease: "power3.out",
         scrollTrigger: {
           trigger: "#screen-4",
@@ -66,8 +66,8 @@ const Screen4 = () => {
       id="screen-4"
       className="screen relative flex size-full min-w-full overflow-hidden"
     >
-      <div className="screen-4-main-content flex h-full w-1/2 flex-col items-center justify-center overflow-hidden">
-        <div>
+      <div className="relative flex h-full w-1/2 flex-col items-center justify-center overflow-hidden">
+        <div className="screen-4-main-content">
           <div className="relative max-w-fit pt-32">
             <h2 className="text-7xl font-bold text-white">
               Lively & <br /> Colorful
