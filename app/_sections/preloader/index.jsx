@@ -32,73 +32,84 @@ const PreloaderSection = ({ onAnimationComplete }) => {
   };
 
   useGSAP(() => {
-    const animationTimeline = gsap.timeline({
-      onComplete: () => {
-        onAnimationComplete();
-      },
-    });
+    const img = document.querySelector(".brand-name img");
+    if (!img) return;
 
-    animationTimeline
-      .fromTo(
-        ".tagline-first",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 1, ease: "sine.out" },
-      )
-      .fromTo(
-        ".tagline-second",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 1, ease: "sine.out" },
-      )
-      .fromTo(
-        ".tagline-third",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 1, ease: "sine.out" },
-      )
-      .to(
-        ".tagline-first, .tagline-second, .tagline-third",
-        {
-          opacity: 0,
-          y: -20,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "sine.inOut",
+    const runAnimation = () => {
+      const animationTimeline = gsap.timeline({
+        onComplete: () => {
+          onAnimationComplete();
         },
-        "+=0.5",
-      )
-      .fromTo(
-        ".brand-name",
-        { opacity: 0, y: 30, scale: 1 },
-        { opacity: 1, y: 0, duration: 1, ease: "sine.out" },
-        "+=0.5",
-      )
-      .to(
-        ".brand-name",
+      });
+
+      animationTimeline
+        .fromTo(
+          ".tagline-first",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 1, ease: "sine.out" },
+        )
+        .fromTo(
+          ".tagline-second",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 1, ease: "sine.out" },
+        )
+        .fromTo(
+          ".tagline-third",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 1, ease: "sine.out" },
+        )
+        .to(
+          ".tagline-first, .tagline-second, .tagline-third",
+          {
+            opacity: 0,
+            y: -20,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "sine.inOut",
+          },
+          "+=0.5",
+        )
+        .fromTo(
+          ".brand-name",
+          { opacity: 0, y: 30, scale: 1 },
+          { opacity: 1, y: 0, duration: 1, ease: "sine.out" },
+          "+=0.5",
+        )
+        .to(
+          ".brand-name",
+          {
+            scale: calculateDynamicScale(),
+            duration: 2.5,
+            ease: "power2.inOut",
+          },
+          "+=0.8",
+        );
+
+      animationTimeline.to(
+        ".timer",
         {
-          scale: calculateDynamicScale(),
-          duration: 2.5,
-          ease: "power2.inOut",
+          innerText: 100,
+          opacity: 1,
+          duration: animationTimeline.duration(),
+          ease: "linear",
+          snap: { innerText: 1 },
+          onUpdate: function () {
+            const element = document.querySelector(".timer");
+            if (element) {
+              const progress = this.progress();
+              element.innerText = Math.floor(progress * 100);
+            }
+          },
         },
-        "+=0.8",
+        0,
       );
+    };
 
-    animationTimeline.to(
-      ".timer",
-      {
-        innerText: 100,
-        opacity: 1,
-        duration: animationTimeline.duration(),
-        ease: "linear",
-        snap: { innerText: 1 },
-        onUpdate: function () {
-          const element = document.querySelector(".timer");
-          if (element) {
-            const progress = this.progress();
-            element.innerText = Math.floor(progress * 100);
-          }
-        },
-      },
-      0,
-    );
+    if (img.complete) {
+      runAnimation();
+    } else {
+      img.onload = runAnimation;
+    }
   }, [isMobile, isTablet]);
 
   return (

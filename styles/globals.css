@@ -17,14 +17,10 @@
 }
 
 @theme {
-  --font-cursive: '"Corinthia", "Corinthia Fallback"';
+  --font-cursive: '"Corinthia", "Arial"';
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
-  --breakpoint-3xl: 2130px;
-  --breakpoint-4xl: 2860px;
-  --breakpoint-5xl: 5200px;
 }
 
 * {
@@ -37,7 +33,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.heading-letter {
+.kerning-none {
   font-kerning: none;
-  letter-spacing: -0.01em;
 }

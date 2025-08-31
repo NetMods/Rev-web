@@ -44,10 +44,7 @@ const Screen3 = () => {
   });
 
   return (
-    <div
-      id="screen-3"
-      className="screen bg-background relative z-50 flex size-full min-w-full pt-32"
-    >
+    <div id="screen-3" className="screen relative flex size-full min-w-full">
       <div className="relative flex w-1/2 justify-center">
         <img src="4.gif" alt="Placeholder 1" className="rounded-xl" />
         <div className="screen-3-text absolute bottom-1/12 left-4/5 z-20 text-6xl font-extrabold mix-blend-difference">
@@ -55,7 +52,7 @@ const Screen3 = () => {
         </div>
       </div>
 
-      <div className="screen-3-main-content flex w-1/2 flex-col items-center justify-center">
+      <div className="screen-3-main-content flex w-1/2 flex-col items-center justify-center pt-32">
         <div>
           <div className="relative max-w-fit">
             <h2 className="z-10 text-7xl font-bold text-white">

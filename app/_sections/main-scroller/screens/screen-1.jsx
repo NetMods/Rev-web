@@ -63,7 +63,7 @@ const Screen1 = () => {
   return (
     <div id="screen-1" className="screen flex h-full min-w-full flex-col pt-32">
       <div className="flex w-full items-center justify-center">
-        <div className="heading-group relative my-20 font-bold">
+        <div className="heading-group relative my-20 font-bold tracking-tighter">
           {heading.split("").map((char, i) => (
             <span
               key={i}
@@ -79,7 +79,7 @@ const Screen1 = () => {
           ))}
 
           <span className="share-text font-cursive block text-right text-3xl font-bold">
-            <span className="text-3xl text-red-400">S</span>pread it
+            <span className="text-3xl text-red-400">S</span>hare it
           </span>
         </div>
       </div>

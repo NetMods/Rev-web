@@ -6,12 +6,16 @@ const Navbar = ({ className }) => {
   return (
     <div
       className={cn(
-        "pointer-events-none fixed top-0 left-0 z-10 flex w-full items-center justify-around",
+        "pointer-events-none fixed top-0 left-0 z-50 flex w-full items-center justify-around",
         className,
       )}
     >
-      <div className="relative mix-blend-difference">
-        <img src="/rev-w.svg" alt="logo" className="size-20" />
+      <div className="relative">
+        <img
+          src="/rev-w.svg"
+          alt="logo"
+          className="size-20 mix-blend-difference"
+        />
       </div>
       <div className="pointer-events-auto relative hidden text-4xl font-bold sm:block">
         <div className="text-white mix-blend-difference">Krynn</div>
