@@ -40,3 +40,9 @@ body {
 .screen-4-main-content {
   transform: translateX(-120%);
 }
+
+@media only screen and (max-width: 1200px) {
+  .screen-4-main-content {
+    transform: translateX(0%);
+  }
+}

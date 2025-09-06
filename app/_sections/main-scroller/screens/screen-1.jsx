@@ -61,9 +61,12 @@ const Screen1 = () => {
   }, []);
 
   return (
-    <div id="screen-1" className="screen flex h-full min-w-full flex-col pt-32">
+    <div
+      id="screen-1"
+      className="screen flex h-full min-w-full flex-col pt-16 min-[1200px]:pt-32"
+    >
       <div className="flex w-full items-center justify-center">
-        <div className="heading-group relative my-20 font-bold tracking-tighter">
+        <div className="heading-group relative my-20 font-bold tracking-tighter max-[1200px]:hidden">
           {heading.split("").map((char, i) => (
             <span
               key={i}
@@ -82,11 +85,24 @@ const Screen1 = () => {
             <span className="text-3xl text-red-400">S</span>hare it
           </span>
         </div>
+
+        <div className="hidden max-[1200px]:block">
+          <span className="heading-group relative my-10 flex w-full flex-col items-center justify-center text-5xl font-bold tracking-tighter">
+            {heading.split(",").map((line, i) => (
+              <span key={i}>{line}</span>
+            ))}
+          </span>
+          <span className="share-text font-cursive block text-center text-3xl font-bold">
+            <span className="bg-foreground/10 rounded-full border border-white/20 px-5 py-1">
+              Share it
+            </span>
+          </span>
+        </div>
       </div>
 
-      <div className="h-full">
-        <div className="flex size-full">
-          <div className="gif-box inline-flex w-1/2 justify-center">
+      <div className="my-5 h-full">
+        <div className="min-[1200px]:flex">
+          <div className="gif-box inline-flex w-full justify-center min-[1200px]:w-1/2">
             <img
               src="1.gif"
               alt="Something Is Coming"
@@ -94,8 +110,8 @@ const Screen1 = () => {
             />
           </div>
 
-          <div className="w-1/2">
-            <p className="lorem-text text-xl text-balance">
+          <div className="w-full place-content-center min-[1200px]:w-1/2">
+            <p className="lorem-text py-10 text-center text-xl text-balance">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               feugiat, risus nec aliquam gravida, eros urna laoreet elit, vitae
               accumsan odio arcu a nunc. Donec suscipit augue et metus placerat,

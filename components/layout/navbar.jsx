@@ -1,10 +1,9 @@
 import { useGSAP } from "@gsap/react";
+import { HamburgerIcon } from "@phosphor-icons/react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 
 import { cn } from "@/lib/utils";
-
-import { MenuIcon } from "./menu-icon";
 
 gsap.registerPlugin(SplitText);
 
@@ -41,7 +40,7 @@ const Navbar = ({ className }) => {
   return (
     <div
       className={cn(
-        "pointer-events-none fixed top-0 left-0 z-50 flex w-full items-center justify-around",
+        "pointer-events-none fixed top-0 left-0 z-50 flex w-full items-center justify-around max-[1200px]:bg-black/10 max-[1200px]:backdrop-blur-xl",
         className,
       )}
     >
@@ -49,12 +48,12 @@ const Navbar = ({ className }) => {
         Rev
       </div>
 
-      <div className="pointer-events-auto relative hidden text-4xl font-bold sm:block">
+      <div className="pointer-events-auto relative hidden text-4xl font-bold min-[1200px]:block">
         <div className="navbar-word text-white mix-blend-difference">Krynn</div>
       </div>
 
-      <div className="pointer-events-auto relative mix-blend-difference sm:hidden">
-        <MenuIcon className={"scale-x-[-1]"} />
+      <div className="pointer-events-auto relative mix-blend-difference min-[1200px]:hidden">
+        <HamburgerIcon size={40} />
       </div>
     </div>
   );
