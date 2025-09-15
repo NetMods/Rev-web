@@ -10,6 +10,8 @@ import Screen2 from "./screens/screen-2";
 import Screen3 from "./screens/screen-3";
 import Screen4 from "./screens/screen-4";
 import Screen5 from "./screens/screen-5";
+import Screen6 from "./screens/screen-6";
+import Screen7 from "./screens/screen-7";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,6 +64,8 @@ const MainScroller = () => {
           <Screen3 />
           <Screen4 />
           <Screen5 />
+          <Screen6 />
+          <Screen7 />
         </div>
       </div>
     </div>
