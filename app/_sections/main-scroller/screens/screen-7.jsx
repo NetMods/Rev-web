@@ -1,40 +1,9 @@
 import { useEffect, useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 
 const Screen7 = () => {
   const LinuxRef = useRef(null);
   const MacRef = useRef(null);
   const WindowRef = useRef(null);
-
-  useGSAP(() => {
-    if (window.innerWidth >= 1200) {
-      LinuxRef.current = gsap.to(".linux-animated-box", {
-        width: "20vw",
-        height: "30vh",
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-        paused: true,
-      });
-      MacRef.current = gsap.to(".mac-animated-box", {
-        width: "20vw",
-        height: "30vh",
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-        paused: true,
-      });
-      WindowRef.current = gsap.to(".window-animated-box", {
-        width: "20vw",
-        height: "30vh",
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-        paused: true,
-      });
-    }
-  });
 
   useEffect(() => {
     const LinuxBox = document.querySelector(".linux-box");

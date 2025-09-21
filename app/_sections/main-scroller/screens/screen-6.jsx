@@ -1,7 +1,5 @@
 import { useRef } from "react";
 import Image from "next/image";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 
 import VideoEditor from "../../../../public/5.jpg";
 
@@ -9,52 +7,10 @@ const Screen6 = () => {
   const headingRef = useRef(null);
   const listRef = useRef(null);
 
-  useGSAP(() => {
-    if (window.innerWidth >= 1200) {
-      gsap.to(".pixel-6", {
-        opacity: 0,
-        duration: 1,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: "#screen-6",
-          start: "750% top",
-          end: "950% bottom",
-          scrub: true,
-        },
-      });
-
-      gsap.from(headingRef.current, {
-        opacity: 0,
-        y: 50,
-        scale: 0.9,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: "#screen-6",
-          start: "750% top",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      gsap.from(listRef.current.querySelectorAll("li"), {
-        opacity: 0,
-        x: -100,
-        duration: 0.6,
-        stagger: 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: "#screen-5",
-          start: "750% top",
-          toggleActions: "play none none reverse",
-        },
-      });
-    }
-  });
-
   return (
     <div id="screen-6" className="screen relative min-w-full p-4 sm:p-6 md:p-8">
       <div className="flex h-full w-full flex-col gap-4 overflow-hidden p-4 min-[1200px]:flex-row">
-        <div className="mt-56 max-h-[50vh] w-full overflow-auto rounded-2xl p-4 min-[1200px]:max-h-none min-[1200px]:w-[30vw]">
+        <div className="mt-56 max-h-1/2 w-full overflow-auto rounded-2xl p-4 min-[1200px]:max-h-none min-[1200px]:w-[30vw]">
           <div className="flex h-full flex-col">
             <h2
               ref={headingRef}
@@ -83,14 +39,6 @@ const Screen6 = () => {
             className="h-full w-full object-contain"
             priority
           />
-          <div className="absolute inset-0 z-10 grid grid-cols-[repeat(10,1fr)]">
-            {Array.from({ length: 10 }).map((_, index) => (
-              <div
-                key={index}
-                className="pixel-6 min-[1200px]:bg-background"
-              ></div>
-            ))}
-          </div>
         </div>
       </div>
     </div>
