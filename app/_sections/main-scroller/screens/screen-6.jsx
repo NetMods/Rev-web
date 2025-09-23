@@ -1,27 +1,11 @@
-import { useRef } from "react";
-import Image from "next/image";
-
-import VideoEditor from "../../../../public/5.jpg";
-
 const Screen6 = () => {
-  const headingRef = useRef(null);
-  const listRef = useRef(null);
-
   return (
-    <div id="screen-6" className="screen relative min-w-full p-4 sm:p-6 md:p-8">
-      <div className="flex h-full w-full flex-col gap-4 overflow-hidden p-4 min-[1200px]:flex-row">
-        <div className="mt-56 max-h-1/2 w-full overflow-auto rounded-2xl p-4 min-[1200px]:max-h-none min-[1200px]:w-[30vw]">
-          <div className="flex h-full flex-col">
-            <h2
-              ref={headingRef}
-              className="mb-2 text-lg font-extrabold sm:text-xl md:text-5xl"
-            >
-              Image Editor
-            </h2>
-            <ul
-              ref={listRef}
-              className="flex-1 list-inside list-disc space-y-2 text-2xl font-bold"
-            >
+    <div id="screen-6" className="screen relative min-w-full">
+      <div className="flex h-full w-full flex-col gap-4 overflow-hidden lg:flex-row">
+        <div className="justify-start-safe flex flex-1 flex-col overflow-auto py-10 lg:pt-20">
+          <div className="flex flex-col items-center justify-center">
+            <h2 className="mb-8 text-5xl font-extrabold">Image Editor</h2>
+            <ul className="*:border-b-foreground/50 *:hover:border-b-foreground w-2/3 flex-1 space-y-2 text-2xl font-bold *:cursor-pointer *:border-b *:py-2">
               <li>Auto-zoom</li>
               <li>Auto-pan</li>
               <li>Export in high quality</li>
@@ -31,15 +15,14 @@ const Screen6 = () => {
           </div>
         </div>
 
-        <div className="relative mt-24 flex h-[50vh] w-full items-center justify-center overflow-hidden rounded-2xl min-[1200px]:h-[80vh] min-[1200px]:w-[70vw]">
-          <Image
-            src={VideoEditor}
-            alt="Editor preview"
-            fill
-            className="h-full w-full object-contain"
-            priority
-          />
-        </div>
+        <div
+          style={{
+            backgroundImage: "url('/6.jpg')",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+          className="relative flex h-[50vh] w-full shrink-0 justify-center lg:h-auto lg:w-1/2 lg:shrink-0"
+        />
       </div>
     </div>
   );

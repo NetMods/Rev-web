@@ -63,10 +63,10 @@ const Screen1 = () => {
   return (
     <div
       id="screen-1"
-      className="screen flex h-screen min-w-full flex-col overflow-hidden pt-16 min-[1000px]:pt-32"
+      className="screen flex h-screen min-w-full flex-col pt-16 lg:overflow-hidden lg:pt-32"
     >
       <div className="flex w-full items-center justify-center">
-        <div className="heading-group relative my-20 font-bold tracking-tighter max-[1000px]:hidden">
+        <div className="heading-group relative my-20 font-bold tracking-tighter max-lg:hidden">
           {heading.split("").map((char, i) => (
             <span
               key={i}
@@ -86,7 +86,7 @@ const Screen1 = () => {
           </span>
         </div>
 
-        <div className="hidden max-[1000px]:block">
+        <div className="hidden max-lg:block">
           <span className="heading-group relative my-10 flex w-full flex-col items-center justify-center text-5xl font-bold tracking-tighter">
             {heading.split(",").map((line, i) => (
               <span key={i}>{line}</span>
@@ -101,8 +101,8 @@ const Screen1 = () => {
       </div>
 
       <div className="my-5 h-full">
-        <div className="min-[1000px]:flex">
-          <div className="gif-box inline-flex w-full justify-center min-[1000px]:w-1/2">
+        <div className="lg:flex">
+          <div className="gif-box inline-flex w-full justify-center lg:w-1/2">
             <img
               src="1.gif"
               alt="Something Is Coming"
@@ -110,7 +110,7 @@ const Screen1 = () => {
             />
           </div>
 
-          <div className="w-full place-content-center min-[1000px]:w-1/2">
+          <div className="w-full place-content-center lg:w-1/2">
             <p className="lorem-text py-10 text-center text-xl text-balance">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               feugiat, risus nec aliquam gravida, eros urna laoreet elit, vitae

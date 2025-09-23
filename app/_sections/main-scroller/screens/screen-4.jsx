@@ -2,11 +2,11 @@ const Screen4 = () => {
   return (
     <div
       id="screen-4"
-      className="screen relative size-full min-w-full overflow-hidden min-[1000px]:flex"
+      className="screen relative size-full min-w-full overflow-hidden lg:flex"
     >
-      <div className="relative flex h-1/2 items-center justify-center overflow-hidden min-[1000px]:w-1/2">
+      <div className="relative flex h-1/2 items-center justify-center overflow-hidden lg:w-1/2">
         <div className="screen-4-main-content">
-          <div className="relative max-w-fit min-[1000px]:pt-32">
+          <div className="relative max-w-fit lg:pt-32">
             <h2 className="text-7xl font-bold text-white">
               Lively & <br /> Colorful
             </h2>
@@ -30,9 +30,9 @@ const Screen4 = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
-        className="parallax-bg-4 relative flex justify-center max-[1000px]:h-1/2 min-[1000px]:w-1/2"
+        className="parallax-bg-4 relative flex justify-center max-lg:h-1/2 lg:w-1/2"
       >
-        <div className="screen-4-text absolute bottom-0 left-0 z-20 text-6xl font-extrabold mix-blend-difference min-[1000px]:right-3/5 min-[1000px]:bottom-1/12">
+        <div className="screen-4-text absolute bottom-0 left-0 z-20 text-6xl font-extrabold mix-blend-difference lg:right-3/5 lg:bottom-1/12">
           Annotation <br /> Panel
         </div>
       </div>

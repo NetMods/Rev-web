@@ -40,7 +40,7 @@ const Navbar = ({ className }) => {
   return (
     <div
       className={cn(
-        "pointer-events-none fixed top-0 left-0 z-50 flex w-full items-center justify-around max-[1200px]:bg-black/10 max-[1200px]:backdrop-blur-xl",
+        "pointer-events-none fixed top-0 left-0 z-50 flex w-full items-center justify-around max-[1000px]:bg-black/10 max-[1000px]:backdrop-blur-xl",
         className,
       )}
     >
@@ -48,11 +48,11 @@ const Navbar = ({ className }) => {
         Rev
       </div>
 
-      <div className="pointer-events-auto relative hidden text-4xl font-bold min-[1200px]:block">
+      <div className="pointer-events-auto relative hidden text-4xl font-bold min-[1000px]:block">
         <div className="navbar-word text-white mix-blend-difference">Krynn</div>
       </div>
 
-      <div className="pointer-events-auto relative mix-blend-difference min-[1200px]:hidden">
+      <div className="pointer-events-auto relative mix-blend-difference min-[1000px]:hidden">
         <HamburgerIcon size={40} />
       </div>
     </div>

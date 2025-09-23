@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 export function useHorizontalScroll({
   ease,
   multiplier,
-  minWidth = 1000, // default breakpoint
+  minWidth = 1024, // default breakpoint
 }) {
   const container = useRef(null);
   const raf = useRef(null);

@@ -17,11 +17,11 @@ const MainScroller = () => {
 
   return (
     <>
-      <Navbar className="h-16 min-[1200px]:h-32" />
+      <Navbar className="h-16 lg:h-32" />
 
       <div
         ref={container}
-        className="h-screen min-w-[250px] overflow-x-auto min-[1000px]:flex min-[1000px]:overflow-y-hidden"
+        className="h-screen min-w-[250px] overflow-x-auto lg:flex lg:overflow-y-hidden"
         style={{
           scrollbarWidth: "thin",
           WebkitOverflowScrolling: "auto",

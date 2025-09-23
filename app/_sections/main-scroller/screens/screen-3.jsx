@@ -4,7 +4,7 @@ const Screen3 = () => {
   return (
     <div
       id="screen-3"
-      className="screen relative size-full min-w-full max-[1000px]:mt-32 min-[1000px]:flex"
+      className="screen relative size-full min-w-full max-lg:mt-32 lg:flex"
     >
       <div
         style={{
@@ -13,14 +13,14 @@ const Screen3 = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
-        className="parallax-bg-3 relative flex justify-center max-[1000px]:h-1/2 min-[1000px]:w-1/2"
+        className="parallax-bg-3 relative flex justify-center max-lg:h-1/2 lg:w-1/2"
       >
-        <div className="screen-3-text absolute right-0 bottom-0 z-20 text-6xl font-extrabold mix-blend-difference min-[1000px]:-right-1/6 min-[1200px]:bottom-1/12">
+        <div className="screen-3-text absolute right-0 bottom-0 z-20 text-6xl font-extrabold mix-blend-difference lg:-right-1/6 lg:bottom-1/12">
           Screen <br /> Recorder
         </div>
       </div>
 
-      <div className="flex w-full flex-col items-center justify-center pt-32 min-[1000px]:w-1/2">
+      <div className="flex w-full flex-col items-center justify-center pt-32 lg:w-1/2">
         <div className="screen-3-main-content">
           <div className="relative max-w-fit">
             <h2 className="z-10 text-7xl font-bold text-white">
