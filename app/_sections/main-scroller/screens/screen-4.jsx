@@ -1,7 +1,17 @@
+import { useRef } from "react";
+
+import { useParallaxEffect } from "@/hooks/use-parallax-effect";
+
 const Screen4 = () => {
+  const screenRef = useRef(null);
+  const imageRef = useRef(null);
+  const textRef = useRef(null);
+
+  useParallaxEffect(screenRef, imageRef, textRef);
+
   return (
     <div
-      id="screen-4"
+      ref={screenRef}
       className="screen relative size-full min-w-full overflow-hidden lg:flex"
     >
       <div className="relative flex h-1/2 items-center justify-center overflow-hidden lg:w-1/2">
@@ -30,9 +40,13 @@ const Screen4 = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
+        ref={imageRef}
         className="parallax-bg-4 relative flex justify-center max-lg:h-1/2 lg:w-1/2"
       >
-        <div className="screen-4-text absolute bottom-0 left-0 z-20 text-6xl font-extrabold mix-blend-difference lg:right-3/5 lg:bottom-1/12">
+        <div
+          ref={textRef}
+          className="screen-4-text absolute bottom-0 left-0 z-20 text-6xl font-extrabold mix-blend-difference lg:right-3/5 lg:bottom-1/12"
+        >
           Annotation <br /> Panel
         </div>
       </div>

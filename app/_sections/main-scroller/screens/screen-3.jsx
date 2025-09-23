@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
+
+import { useParallaxEffect } from "@/hooks/use-parallax-effect";
 
 const Screen3 = () => {
+  const screenRef = useRef(null);
+  const imageRef = useRef(null);
+  const textRef = useRef(null);
+
+  useParallaxEffect(screenRef, imageRef, textRef);
+
   return (
     <div
-      id="screen-3"
+      ref={screenRef}
       className="screen relative size-full min-w-full max-lg:mt-32 lg:flex"
     >
       <div
@@ -13,9 +21,13 @@ const Screen3 = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
+        ref={imageRef}
         className="parallax-bg-3 relative flex justify-center max-lg:h-1/2 lg:w-1/2"
       >
-        <div className="screen-3-text absolute right-0 bottom-0 z-20 text-6xl font-extrabold mix-blend-difference lg:-right-1/6 lg:bottom-1/12">
+        <div
+          ref={textRef}
+          className="screen-3-text absolute right-0 bottom-0 z-20 text-6xl font-extrabold mix-blend-difference lg:-right-1/6 lg:bottom-1/12"
+        >
           Screen <br /> Recorder
         </div>
       </div>
