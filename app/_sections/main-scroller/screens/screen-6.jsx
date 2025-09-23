@@ -5,7 +5,7 @@ const Screen6 = () => {
         <div className="justify-start-safe flex flex-1 flex-col overflow-auto py-10 lg:pt-20">
           <div className="flex flex-col items-center justify-center">
             <h2 className="mb-8 text-5xl font-extrabold">Image Editor</h2>
-            <ul className="*:border-b-foreground/50 *:hover:border-b-foreground w-2/3 flex-1 space-y-2 text-2xl font-bold *:cursor-pointer *:border-b *:py-2">
+            <ul className="*:border-b-foreground/50 *:hover:border-b-foreground w-full flex-1 space-y-2 text-2xl font-bold *:cursor-pointer *:border-b *:py-2 max-lg:px-2 lg:w-2/3">
               <li>Auto-zoom</li>
               <li>Auto-pan</li>
               <li>Export in high quality</li>

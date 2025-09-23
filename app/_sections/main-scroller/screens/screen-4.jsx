@@ -7,7 +7,7 @@ const Screen4 = () => {
       <div className="relative flex h-1/2 items-center justify-center overflow-hidden lg:w-1/2">
         <div className="screen-4-main-content">
           <div className="relative max-w-fit lg:pt-32">
-            <h2 className="text-7xl font-bold text-white">
+            <h2 className="text-6xl font-bold text-white lg:text-7xl">
               Lively & <br /> Colorful
             </h2>
             <div className="screen-4-floatingtext absolute top-1/2 left-5/6 rotate-6">

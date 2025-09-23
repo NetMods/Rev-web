@@ -63,7 +63,7 @@ const Screen1 = () => {
   return (
     <div
       id="screen-1"
-      className="screen flex h-screen min-w-full flex-col pt-16 lg:overflow-hidden lg:pt-32"
+      className="screen flex min-w-full flex-col pt-16 lg:h-screen lg:overflow-hidden lg:pt-32"
     >
       <div className="flex w-full items-center justify-center">
         <div className="heading-group relative my-20 font-bold tracking-tighter max-lg:hidden">
@@ -86,7 +86,7 @@ const Screen1 = () => {
           </span>
         </div>
 
-        <div className="hidden max-lg:block">
+        <div className="hidden text-center max-lg:block">
           <span className="heading-group relative my-10 flex w-full flex-col items-center justify-center text-5xl font-bold tracking-tighter">
             {heading.split(",").map((line, i) => (
               <span key={i}>{line}</span>

@@ -4,11 +4,11 @@ const Screen2 = () => {
   return (
     <div
       id="screen-2"
-      className="screen flex size-full min-w-full items-center justify-center pt-32 max-lg:mt-44"
+      className="screen flex size-full min-w-full items-center justify-center lg:pt-32"
     >
       <div className="flex h-full w-full max-w-[200rem] justify-center gap-10 max-lg:flex-col lg:gap-56">
         <div
-          className="parallax-bg-2 relative flex h-full rounded-xl lg:w-[30vw]"
+          className="parallax-bg-2 relative flex h-full rounded-xl lg:min-w-[30vw]"
           style={{
             backgroundImage: "url('/2.png')",
             backgroundPosition: "15% 50%",

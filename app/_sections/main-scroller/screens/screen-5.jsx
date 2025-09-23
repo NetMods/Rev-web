@@ -14,7 +14,7 @@ const Screen5 = () => {
         <div className="flex w-full flex-col justify-end-safe overflow-auto py-10 lg:pb-20">
           <div className="flex flex-col items-center justify-center">
             <h2 className="mb-8 text-5xl font-extrabold">Video Editor</h2>
-            <ul className="*:border-b-foreground/50 *:hover:border-b-foreground/50 w-2/3 flex-1 space-y-2 text-2xl font-bold *:cursor-pointer *:border-b *:py-2">
+            <ul className="*:border-b-foreground/50 *:hover:border-b-foreground/50 w-full flex-1 space-y-2 text-2xl font-bold *:cursor-pointer *:border-b *:py-2 max-lg:px-2 lg:w-2/3">
               <li>Auto-zoom</li>
               <li>Auto-pan</li>
               <li>Export in high quality</li>
