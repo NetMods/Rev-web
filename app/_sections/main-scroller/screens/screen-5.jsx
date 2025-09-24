@@ -20,11 +20,6 @@ const Screen5 = () => {
           className="relative flex h-[50vh] min-w-1/2 shrink-0 justify-center lg:h-auto"
         />
 
-        <div className="text-foreground absolute right-5 hidden text-xl font-semibold lg:bottom-0 lg:block">
-          {" "}
-          02{" "}
-        </div>
-
         <div className="flex w-full flex-col justify-end-safe overflow-auto py-10 lg:pb-20">
           <div className="flex flex-col items-center justify-center">
             <h2 className="mb-8 font-serif text-5xl font-extrabold">
@@ -48,7 +43,7 @@ const Screen5 = () => {
           viewBox="0 0 101 126.25"
           version="1.1"
           xmlSpace="preserve"
-          className="rotate-svg absolute right-0 hidden size-96 origin-center opacity-80 lg:top-32 lg:block"
+          className="rotate-svg absolute right-0 hidden size-[30rem] origin-center opacity-80 lg:top-24 lg:block"
           x="0px"
           y="0px"
           fillRule="evenodd"
