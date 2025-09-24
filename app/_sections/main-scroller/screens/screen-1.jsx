@@ -72,7 +72,7 @@ const Screen1 = () => {
               key={i}
               className={cn(
                 `heading-letter`,
-                char === "S"
+                char === "S" || char === "C"
                   ? "font-cursive pr-1 text-[6.5rem] leading-none text-red-500"
                   : "text-6xl",
               )}
