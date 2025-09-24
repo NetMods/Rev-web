@@ -37,6 +37,11 @@ const Screen6 = () => {
           }}
           className="relative flex h-[50vh] w-full shrink-0 justify-center lg:h-auto lg:w-1/2 lg:shrink-0"
         />
+
+        <div className="text-foreground absolute left-30 hidden text-xl font-semibold lg:bottom-0 lg:block">
+          {" "}
+          02{" "}
+        </div>
       </div>
     </div>
   );
