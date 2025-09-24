@@ -1,131 +1,91 @@
-import { useEffect, useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import {
+  AppStoreLogo,
+  DownloadIcon,
+  LinuxLogoIcon,
+  WindowsLogoIcon,
+} from "@phosphor-icons/react";
+
+import { cn } from "@/lib/utils";
+import { useDetectOS } from "@/hooks/use-detect-os";
+
+const AnimatedBox = ({
+  label,
+  bgImage,
+  icon: Icon,
+  systemReq,
+  buttonLabel,
+  current,
+}) => {
+  return (
+    <div
+      className={cn(
+        "bg-foreground relative flex h-full cursor-pointer items-center justify-center overflow-hidden rounded-2xl transition-all duration-500 ease-in-out",
+        current && "border-foreground/20 border-2",
+      )}
+      style={{ position: "relative" }}
+    >
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundPosition: "50% 50%",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      ></div>
+      <div className="relative z-10 flex size-full flex-col items-center justify-center font-normal backdrop-blur-sm backdrop-brightness-75 transition-all ease-linear hover:backdrop-brightness-50">
+        <div className="w-2/3 text-center">
+          <span className="inline-flex w-full items-center justify-center text-5xl">
+            <Icon className="mr-3" />
+            {label}
+          </span>
+          <div className="mt-2 text-sm text-gray-300">
+            <p className="mt-1 text-xs">{systemReq}</p>
+          </div>
+          <div className="mt-4">
+            <button className="bg-background/10 hover:bg-background/50 inline-flex w-full cursor-pointer items-center justify-center gap-3 rounded py-2 backdrop-blur-2xl transition-all ease-linear">
+              <DownloadIcon size={25} />
+              {buttonLabel}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Screen7 = () => {
-  const LinuxRef = useRef(null);
-  const MacRef = useRef(null);
-  const WindowRef = useRef(null);
-
-  useGSAP(() => {
-    if (window.innerWidth >= 1200) {
-      LinuxRef.current = gsap.to(".linux-animated-box", {
-        width: "20vw",
-        height: "30vh",
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-        paused: true,
-      });
-      MacRef.current = gsap.to(".mac-animated-box", {
-        width: "20vw",
-        height: "30vh",
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-        paused: true,
-      });
-      WindowRef.current = gsap.to(".window-animated-box", {
-        width: "20vw",
-        height: "30vh",
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-        paused: true,
-      });
-    }
-  });
-
-  useEffect(() => {
-    const LinuxBox = document.querySelector(".linux-box");
-    const MacBox = document.querySelector(".mac-box");
-    const WindowBox = document.querySelector(".window-box");
-
-    LinuxBox.addEventListener("mouseenter", () => {
-      if (LinuxRef.current) {
-        LinuxRef.current.play();
-      }
-    });
-    LinuxBox.addEventListener("mouseleave", () => {
-      if (LinuxRef.current) {
-        LinuxRef.current.reverse();
-      }
-    });
-
-    MacBox.addEventListener("mouseenter", () => {
-      if (MacRef.current) {
-        MacRef.current.play();
-      }
-    });
-    MacBox.addEventListener("mouseleave", () => {
-      if (MacRef.current) {
-        MacRef.current.reverse();
-      }
-    });
-
-    WindowBox.addEventListener("mouseenter", () => {
-      if (WindowRef.current) {
-        WindowRef.current.play();
-      }
-    });
-    WindowBox.addEventListener("mouseleave", () => {
-      if (WindowRef.current) {
-        WindowRef.current.reverse();
-      }
-    });
-
-    return () => {};
-  });
+  const os = useDetectOS();
 
   return (
-    <div id="screen-6" className="screen relative min-w-full">
-      <div className="h-full w-full overflow-hidden p-4">
-        <div className="h-full w-full overflow-hidden p-4">
-          <div className="flex h-full w-full flex-col p-2 min-[1200px]:flex-row">
-            <div className="grid w-full grid-cols-1 gap-3 min-[1200px]:mt-28 min-[1200px]:grid-cols-3">
-              <div
-                style={{
-                  backgroundImage: "url('./color-1.jpeg')",
-                  backgroundPosition: "0% 50%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "fill",
-                }}
-                className="linux-box relative flex items-center justify-center rounded-2xl bg-white"
-              >
-                <div className="text-5xl font-extrabold">Linux</div>
-                <div className="linux-animated-box absolute bottom-0 left-0 z-20 flex h-0 w-0 items-center justify-center rounded-tr-2xl rounded-bl-2xl bg-black opacity-0">
-                  <button>Download for Linux</button>
-                </div>
-              </div>
-              <div
-                style={{
-                  backgroundImage: "url('./color-2.jpeg')",
-                  backgroundPosition: "0% 50%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "fill",
-                }}
-                className="mac-box relative flex items-center justify-center rounded-2xl bg-white"
-              >
-                <div className="text-5xl font-extrabold">MacOS</div>
-                <div className="mac-animated-box absolute bottom-0 left-0 z-20 flex h-0 w-0 items-center justify-center rounded-tr-2xl rounded-bl-2xl bg-black opacity-0">
-                  <button>Download for Macos</button>
-                </div>
-              </div>
-              <div
-                style={{
-                  backgroundImage: "url('./color-3.jpeg')",
-                  backgroundPosition: "0% 50%",
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "fill",
-                }}
-                className="window-box relative flex items-center justify-center rounded-2xl bg-white"
-              >
-                <div className="text-5xl font-extrabold">Window</div>
-                <div className="window-animated-box bg-background absolute bottom-0 left-0 z-20 flex h-0 w-0 items-center justify-center rounded-tr-2xl rounded-bl-2xl opacity-0">
-                  <button>Download for Window</button>
-                </div>
-              </div>
-            </div>
+    <div id="screen-7" className="screen relative h-full min-w-full px-4">
+      <div className="h-full w-full overflow-hidden">
+        <div className="flex h-full w-full flex-col lg:flex-row">
+          <div className="grid h-full w-full grid-cols-1 gap-3 lg:grid-cols-3 lg:pt-32">
+            <AnimatedBox
+              label="Windows"
+              bgImage="/windows.jpg"
+              icon={WindowsLogoIcon}
+              buttonLabel="Download (.exe)"
+              systemReq="Windows 10/11 (64-bit), 4 GB RAM, 500 MB free space"
+              current={os === "Windows"}
+            />
+            <AnimatedBox
+              label="MacOS"
+              bgImage="/macos.jpg"
+              icon={AppStoreLogo}
+              buttonLabel="Download (.dmg)"
+              systemReq="macOS 12 Monterey or later, 4 GB RAM, 500 MB free space"
+              current={os === "MacOS"}
+            />
+            <AnimatedBox
+              label="Linux"
+              bgImage="/linux.jpg"
+              icon={LinuxLogoIcon}
+              systemReq="Any distribution, 4 GB RAM, 500 MB free space"
+              buttonLabel="Download (.tar.gz)"
+              current={os === "Linux"}
+            />
           </div>
         </div>
       </div>

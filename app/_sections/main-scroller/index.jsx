@@ -1,8 +1,4 @@
-import { useEffect } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import { useHorizontalScroll } from "@/hooks/use-horizantal-scroll";
 import Navbar from "@/components/layout/navbar";
 
 import Screen1 from "./screens/screen-1";
@@ -13,62 +9,37 @@ import Screen5 from "./screens/screen-5";
 import Screen6 from "./screens/screen-6";
 import Screen7 from "./screens/screen-7";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const MainScroller = () => {
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 1200px)");
-    let previousState = mediaQuery.matches;
-
-    const handleResize = () => {
-      const currentState = mediaQuery.matches;
-      if (currentState !== previousState) {
-        window.location.reload();
-      }
-      previousState = currentState;
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useGSAP(() => {
-    const mediaQuery = window.matchMedia("(min-width: 1200px)").matches;
-
-    if (mediaQuery) {
-      const screens = gsap.utils.toArray(".screen");
-
-      gsap.to(screens, {
-        xPercent: -100 * (screens.length - 1),
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".main-scroller",
-          pin: true,
-          scrub: 1,
-          end: () => "+=" + window.innerWidth * (screens.length - 1),
-        },
-      });
-    }
-  }, []);
+  const container = useHorizontalScroll({
+    ease: 0.05, // smaller = smoother/slower
+    multiplier: 1.5, // wheel sensitivity
+  });
 
   return (
-    <div id="smooth-wrapper">
-      <div id="smooth-content">
-        <div className="main-scroller h-screen w-screen min-w-[400px] min-[1200px]:flex min-[1200px]:overflow-x-hidden min-[1200px]:overflow-y-hidden">
-          <Navbar className="h-16 min-[1200px]:h-32" />
-          <Screen1 />
-          <Screen2 />
-          <Screen3 />
-          <Screen4 />
-          <Screen5 />
-          <Screen6 />
-          <Screen7 />
-        </div>
+    <>
+      <Navbar className="h-16 lg:h-32" />
+      <div
+        ref={container}
+        className="h-screen min-w-[250px] overflow-x-auto lg:flex lg:overflow-y-hidden"
+        style={{
+          backgroundImage: "url('/background.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          scrollbarWidth: "thin",
+          WebkitOverflowScrolling: "auto",
+        }}
+      >
+        <div className="pointer-events-none absolute inset-0 bg-black/90" />
+        <Screen1 />
+        <Screen2 />
+        <Screen3 />
+        <Screen4 />
+        <Screen5 />
+        <Screen6 />
+        <Screen7 />
       </div>
-    </div>
+    </>
   );
 };
 

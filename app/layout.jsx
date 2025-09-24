@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "@/styles/fonts.css";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -7,7 +8,7 @@ import { ThemeProvider } from "next-themes";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import { fontCursive, fontSans, fontSerif } from "./fonts";
+import { fontCursive } from "./fonts";
 
 export const metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
@@ -47,15 +48,11 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn(
-        fontSans.variable,
-        fontSerif.variable,
-        fontCursive.variable,
-      )}
+      className={cn(fontCursive.variable)}
     >
       <body
         className={cn(
-          `bg-background text-foreground relative h-screen overflow-x-hidden antialiased`,
+          `relative h-screen overflow-x-hidden antialiased`,
           process.env.NODE_ENV === "development" && "debug-screens",
         )}
       >
@@ -65,7 +62,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <main className="font-sans">
+          <main>
             {children}
             <Analytics />
             <SpeedInsights />
