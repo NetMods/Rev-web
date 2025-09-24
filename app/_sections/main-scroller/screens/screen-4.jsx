@@ -1,13 +1,16 @@
 import { useRef } from "react";
 
 import { useParallaxEffect } from "@/hooks/use-parallax-effect";
+import { useRotateOnScroll } from "@/hooks/use-rotate-onscroll";
 
 const Screen4 = () => {
   const screenRef = useRef(null);
   const imageRef = useRef(null);
   const textRef = useRef(null);
+  const floatRef = useRef(null);
 
   useParallaxEffect(screenRef, imageRef, textRef);
+  useRotateOnScroll(screenRef, floatRef, { start: 6, end: -20 });
 
   return (
     <div
@@ -20,7 +23,10 @@ const Screen4 = () => {
             <h2 className="text-foreground font-serif text-6xl font-bold lg:text-7xl">
               Lively & <br /> Colorful
             </h2>
-            <div className="screen-4-floatingtext absolute top-1/2 left-5/6 rotate-6">
+            <div
+              className="screen-4-floatingtext absolute top-1/2 left-5/6"
+              ref={floatRef}
+            >
               <span className="z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 text-xl font-bold text-nowrap">
                 Just Draw it
               </span>
@@ -32,6 +38,18 @@ const Screen4 = () => {
           </p>
         </div>
       </div>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="rotate-svg absolute bottom-0 left-0 hidden size-96 origin-center opacity-80 lg:block"
+        version="1.1"
+        viewBox="-5.0 -10.0 110.0 135.0"
+      >
+        <path
+          fill="#ffffff"
+          d="m66 50 22.641 13.07-8 13.855-22.641-13.07v26.145h-16v-26.145l-22.641 13.07-8-13.855 22.641-13.07-22.641-13.07 8-13.855 22.641 13.07v-26.145h16v26.145l22.641-13.07 8 13.855z"
+        />
+      </svg>
 
       <div
         style={{

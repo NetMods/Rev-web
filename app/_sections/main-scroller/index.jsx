@@ -18,15 +18,19 @@ const MainScroller = () => {
   return (
     <>
       <Navbar className="h-16 lg:h-32" />
-
       <div
         ref={container}
         className="h-screen min-w-[250px] overflow-x-auto lg:flex lg:overflow-y-hidden"
         style={{
+          backgroundImage: "url('/background.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
           scrollbarWidth: "thin",
           WebkitOverflowScrolling: "auto",
         }}
       >
+        <div className="pointer-events-none absolute inset-0 bg-black/90" />
         <Screen1 />
         <Screen2 />
         <Screen3 />

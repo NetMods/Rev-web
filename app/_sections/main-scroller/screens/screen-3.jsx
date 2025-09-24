@@ -1,13 +1,16 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 import { useParallaxEffect } from "@/hooks/use-parallax-effect";
+import { useRotateOnScroll } from "@/hooks/use-rotate-onscroll";
 
 const Screen3 = () => {
   const screenRef = useRef(null);
   const imageRef = useRef(null);
   const textRef = useRef(null);
+  const floatRef = useRef(null);
 
   useParallaxEffect(screenRef, imageRef, textRef);
+  useRotateOnScroll(screenRef, floatRef, { start: -1, end: 10 });
 
   return (
     <div
@@ -32,13 +35,21 @@ const Screen3 = () => {
         </div>
       </div>
 
+      <div className="text-foreground absolute right-5 hidden text-xl font-semibold lg:top-32 lg:block">
+        {" "}
+        01{" "}
+      </div>
+
       <div className="flex w-full flex-col items-center justify-center pt-10 lg:w-1/2 lg:pt-32">
         <div className="screen-3-main-content">
           <div className="relative max-w-fit">
             <h2 className="text-foreground z-10 font-serif text-6xl font-bold lg:text-7xl">
               Edit & <br /> Merge
             </h2>
-            <div className="screen-3-floatingtext absolute top-1/2 left-5/6 -rotate-6">
+            <div
+              className="screen-3-floatingtext absolute top-1/2 left-4/6"
+              ref={floatRef}
+            >
               <span className="z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 text-xl font-bold text-nowrap">
                 Built-In Editor
               </span>

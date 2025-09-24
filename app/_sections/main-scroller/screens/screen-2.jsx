@@ -15,7 +15,7 @@ const Screen2 = () => {
       ref={screenRef}
       className="screen flex size-full min-w-full items-center justify-center lg:pt-32"
     >
-      <div className="flex h-full w-full max-w-[200rem] justify-center gap-10 max-lg:flex-col lg:gap-56">
+      <div className="relative flex h-full w-full max-w-[200rem] justify-center gap-10 max-lg:flex-col lg:gap-56">
         <div
           ref={imageRef}
           className="parallax-bg-2 relative flex h-full rounded-xl lg:min-w-[30vw]"
@@ -40,6 +40,10 @@ const Screen2 = () => {
           <FeatureButton title="Video Editor" />
           <FeatureButton title="Screenshot" />
           <FeatureButton title="Annotate" />
+        </div>
+
+        <div className="text-foreground absolute right-5 bottom-0 font-semibold">
+          #2025
         </div>
       </div>
     </div>

@@ -49,7 +49,7 @@ const Navbar = ({ className }) => {
       </div>
 
       <div className="pointer-events-auto relative hidden min-[1000px]:block">
-        <button className="hover:bg-foreground/90 bg-foreground text-background inline-flex cursor-pointer items-center justify-center rounded-md px-6 py-3 transition-all ease-linear active:scale-95">
+        <button className="hover:bg-foreground/60 bg-foreground text-background inline-flex cursor-pointer items-center justify-center rounded-md px-6 py-3 transition-all ease-linear active:scale-95">
           Download
         </button>
       </div>
