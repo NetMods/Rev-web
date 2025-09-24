@@ -6,7 +6,7 @@ const Screen5 = () => {
   const screenRef = useRef(null);
   const listRef = useRef(null);
 
-  useStaggerAnimation(screenRef, listRef);
+  useStaggerAnimation(screenRef, listRef, 0.5);
 
   return (
     <div id="screen-5" ref={screenRef} className="screen relative min-w-full">
@@ -22,10 +22,12 @@ const Screen5 = () => {
 
         <div className="flex w-full flex-col justify-end-safe overflow-auto py-10 lg:pb-20">
           <div className="flex flex-col items-center justify-center">
-            <h2 className="mb-8 text-5xl font-extrabold">Video Editor</h2>
+            <h2 className="mb-8 font-serif text-5xl font-extrabold">
+              Video Editor
+            </h2>
             <ul
               ref={listRef}
-              className="*:border-b-foreground/50 *:hover:border-b-foreground/50 w-full flex-1 space-y-2 text-2xl font-bold *:cursor-pointer *:border-b *:py-2 max-lg:px-2 lg:w-2/3"
+              className="*:border-b-foreground/50 *:hover:border-b-foreground w-full flex-1 space-y-2 text-2xl font-bold *:cursor-pointer *:border-b *:py-2 max-lg:px-2 lg:w-2/3"
             >
               <li>Auto-zoom</li>
               <li>Auto-pan</li>

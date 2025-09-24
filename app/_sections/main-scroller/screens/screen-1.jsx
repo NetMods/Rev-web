@@ -66,24 +66,20 @@ const Screen1 = () => {
       className="screen flex min-w-full flex-col pt-16 lg:h-screen lg:overflow-hidden lg:pt-32"
     >
       <div className="flex w-full items-center justify-center">
-        <div className="heading-group relative my-20 font-bold tracking-tighter max-lg:hidden">
+        <div className="heading-group relative my-20 font-sans tracking-tighter max-lg:hidden">
           {heading.split("").map((char, i) => (
             <span
               key={i}
               className={cn(
                 `heading-letter`,
                 char === "S"
-                  ? "font-cursive pr-1 text-[6rem] leading-none"
-                  : "text-5xl",
+                  ? "font-cursive pr-1 text-[6.5rem] leading-none text-red-400"
+                  : "text-6xl",
               )}
             >
               {char === " " ? "\u00A0" : char}
             </span>
           ))}
-
-          <span className="share-text font-cursive block text-right text-3xl font-bold">
-            <span className="text-3xl text-red-400">S</span>hare it
-          </span>
         </div>
 
         <div className="hidden text-center max-lg:block">
@@ -93,7 +89,7 @@ const Screen1 = () => {
             ))}
           </span>
           <span className="share-text font-cursive block text-center text-3xl font-bold">
-            <span className="bg-foreground/10 rounded-full border border-white/20 px-5 py-1">
+            <span className="bg-foreground/10 border-foreground/20 rounded-full border px-5 py-1">
               Share it
             </span>
           </span>

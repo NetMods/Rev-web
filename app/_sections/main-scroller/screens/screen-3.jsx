@@ -35,11 +35,11 @@ const Screen3 = () => {
       <div className="flex w-full flex-col items-center justify-center pt-10 lg:w-1/2 lg:pt-32">
         <div className="screen-3-main-content">
           <div className="relative max-w-fit">
-            <h2 className="z-10 text-6xl font-bold text-white lg:text-7xl">
+            <h2 className="text-foreground z-10 font-serif text-6xl font-bold lg:text-7xl">
               Edit & <br /> Merge
             </h2>
             <div className="screen-3-floatingtext absolute top-1/2 left-5/6 -rotate-6">
-              <span className="z-20 w-full rotate-6 transform bg-rose-600 px-2 text-xl font-bold text-nowrap">
+              <span className="z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 text-xl font-bold text-nowrap">
                 Built-In Editor
               </span>
             </div>

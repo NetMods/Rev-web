@@ -28,7 +28,7 @@ const Screen2 = () => {
         >
           <div
             ref={textRef}
-            className="absolute z-10 text-center text-6xl font-extrabold text-white mix-blend-difference max-lg:right-0 max-lg:bottom-0 lg:top-0 lg:left-4/5"
+            className="text-foreground absolute z-10 text-center text-6xl font-black mix-blend-difference max-lg:right-0 max-lg:bottom-0 lg:top-0 lg:left-4/5"
           >
             One Tool
             <p> For </p>
@@ -37,7 +37,8 @@ const Screen2 = () => {
         </div>
         <div className="flex-col items-center max-lg:flex lg:place-content-around">
           <FeatureButton title="Screen Recorder" />
-          <FeatureButton title="ScreenShot" />
+          <FeatureButton title="Video Editor" />
+          <FeatureButton title="Screenshot" />
           <FeatureButton title="Annotate" />
         </div>
       </div>

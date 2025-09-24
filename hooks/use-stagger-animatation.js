@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const useStaggerAnimation = (triggerRef, listRef) => {
+const useStaggerAnimation = (triggerRef, listRef, threshold) => {
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const hasAnimated = useRef(false);
 
@@ -44,7 +44,7 @@ const useStaggerAnimation = (triggerRef, listRef) => {
       },
       {
         root: null,
-        threshold: 0.5,
+        threshold: threshold,
       },
     );
 

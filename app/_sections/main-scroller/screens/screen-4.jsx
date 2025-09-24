@@ -17,11 +17,11 @@ const Screen4 = () => {
       <div className="relative flex h-1/2 items-center justify-center overflow-hidden lg:w-1/2">
         <div className="screen-4-main-content">
           <div className="relative max-w-fit lg:pt-32">
-            <h2 className="text-6xl font-bold text-white lg:text-7xl">
+            <h2 className="text-foreground font-serif text-6xl font-bold lg:text-7xl">
               Lively & <br /> Colorful
             </h2>
             <div className="screen-4-floatingtext absolute top-1/2 left-5/6 rotate-6">
-              <span className="z-20 w-full rotate-6 transform bg-rose-600 px-2 text-xl font-bold text-nowrap">
+              <span className="z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 text-xl font-bold text-nowrap">
                 Just Draw it
               </span>
             </div>

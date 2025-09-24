@@ -18,9 +18,32 @@
 
 @theme {
   --font-cursive: '"Corinthia", "Arial"';
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Palatino", "Palatino Linotype", serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+}
+
+@property --blur-value {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+.blur-bg {
+  --blur-value: 4px;
+  /* Default blur matching backdrop-blur-sm */
+  transition: --blur-value 0.5s ease-in-out;
+  /* Animate the custom prop */
+  backdrop-filter: blur(var(--blur-value));
+  -webkit-backdrop-filter: blur(var(--blur-value));
+  /* For Safari */
+}
+
+.blur-bg:hover {
+  --blur-value: 0px;
+  /* No blur on hover */
 }
 
 * {
@@ -30,7 +53,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 .kerning-none {
