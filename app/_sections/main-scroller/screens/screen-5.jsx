@@ -11,14 +11,9 @@ const Screen5 = () => {
   return (
     <div id="screen-5" ref={screenRef} className="screen relative min-w-full">
       <div className="flex h-full w-full flex-col gap-4 overflow-hidden lg:flex-row">
-        <div
-          style={{
-            backgroundImage: "url('/5.jpg')",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-          }}
-          className="relative flex h-[50vh] min-w-1/2 shrink-0 justify-center lg:h-auto"
-        />
+        <div className="relative flex h-[50vh] min-w-1/2 shrink-0 justify-center lg:h-auto">
+          <video src="/screen-editor.mp4" autoPlay muted loop />
+        </div>
 
         <div className="flex w-full flex-col justify-end-safe overflow-auto py-10 lg:pb-20">
           <div className="flex flex-col items-center justify-center">

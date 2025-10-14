@@ -98,15 +98,11 @@ const Screen1 = () => {
 
       <div className="my-5 h-full">
         <div className="lg:flex">
-          <div className="gif-box inline-flex w-full justify-center lg:w-1/2">
-            <img
-              src="1.gif"
-              alt="Something Is Coming"
-              className="rounded-xl object-cover"
-            />
+          <div className="gif-box border-foreground/30 mx-10 inline-flex w-full justify-center overflow-hidden rounded-lg border">
+            <video src="/intro.mp4" autoPlay muted loop />
           </div>
 
-          <div className="w-full place-content-center lg:w-1/2">
+          <div className="w-full place-content-start lg:w-1/2">
             <p className="lorem-text py-10 text-center text-xl text-balance">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               feugiat, risus nec aliquam gravida, eros urna laoreet elit, vitae

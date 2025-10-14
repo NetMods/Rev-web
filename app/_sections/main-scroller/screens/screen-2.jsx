@@ -20,8 +20,8 @@ const Screen2 = () => {
           ref={imageRef}
           className="parallax-bg-2 relative flex h-full rounded-xl lg:min-w-[30vw]"
           style={{
-            backgroundImage: "url('/2.png')",
-            backgroundPosition: "30% 50%",
+            backgroundImage: "url('/aio.gif')",
+            backgroundPosition: "70% 50%",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}

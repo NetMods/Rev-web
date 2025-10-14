@@ -19,7 +19,7 @@ const Screen3 = () => {
     >
       <div
         style={{
-          backgroundImage: "url('/3.gif')",
+          backgroundImage: "url('/sr.gif')",
           backgroundPosition: "0% 50%",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

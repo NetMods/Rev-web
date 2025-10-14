@@ -29,14 +29,9 @@ const Screen6 = () => {
           </div>
         </div>
 
-        <div
-          style={{
-            backgroundImage: "url('/6.jpg')",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-          }}
-          className="relative flex h-[50vh] w-full shrink-0 justify-center lg:h-auto lg:w-1/2 lg:shrink-0"
-        />
+        <div className="relative flex h-[50vh] w-full shrink-0 justify-center lg:h-auto lg:w-1/2 lg:shrink-0">
+          <video src="/screenshot-editor.mp4" autoPlay muted loop />
+        </div>
 
         <div className="text-foreground absolute left-30 hidden text-xl font-semibold lg:bottom-0 lg:block">
           {" "}
