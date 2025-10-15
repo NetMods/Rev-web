@@ -11,7 +11,7 @@ const Screen5 = () => {
   return (
     <div id="screen-5" ref={screenRef} className="screen relative min-w-full">
       <div className="flex h-full w-full flex-col gap-4 overflow-hidden lg:flex-row">
-        <div className="relative flex h-[50vh] min-w-1/2 shrink-0 justify-center lg:h-auto">
+        <div className="relative flex h-[50vh] w-1/2 shrink-0 justify-center lg:h-auto">
           <video src="/screen-editor.mp4" autoPlay muted loop />
         </div>
 

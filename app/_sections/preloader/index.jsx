@@ -1,17 +1,56 @@
+import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { usePreloadMedia } from "@/hooks/usePreloadMedia";
 
 const PreloaderSection = ({ onAnimationComplete }) => {
   const { isMobile, isTablet } = useMediaQuery();
+  const { isLoading, progress } = usePreloadMedia();
+
+  const [displayPercent, setDisplayPercent] = useState(
+    Math.floor(progress * 100),
+  );
+
+  const percentAnimRef = useRef(null);
+
+  useEffect(() => {
+    const target = Math.round(progress * 100);
+    if (percentAnimRef.current) {
+      percentAnimRef.current.kill();
+      percentAnimRef.current = null;
+    }
+
+    const proxy = { n: displayPercent };
+    percentAnimRef.current = gsap.to(proxy, {
+      n: target,
+      duration: 0.45,
+      ease: "power1.out",
+      onUpdate: () => {
+        setDisplayPercent(Math.floor(proxy.n));
+      },
+      onComplete: () => {
+        setDisplayPercent(target);
+      },
+    });
+
+    return () => {
+      if (percentAnimRef.current) {
+        percentAnimRef.current.kill();
+        percentAnimRef.current = null;
+      }
+    };
+  }, [progress]);
 
   const calculateDynamicScale = () => {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
 
     const svgElement = document.querySelector(".brand-name img");
+    if (!svgElement) return 1;
+
     const svgSize = {
       width: svgElement.naturalWidth || svgElement.width,
       height: svgElement.naturalHeight || svgElement.height,
@@ -25,7 +64,6 @@ const PreloaderSection = ({ onAnimationComplete }) => {
     const scaleY = windowHeight / svgSize.height;
     const baseScale = Math.max(scaleX, scaleY);
 
-    // to make sure SVG fills the screen, use some random ass big number above 12
     const overfillScale = baseScale * 14;
 
     return overfillScale;
@@ -38,7 +76,8 @@ const PreloaderSection = ({ onAnimationComplete }) => {
     const runAnimation = () => {
       const animationTimeline = gsap.timeline({
         onComplete: () => {
-          onAnimationComplete();
+          // call back once the visual preloader animation finishes
+          typeof onAnimationComplete === "function" && onAnimationComplete();
         },
       });
 
@@ -87,20 +126,7 @@ const PreloaderSection = ({ onAnimationComplete }) => {
 
       animationTimeline.to(
         ".timer",
-        {
-          innerText: 100,
-          opacity: 1,
-          duration: animationTimeline.duration(),
-          ease: "linear",
-          snap: { innerText: 1 },
-          onUpdate: function () {
-            const element = document.querySelector(".timer");
-            if (element) {
-              const progress = this.progress();
-              element.innerText = Math.floor(progress * 100);
-            }
-          },
-        },
+        { opacity: 1, duration: 0.6, ease: "sine.out" },
         0,
       );
     };
@@ -108,9 +134,17 @@ const PreloaderSection = ({ onAnimationComplete }) => {
     if (img.complete) {
       runAnimation();
     } else {
-      img.onload = runAnimation;
+      const onImgLoad = () => runAnimation();
+      img.addEventListener("load", onImgLoad, { once: true });
+      return () => img.removeEventListener("load", onImgLoad);
     }
   }, [isMobile, isTablet]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setDisplayPercent(100);
+    }
+  }, [isLoading]);
 
   return (
     <div className="bg-foreground text-background absolute inset-0 flex size-full flex-col items-center justify-center gap-4 overflow-hidden px-4">
@@ -129,7 +163,7 @@ const PreloaderSection = ({ onAnimationComplete }) => {
       </Tagline>
 
       <div className="timer absolute right-4 bottom-4 z-10 text-2xl text-red-800 opacity-0 md:text-4xl">
-        0
+        {Math.min(100, Math.max(0, displayPercent))}%
       </div>
     </div>
   );
