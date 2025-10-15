@@ -16,6 +16,10 @@ const PreloaderSection = ({ onAnimationComplete }) => {
 
   const percentAnimRef = useRef(null);
 
+  // NEW: track whether the visual animation finished
+  const [visualDone, setVisualDone] = useState(false);
+  const callbackCalledRef = useRef(false);
+
   useEffect(() => {
     const target = Math.round(progress * 100);
     if (percentAnimRef.current) {
@@ -76,8 +80,8 @@ const PreloaderSection = ({ onAnimationComplete }) => {
     const runAnimation = () => {
       const animationTimeline = gsap.timeline({
         onComplete: () => {
-          // call back once the visual preloader animation finishes
-          typeof onAnimationComplete === "function" && onAnimationComplete();
+          // DON'T call onAnimationComplete here — only mark visual done.
+          setVisualDone(true);
         },
       });
 
@@ -140,11 +144,20 @@ const PreloaderSection = ({ onAnimationComplete }) => {
     }
   }, [isMobile, isTablet]);
 
+  // When assets finish loading, force percent to 100
   useEffect(() => {
     if (!isLoading) {
       setDisplayPercent(100);
     }
   }, [isLoading]);
+
+  // NEW: call the parent callback only when both visual animation finished and assets finished loading
+  useEffect(() => {
+    if (visualDone && !isLoading && !callbackCalledRef.current) {
+      callbackCalledRef.current = true;
+      typeof onAnimationComplete === "function" && onAnimationComplete();
+    }
+  }, [visualDone, isLoading, onAnimationComplete]);
 
   return (
     <div className="bg-foreground text-background absolute inset-0 flex size-full flex-col items-center justify-center gap-4 overflow-hidden px-4">
