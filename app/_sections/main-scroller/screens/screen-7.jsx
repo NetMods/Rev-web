@@ -45,7 +45,7 @@ const AnimatedBox = ({
           <div className="mt-4">
             <button className="bg-background/10 hover:bg-background/50 inline-flex w-full cursor-pointer items-center justify-center gap-3 rounded py-2 backdrop-blur-2xl transition-all ease-linear">
               <DownloadIcon size={25} />
-              {buttonLabel}
+              Coming Soon
             </button>
           </div>
         </div>
