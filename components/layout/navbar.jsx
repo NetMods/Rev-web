@@ -56,13 +56,13 @@ const Navbar = ({ className }) => {
         className,
       )}
     >
-      <div className="word-logo text-foreground relative text-4xl font-semibold">
+      <div className="word-logo text-foreground relative text-3xl font-semibold">
         Revord
       </div>
 
       <div className="pointer-events-auto relative block">
         <button
-          className="hover:bg-foreground/90 bg-foreground text-background inline-flex cursor-pointer items-center justify-center rounded-md px-5 pt-2.5 pb-2 transition-all ease-linear active:scale-95"
+          className="hover:bg-foreground/90 bg-foreground/90 text-background inline-flex cursor-pointer items-center justify-center rounded-md px-5 pt-2.5 pb-2 transition-all ease-linear active:scale-95"
           onClick={() => setShowExport(true)}
         >
           Join waitlist

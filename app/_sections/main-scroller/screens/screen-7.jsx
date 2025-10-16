@@ -5,7 +5,7 @@ import {
   WindowsLogoIcon,
 } from "@phosphor-icons/react";
 
-import { cn } from "@/lib/utils";
+import { cn, isDev } from "@/lib/utils";
 import { useDetectOS } from "@/hooks/use-detect-os";
 
 const AnimatedBox = ({
@@ -27,7 +27,9 @@ const AnimatedBox = ({
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: `url(${bgImage})`,
+          backgroundImage: isDev
+            ? "url('https://placewaifu.com/image')"
+            : `url(${bgImage})`,
           backgroundPosition: "50% 50%",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -35,7 +37,7 @@ const AnimatedBox = ({
       ></div>
       <div className="relative z-10 flex size-full flex-col items-center justify-center font-normal backdrop-blur-sm backdrop-brightness-75 transition-all ease-linear hover:backdrop-brightness-50">
         <div className="w-2/3 text-center">
-          <span className="inline-flex w-full items-center justify-center text-5xl">
+          <span className="inline-flex w-full items-center justify-center text-4xl lg:text-5xl">
             <Icon className="mr-3" />
             {label}
           </span>
@@ -58,7 +60,10 @@ const Screen7 = () => {
   const os = useDetectOS();
 
   return (
-    <div id="screen-7" className="screen relative h-full min-w-full px-4">
+    <div
+      id="screen-7"
+      className="screen relative h-full min-w-full px-4 max-lg:py-10"
+    >
       <div className="h-full w-full overflow-hidden">
         <div className="flex h-full w-full flex-col lg:flex-row">
           <div className="grid h-full w-full grid-cols-1 gap-3 lg:grid-cols-3 lg:pt-32">
