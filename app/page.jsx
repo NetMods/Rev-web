@@ -1,3 +1,4 @@
+// pages/HomePage.jsx
 "use client";
 
 import { useState } from "react";
@@ -14,9 +15,19 @@ export default function HomePage() {
     setIsLoading(false);
   };
 
-  if (isLoading) {
-    return <Preloader onAnimationComplete={handleAnimationComplete} />;
-  }
+  return (
+    <div className="relative min-h-screen">
+      <div
+        aria-hidden={isLoading}
+        style={{
+          visibility: isLoading ? "hidden" : "visible",
+          pointerEvents: isLoading ? "none" : "auto",
+        }}
+      >
+        <MainScroller />
+      </div>
 
-  return <MainScroller />;
+      {isLoading && <Preloader onAnimationComplete={handleAnimationComplete} />}
+    </div>
+  );
 }
