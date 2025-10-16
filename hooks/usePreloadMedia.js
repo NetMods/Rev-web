@@ -4,7 +4,7 @@ import { ASSET_URL } from "@/constants";
 export const usePreloadMedia = () => {
   const total = Array.isArray(ASSET_URL) ? ASSET_URL.length : 0;
   const [isLoading, setIsLoading] = useState(total > 0);
-  const [loadedCount, setLoadedCount] = useState(0);
+  const [loadedCount, setLoadedCount] = useState(total === 0 ? 0 : 0);
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -80,9 +80,22 @@ export const usePreloadMedia = () => {
           : Promise.resolve({ url, success: true });
     });
 
-    Promise.allSettled(promises).then(() => {
+    // Attach a then to each promise so we increment loadedCount as each resolves
+    const tracked = promises.map((p) =>
+      p.then((res) => {
+        if (!mountedRef.current) return res;
+        setLoadedCount((c) => c + 1);
+        return res;
+      }),
+    );
+
+    Promise.allSettled(tracked).then(() => {
       if (!mountedRef.current) return;
-      setTimeout(() => setIsLoading(false), 1000);
+      // small delay so UI can show 100% a bit (optional)
+      setTimeout(() => {
+        if (!mountedRef.current) return;
+        setIsLoading(false);
+      }, 300);
     });
 
     return () => {
