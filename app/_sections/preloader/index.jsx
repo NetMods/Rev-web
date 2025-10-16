@@ -25,7 +25,6 @@ const PreloaderSection = ({ onAnimationComplete }) => {
     const scaleY = windowHeight / svgSize.height;
     const baseScale = Math.max(scaleX, scaleY);
 
-    // to make sure SVG fills the screen, use some random ass big number above 12
     const overfillScale = baseScale * 14;
 
     return overfillScale;
@@ -34,6 +33,35 @@ const PreloaderSection = ({ onAnimationComplete }) => {
   useGSAP(() => {
     const img = document.querySelector(".brand-name img");
     if (!img) return;
+
+    const waitForAllMedia = () => {
+      const images = Array.from(document.querySelectorAll("img"));
+      const videos = Array.from(document.querySelectorAll("video"));
+
+      console.log("vides elements", videos);
+
+      const imagePromises = images.map((img) => {
+        if (img.complete) return Promise.resolve();
+        return new Promise((resolve) => {
+          img.onload = img.onerror = resolve;
+        });
+      });
+
+      const videoPromises = videos.map((video) => {
+        if (video.readyState >= 3) return Promise.resolve();
+        return new Promise((resolve) => {
+          const handle = () => {
+            video.removeEventListener("canplaythrough", handle);
+            video.removeEventListener("error", handle);
+            resolve();
+          };
+          video.addEventListener("canplaythrough", handle);
+          video.addEventListener("error", handle);
+        });
+      });
+
+      return Promise.allSettled([...imagePromises, ...videoPromises]);
+    };
 
     const runAnimation = () => {
       const animationTimeline = gsap.timeline({
@@ -68,7 +96,47 @@ const PreloaderSection = ({ onAnimationComplete }) => {
             ease: "sine.inOut",
           },
           "+=0.5",
-        )
+        );
+
+      animationTimeline.add(async () => {
+        animationTimeline.pause();
+        console.info("animation paused — waiting for all media to load");
+
+        // Show loader animation
+        await gsap
+          .fromTo(
+            ".loader-spinner",
+            { opacity: 0, scale: 0.8 },
+            { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" },
+          )
+          .then();
+
+        // Start spinning animation
+        const spinAnimation = gsap.to(".loader-spinner", {
+          rotation: 360,
+          duration: 1,
+          ease: "linear",
+          repeat: -1,
+        });
+
+        await waitForAllMedia();
+        console.info("media loaded — resuming");
+
+        // Stop spinning and hide loader
+        spinAnimation.kill();
+        await gsap
+          .to(".loader-spinner", {
+            opacity: 0,
+            scale: 0.8,
+            duration: 0.35,
+            ease: "back.in(1.7)",
+          })
+          .then();
+
+        animationTimeline.play();
+      });
+
+      animationTimeline
         .fromTo(
           ".brand-name",
           { opacity: 0, y: 30, scale: 1 },
@@ -84,25 +152,6 @@ const PreloaderSection = ({ onAnimationComplete }) => {
           },
           "+=0.8",
         );
-
-      animationTimeline.to(
-        ".timer",
-        {
-          innerText: 100,
-          opacity: 1,
-          duration: animationTimeline.duration(),
-          ease: "linear",
-          snap: { innerText: 1 },
-          onUpdate: function () {
-            const element = document.querySelector(".timer");
-            if (element) {
-              const progress = this.progress();
-              element.innerText = Math.floor(progress * 100);
-            }
-          },
-        },
-        0,
-      );
     };
 
     if (img.complete) {
@@ -118,6 +167,11 @@ const PreloaderSection = ({ onAnimationComplete }) => {
         <img src="/rev-b.svg" alt="logo" className="max-w-none" />
       </div>
 
+      {/* Loader Spinner */}
+      <div className="loader-spinner absolute opacity-0">
+        <div className="border-background/20 border-t-background h-12 w-12 rounded-full border-4"></div>
+      </div>
+
       <Tagline className="tagline-first">
         ✨ Record, annotate, and capture - all in one seamless flow.
       </Tagline>
@@ -127,10 +181,6 @@ const PreloaderSection = ({ onAnimationComplete }) => {
       <Tagline className="tagline-third">
         📸 Snap. Mark. Share. The smarter way to screen record.
       </Tagline>
-
-      <div className="timer absolute right-4 bottom-4 z-10 text-2xl text-red-800 opacity-0 md:text-4xl">
-        0
-      </div>
     </div>
   );
 };
