@@ -8,7 +8,7 @@ import Preloader from "./_sections/preloader";
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(
-    process.env.NODE_ENV !== "production",
+    process.env.NODE_ENV === "production",
   );
 
   const handleAnimationComplete = () => {
