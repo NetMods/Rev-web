@@ -1,5 +1,6 @@
 import { useRef } from "react";
 
+import { isDev } from "@/lib/utils";
 import { useParallaxEffect } from "@/hooks/use-parallax-effect";
 import { useRotateOnScroll } from "@/hooks/use-rotate-onscroll";
 
@@ -15,24 +16,24 @@ const Screen4 = () => {
   return (
     <div
       ref={screenRef}
-      className="screen relative size-full min-w-full overflow-hidden lg:flex"
+      className="screen relative size-full min-w-full overflow-hidden lg:mr-10 lg:flex"
     >
       <div className="relative flex h-1/2 items-center justify-center overflow-hidden lg:w-1/2">
         <div className="screen-4-main-content">
           <div className="relative max-w-fit lg:pt-32">
-            <h2 className="text-foreground font-serif text-6xl font-bold lg:text-7xl">
+            <h2 className="text-foreground font-serif text-5xl font-bold lg:text-7xl">
               Lively & <br /> Colorful
             </h2>
             <div
               className="screen-4-floatingtext absolute top-1/2 left-5/6"
               ref={floatRef}
             >
-              <span className="z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 text-xl font-bold text-nowrap">
+              <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 font-bold text-nowrap lg:text-xl">
                 Just Draw it
               </span>
             </div>
           </div>
-          <p className="mt-7 max-w-96 text-xl">
+          <p className="text-md mt-7 max-w-96 lg:text-xl">
             Highlight, draw, and point with ease while recording or presenting —
             make your screen talk, not just show.
           </p>
@@ -51,21 +52,25 @@ const Screen4 = () => {
         />
       </svg>
 
-      <div
-        style={{
-          backgroundImage: "url('/4.gif')",
-          backgroundPosition: "10% 50%",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-        ref={imageRef}
-        className="parallax-bg-4 relative flex justify-center max-lg:h-1/2 lg:w-1/2"
-      >
-        <div
-          ref={textRef}
-          className="screen-4-text absolute bottom-0 left-0 z-20 text-6xl font-extrabold mix-blend-difference lg:right-3/5 lg:bottom-1/12"
-        >
-          Annotation <br /> Panel
+      <div className="relative flex justify-center max-lg:h-1/2 lg:w-1/2">
+        <div className="parallax-bg-4 relative h-full w-full rounded-xl">
+          <video
+            ref={imageRef}
+            className="absolute inset-0 h-full w-full rounded-xl object-cover"
+            style={{ objectPosition: "10% 50%" }}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            src={"/annotation.mp4"}
+          />
+          <div
+            ref={textRef}
+            className="screen-4-text absolute bottom-0 left-0 z-20 text-4xl font-extrabold mix-blend-difference lg:right-3/5 lg:bottom-1/12 lg:text-6xl"
+          >
+            Annotation <br /> Panel
+          </div>
         </div>
       </div>
     </div>

@@ -67,28 +67,30 @@ const FeatureButton = ({ className, title }) => {
     <div
       ref={featureButtonRef}
       className={cn(
-        "feature-button relative flex w-full items-center py-1",
+        "feature-button relative flex w-full items-center justify-center py-1",
         className,
       )}
     >
       <div
         ref={firstButtonAnimationRef}
-        className="first-arrow bg-foreground inline-flex h-16 w-16 items-center justify-center rounded-full"
+        className="first-arrow bg-foreground inline-flex h-16 w-16 items-center justify-center rounded-full max-lg:hidden"
         style={{ opacity: 0, transform: "translateX(-20px)" }}
       >
         <Arrow className="text-background text-lg" />
       </div>
+
       <button
         className={cn(
-          "bg-foreground text-background flex h-16 max-w-80 flex-1 shrink-0 items-center justify-center overflow-hidden rounded-full p-1 text-xl lg:w-80",
+          "bg-foreground text-background text-md flex h-16 max-w-80 flex-1 shrink-0 items-center justify-center overflow-hidden rounded-full p-1 lg:w-80 lg:text-xl",
           className,
         )}
       >
         {title}
       </button>
+
       <div
         ref={secondButtonAnimationRef}
-        className="second-arrow bg-foreground flex h-16 w-16 items-center justify-center rounded-full"
+        className="second-arrow bg-foreground flex h-16 w-16 items-center justify-center rounded-full max-lg:hidden"
       >
         <Arrow className="text-background text-lg" />
       </div>

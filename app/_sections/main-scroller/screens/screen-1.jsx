@@ -63,10 +63,10 @@ const Screen1 = () => {
   return (
     <div
       id="screen-1"
-      className="screen flex min-w-full flex-col pt-16 lg:h-screen lg:overflow-hidden lg:pt-32"
+      className="screen flex min-w-full flex-col pt-16 max-md:pb-20 lg:h-screen lg:overflow-hidden lg:pt-32"
     >
-      <div className="flex w-full items-center justify-center">
-        <div className="heading-group relative my-20 font-sans tracking-tighter max-lg:hidden">
+      <div className="flex size-full items-center justify-center">
+        <div className="heading-group relative my-16 font-sans tracking-tighter max-lg:hidden">
           {heading.split("").map((char, i) => (
             <span
               key={i}
@@ -83,27 +83,22 @@ const Screen1 = () => {
         </div>
 
         <div className="hidden text-center max-lg:block">
-          <span className="heading-group relative my-10 flex w-full flex-col items-center justify-center text-5xl font-bold tracking-tighter">
+          <span className="heading-group relative my-10 flex w-full flex-col items-center justify-center text-3xl font-bold tracking-tighter md:text-5xl">
             {heading.split(",").map((line, i) => (
               <span key={i}>{line}</span>
             ))}
           </span>
-          <span className="share-text font-cursive block text-center text-3xl font-bold">
-            <span className="bg-foreground/10 border-foreground/20 rounded-full border px-5 py-1">
-              Share it
-            </span>
-          </span>
         </div>
       </div>
 
-      <div className="my-5 h-full">
-        <div className="lg:flex">
-          <div className="gif-box border-foreground/30 mx-10 inline-flex w-full justify-center overflow-hidden rounded-lg border">
-            <video src="/intro.mp4" autoPlay muted loop />
+      <div>
+        <div className="items-center lg:mx-10 lg:flex">
+          <div className="gif-box inline-flex w-full justify-center overflow-hidden rounded-lg max-lg:mb-16 lg:mr-10 lg:max-w-2/3">
+            <video src="/intro.mp4" autoPlay muted loop preload="auto" />
           </div>
 
-          <div className="w-full place-content-start lg:w-1/2">
-            <p className="lorem-text py-10 text-center text-xl text-balance">
+          <div className="w-full place-content-center-safe lg:w-1/2">
+            <p className="lorem-text text-md text-center text-balance min-lg:text-xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               feugiat, risus nec aliquam gravida, eros urna laoreet elit, vitae
               accumsan odio arcu a nunc. Donec suscipit augue et metus placerat,

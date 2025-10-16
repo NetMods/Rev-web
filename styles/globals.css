@@ -55,6 +55,7 @@ body {
 
 .rotate-svg {
   animation: rotate 70s linear infinite;
+  transform-origin: center center;
 }
 
 @keyframes rotate {
