@@ -16,7 +16,6 @@ const PreloaderSection = ({ onAnimationComplete }) => {
 
   const percentAnimRef = useRef(null);
 
-  // NEW: track whether the visual animation finished
   const [visualDone, setVisualDone] = useState(false);
   const callbackCalledRef = useRef(false);
 
@@ -144,14 +143,12 @@ const PreloaderSection = ({ onAnimationComplete }) => {
     }
   }, [isMobile, isTablet]);
 
-  // When assets finish loading, force percent to 100
   useEffect(() => {
     if (!isLoading) {
       setDisplayPercent(100);
     }
   }, [isLoading]);
 
-  // NEW: call the parent callback only when both visual animation finished and assets finished loading
   useEffect(() => {
     if (visualDone && !isLoading && !callbackCalledRef.current) {
       callbackCalledRef.current = true;

@@ -3,7 +3,6 @@ import { ASSET_URL } from "@/constants";
 
 export const usePreloadMedia = () => {
   const total = Array.isArray(ASSET_URL) ? ASSET_URL.length : 0;
-
   const [isLoading, setIsLoading] = useState(total > 0);
   const [loadedCount, setLoadedCount] = useState(0);
   const mountedRef = useRef(true);
@@ -28,13 +27,13 @@ export const usePreloadMedia = () => {
         };
         img.onload = () => {
           cleanup();
-          console.info("succesfull loaded image", url);
-          resolve(url);
+          console.info("Successfully loaded image", url);
+          resolve({ url, success: true });
         };
         img.onerror = () => {
-          console.warn(`Failed to load image: ${url}`);
           cleanup();
-          resolve(url);
+          console.warn(`Failed to load image: ${url}`);
+          resolve({ url, success: false });
         };
         img.src = url;
       });
@@ -43,22 +42,22 @@ export const usePreloadMedia = () => {
       new Promise((resolve) => {
         const video = document.createElement("video");
         const cleanup = () => {
-          video.onloadeddata = null;
+          video.oncanplaythrough = null;
           video.onerror = null;
           try {
             video.src = "";
             video.load && video.load();
           } catch (e) {}
         };
-        video.onloadeddata = () => {
+        video.oncanplaythrough = () => {
           cleanup();
-          console.info("succesfull loaded video", url);
-          resolve(url);
+          console.info("Successfully loaded video", url);
+          resolve({ url, success: true });
         };
         video.onerror = () => {
-          console.warn(`Failed to load video: ${url}`);
           cleanup();
-          resolve(url);
+          console.warn(`Failed to load video: ${url}`);
+          resolve({ url, success: false });
         };
         video.preload = "auto";
         video.src = url;
@@ -69,36 +68,29 @@ export const usePreloadMedia = () => {
 
     const promises = (ASSET_URL || []).map((asset) => {
       const url = typeof asset === "string" ? asset : asset?.src || "";
-      if (!url) return Promise.resolve();
+      if (!url) return Promise.resolve({ url: "", success: true });
 
       const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
       const isVideo = /\.(mp4|webm|ogg)$/i.test(url);
 
-      const loader = isImage
+      return isImage
         ? loadImage(url)
         : isVideo
           ? loadVideo(url)
-          : Promise.resolve(url);
-
-      return loader.then(() => {
-        if (!mountedRef.current) return;
-        setLoadedCount((c) => c + 1);
-      });
+          : Promise.resolve({ url, success: true });
     });
 
-    Promise.all(promises).then(() => {
+    Promise.allSettled(promises).then(() => {
       if (!mountedRef.current) return;
-      setTimeout(() => setIsLoading(false), 500);
+      setTimeout(() => setIsLoading(false), 1000);
     });
 
     return () => {
       mountedRef.current = false;
     };
-  }, [ASSET_URL]);
+  }, [total]);
 
   const progress = total === 0 ? 1 : Math.min(1, loadedCount / total);
 
   return { isLoading, loadedCount, total, progress };
 };
-
-export default usePreloadMedia;

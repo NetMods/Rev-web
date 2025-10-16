@@ -9,9 +9,7 @@ export const ASSET_URL = [
 
   // image elements
   "/background.jpg",
-  "linux.jpg",
-  "macos.jpg",
-  "rev-b.svg",
-  "rev-w.svg",
-  "windows.jpg",
+  "/linux.jpg",
+  "/macos.jpg",
+  "/windows.jpg",
 ];
