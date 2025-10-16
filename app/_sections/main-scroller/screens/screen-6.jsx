@@ -19,7 +19,7 @@ const Screen6 = () => {
               <h2 className="text-foreground z-10 font-serif text-5xl font-bold lg:text-7xl">
                 Join & <br /> Fuck
               </h2>
-              <div className="screen-3-floatingtext absolute top-1/2 left-4/6">
+              <div className="screen-3-floatingtext absolute top-1/2 left-4/6 -rotate-12">
                 <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-1 font-bold text-nowrap lg:pt-2 lg:text-xl">
                   Built-In Editor
                 </span>
@@ -34,27 +34,17 @@ const Screen6 = () => {
         </div>
 
         <div className="relative flex h-[50vh] w-full shrink-0 justify-center lg:h-auto lg:w-1/2 lg:shrink-0">
-          <div className="absolute top-0 left-0 z-20 text-4xl font-extrabold mix-blend-difference lg:top-1/6 lg:-left-10 lg:text-6xl">
+          <div className="absolute top-0 left-0 z-20 text-4xl font-extrabold mix-blend-difference lg:top-1/6 lg:-left-36 lg:text-6xl">
             Image <br className="lg:hidden" /> Editor
           </div>
-          {isDev ? (
-            <Image
-              src={"https://placewaifu.com/image"}
-              alt="image"
-              width={1000}
-              height={1000}
-              unoptimized
-              className="rounded"
-            />
-          ) : (
-            <video
-              src="/screenshot-editor.mp4"
-              autoPlay
-              muted
-              loop
-              className="bg-foreground/10"
-            />
-          )}
+          <video
+            src="/ss-editor.mp4"
+            autoPlay
+            muted
+            loop
+            preload="auto"
+            className="bg-foreground/10"
+          />
         </div>
       </div>
 

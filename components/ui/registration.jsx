@@ -76,7 +76,7 @@ export default function Register({ isOpen, onClose }) {
               Revord is coming! Want to try it first-hand?
             </p>
 
-            <div className="mb-6 flex justify-start gap-3 *:cursor-pointer">
+            <div className="mb-6 flex flex-wrap justify-start gap-3 *:cursor-pointer">
               {[
                 { name: "MacOS", Icon: AppStoreLogoIcon },
                 { name: "Linux", Icon: LinuxLogoIcon },

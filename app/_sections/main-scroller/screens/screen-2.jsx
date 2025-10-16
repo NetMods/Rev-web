@@ -1,7 +1,5 @@
 import { useRef } from "react";
-import Image from "next/image";
 
-import { isDev } from "@/lib/utils";
 import { useParallaxEffect } from "@/hooks/use-parallax-effect";
 import FeatureButton from "@/components/ui/feature-button";
 
@@ -19,18 +17,18 @@ const Screen2 = () => {
     >
       <div className="flex h-full w-full max-lg:flex-col">
         <div className="relative inline-flex h-full justify-center lg:w-1/2">
-          <div
-            ref={imageRef}
-            className="parallax-bg-2 relative h-full w-full rounded-xl lg:w-2/3"
-            style={{
-              backgroundImage: isDev
-                ? "url('https://placewaifu.com/image')"
-                : "url('/aio.gif')",
-              backgroundPosition: "70% 50%",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-            }}
-          >
+          <div className="parallax-bg-2 relative h-full w-full rounded-xl lg:w-2/3">
+            <video
+              ref={imageRef}
+              className="absolute inset-0 h-full w-full rounded-xl object-cover"
+              style={{ objectPosition: "70% 50%" }}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              src={"/aio.mp4"}
+            />
             <div
               ref={textRef}
               className="text-foreground absolute z-10 text-center text-4xl font-black mix-blend-difference max-lg:right-0 max-lg:bottom-0 lg:top-0 lg:left-4/5 lg:text-6xl"

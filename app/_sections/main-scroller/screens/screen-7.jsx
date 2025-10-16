@@ -27,9 +27,7 @@ const AnimatedBox = ({
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: isDev
-            ? "url('https://placewaifu.com/image')"
-            : `url(${bgImage})`,
+          backgroundImage: `url(${bgImage})`,
           backgroundPosition: "50% 50%",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

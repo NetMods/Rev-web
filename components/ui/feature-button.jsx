@@ -81,7 +81,7 @@ const FeatureButton = ({ className, title }) => {
 
       <button
         className={cn(
-          "bg-foreground text-background flex h-16 max-w-80 flex-1 shrink-0 items-center justify-center overflow-hidden rounded-full p-1 text-xl lg:w-80",
+          "bg-foreground text-background text-md flex h-16 max-w-80 flex-1 shrink-0 items-center justify-center overflow-hidden rounded-full p-1 lg:w-80 lg:text-xl",
           className,
         )}
       >

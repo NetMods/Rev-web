@@ -52,23 +52,25 @@ const Screen4 = () => {
         />
       </svg>
 
-      <div
-        style={{
-          backgroundImage: isDev
-            ? "url('https://placewaifu.com/image')"
-            : "url('/4.gif')",
-          backgroundPosition: "10% 50%",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-        ref={imageRef}
-        className="parallax-bg-4 relative flex justify-center max-lg:h-1/2 lg:w-1/2"
-      >
-        <div
-          ref={textRef}
-          className="screen-4-text absolute bottom-0 left-0 z-20 text-4xl font-extrabold mix-blend-difference lg:right-3/5 lg:bottom-1/12 lg:text-6xl"
-        >
-          Annotation <br /> Panel
+      <div className="relative flex justify-center max-lg:h-1/2 lg:w-1/2">
+        <div className="parallax-bg-4 relative h-full w-full rounded-xl">
+          <video
+            ref={imageRef}
+            className="absolute inset-0 h-full w-full rounded-xl object-cover"
+            style={{ objectPosition: "10% 50%" }}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            src={"/annotation.mp4"}
+          />
+          <div
+            ref={textRef}
+            className="screen-4-text absolute bottom-0 left-0 z-20 text-4xl font-extrabold mix-blend-difference lg:right-3/5 lg:bottom-1/12 lg:text-6xl"
+          >
+            Annotation <br /> Panel
+          </div>
         </div>
       </div>
     </div>

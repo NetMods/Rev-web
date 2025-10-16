@@ -1,7 +1,5 @@
 import { useRef } from "react";
-import Image from "next/image";
 
-import { isDev } from "@/lib/utils";
 import useStaggerAnimation from "@/hooks/use-stagger-animatation";
 
 const Screen5 = () => {
@@ -13,28 +11,20 @@ const Screen5 = () => {
   return (
     <div id="screen-5" ref={screenRef} className="screen relative min-w-full">
       <div className="flex h-full w-full flex-col items-center gap-4 overflow-hidden max-lg:pt-10 lg:flex-row">
-        <div className="relative">
-          <div className="absolute top-0 left-0 z-20 text-4xl font-extrabold mix-blend-difference lg:top-1/6 lg:-left-10 lg:text-6xl">
+        <div className="bg-foreground/10 relative h-full place-content-center">
+          <div className="absolute z-20 text-4xl font-extrabold mix-blend-difference max-lg:top-0 max-lg:left-0 min-lg:-right-32 min-lg:bottom-0 lg:text-6xl">
             Video <br className="lg:hidden" /> Editor
           </div>
-          {isDev ? (
-            <Image
-              src={"https://placewaifu.com/image"}
-              alt="image"
-              width={1000}
-              height={1000}
-              unoptimized
-              className="rounded"
-            />
-          ) : (
+          <div className="overflow-hidden rounded-lg">
             <video
-              src="/screen-editor.mp4"
+              src="/video-editor.mp4"
               autoPlay
               muted
               loop
-              className="bg-foreground/10 relative max-w-1/2 place-content-baseline"
+              preload="auto"
+              className="relative place-content-baseline"
             />
-          )}
+          </div>
         </div>
 
         <div className="flex w-full flex-col justify-center-safe overflow-auto py-10 max-md:py-28 lg:pb-20">
@@ -43,8 +33,8 @@ const Screen5 = () => {
               <h2 className="text-foreground z-10 font-serif text-5xl font-bold lg:text-7xl">
                 Suck & <br /> Fuck
               </h2>
-              <div className="screen-3-floatingtext absolute top-1/2 left-4/6">
-                <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-1 font-bold text-nowrap lg:pt-2 lg:text-xl">
+              <div className="screen-3-floatingtext absolute top-1/2 left-4/6 rotate-10">
+                <span className="text-md z-20 w-full transform bg-rose-600 px-2 pt-1 font-bold text-nowrap lg:pt-2 lg:text-xl">
                   Built-In Editor
                 </span>
               </div>

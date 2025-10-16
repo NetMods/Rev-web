@@ -1,8 +1,7 @@
-import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-import { cn, isDev } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 const heading = "Your Screen Story, Told With Clarity";
 
@@ -64,9 +63,9 @@ const Screen1 = () => {
   return (
     <div
       id="screen-1"
-      className="screen flex min-w-full flex-col pt-16 lg:h-screen lg:overflow-hidden lg:pt-32"
+      className="screen flex min-w-full flex-col pt-16 max-md:pb-20 lg:h-screen lg:overflow-hidden lg:pt-32"
     >
-      <div className="flex w-full items-center justify-center">
+      <div className="flex size-full items-center justify-center">
         <div className="heading-group relative my-16 font-sans tracking-tighter max-lg:hidden">
           {heading.split("").map((char, i) => (
             <span
@@ -84,7 +83,7 @@ const Screen1 = () => {
         </div>
 
         <div className="hidden text-center max-lg:block">
-          <span className="heading-group relative my-10 flex w-full flex-col items-center justify-center text-4xl font-bold tracking-tighter md:text-5xl">
+          <span className="heading-group relative my-10 flex w-full flex-col items-center justify-center text-3xl font-bold tracking-tighter md:text-5xl">
             {heading.split(",").map((line, i) => (
               <span key={i}>{line}</span>
             ))}
@@ -93,20 +92,9 @@ const Screen1 = () => {
       </div>
 
       <div>
-        <div className="mx-10 lg:flex">
-          <div className="gif-box mr-10 inline-flex w-full justify-center overflow-hidden rounded-lg max-lg:mb-16 lg:max-w-2/3">
-            {isDev ? (
-              <Image
-                src={"https://placewaifu.com/image"}
-                alt="image"
-                width={1000}
-                height={1000}
-                unoptimized
-                className="rounded"
-              />
-            ) : (
-              <video src="/intro.mp4" autoPlay muted loop preload="auto" />
-            )}
+        <div className="items-center lg:mx-10 lg:flex">
+          <div className="gif-box inline-flex w-full justify-center overflow-hidden rounded-lg max-lg:mb-16 lg:mr-10 lg:max-w-2/3">
+            <video src="/intro.mp4" autoPlay muted loop preload="auto" />
           </div>
 
           <div className="w-full place-content-center-safe lg:w-1/2">

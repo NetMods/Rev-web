@@ -1,6 +1,5 @@
 import { useRef } from "react";
 
-import { isDev } from "@/lib/utils";
 import { useParallaxEffect } from "@/hooks/use-parallax-effect";
 import { useRotateOnScroll } from "@/hooks/use-rotate-onscroll";
 
@@ -18,18 +17,18 @@ const Screen3 = () => {
       ref={screenRef}
       className="screen relative size-full min-w-full max-lg:mt-16 lg:flex"
     >
-      <div
-        style={{
-          backgroundImage: isDev
-            ? "url('https://placewaifu.com/image')"
-            : "url('/sr.gif')",
-          backgroundPosition: "0% 50%",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-        }}
-        ref={imageRef}
-        className="parallax-bg-3 relative flex justify-center max-lg:h-1/2 lg:w-1/2"
-      >
+      <div className="parallax-bg-3 relative h-1/2 rounded-xl lg:size-full lg:w-2/3">
+        <video
+          ref={imageRef}
+          className="absolute inset-0 h-full w-full rounded-xl object-cover"
+          style={{ objectPosition: "70% 50%" }}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          src="/recording.mp4"
+        />
         <div
           ref={textRef}
           className="screen-3-text absolute right-0 bottom-0 z-20 text-4xl font-extrabold mix-blend-difference lg:-right-1/6 lg:bottom-1/12 lg:text-6xl"
