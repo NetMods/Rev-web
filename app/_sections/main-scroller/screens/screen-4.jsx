@@ -28,12 +28,12 @@ const Screen4 = () => {
               className="screen-4-floatingtext absolute top-1/2 left-5/6"
               ref={floatRef}
             >
-              <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 font-bold text-nowrap lg:text-xl">
+              <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 font-bold text-nowrap text-rose-200 lg:text-xl">
                 Visual presentation
               </span>
             </div>
           </div>
-          <p className="text-md mt-7 max-w-96 lg:text-xl">
+          <p className="text-md text-foreground/60 mt-7 max-w-96 lg:text-xl">
             Turn your screen into a canvas — Highlight your ideas effortlessly
             with pencils, arrows, and text boxes with dynamic colors and brush
             sizes

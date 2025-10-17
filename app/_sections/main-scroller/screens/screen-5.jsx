@@ -11,7 +11,7 @@ const Screen5 = () => {
   return (
     <div id="screen-5" ref={screenRef} className="screen relative min-w-full">
       <div className="flex h-full w-full flex-col items-center gap-4 overflow-hidden max-lg:pt-10 lg:flex-row">
-        <div className="bg-foreground/10 relative h-full place-content-center">
+        <div className="bg-foreground/5 relative h-full place-content-center">
           <div className="absolute z-20 text-4xl font-extrabold mix-blend-difference max-lg:top-0 max-lg:left-0 min-lg:-right-32 min-lg:bottom-0 lg:text-6xl">
             Video <br className="lg:hidden" /> Editor
           </div>
@@ -34,12 +34,12 @@ const Screen5 = () => {
                 Precision <br /> Motion
               </h2>
               <div className="screen-3-floatingtext absolute top-1/2 left-4/6 rotate-10">
-                <span className="text-md z-20 w-full transform bg-rose-600 px-2 pt-1 font-bold text-nowrap lg:pt-2 lg:text-xl">
+                <span className="text-md z-20 w-full transform bg-rose-600 px-2 pt-1 font-bold text-nowrap text-rose-200 lg:pt-2 lg:text-xl">
                   Built-In Video Editor
                 </span>
               </div>
             </div>
-            <p className="text-md mt-7 max-w-96 lg:text-xl">
+            <p className="text-md text-foreground/60 mt-7 max-w-96 lg:text-xl">
               Revord automatically applies precise zooms and pans to every mouse
               click and drag, giving you full control to edit and export your
               video in stunning, high-resolution quality.

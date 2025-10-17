@@ -52,12 +52,12 @@ const Screen3 = () => {
               className="screen-3-floatingtext absolute top-1/2 left-4/6"
               ref={floatRef}
             >
-              <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 font-bold text-nowrap lg:text-xl">
+              <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 font-bold text-nowrap text-rose-200 lg:text-xl">
                 Smart Recorder
               </span>
             </div>
           </div>
-          <p className="text-md mt-7 max-w-96 lg:text-xl">
+          <p className="text-md text-foreground/60 mt-7 max-w-96 lg:text-xl">
             Revord captures every detail in stunning quality, automatically
             adjusting focus and framing so you can stay in the moment. Just
             record and let the magic unfold

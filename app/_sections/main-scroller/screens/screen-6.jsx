@@ -18,12 +18,12 @@ const Screen6 = () => {
                 Perfect <br /> Screenshots
               </h2>
               <div className="screen-3-floatingtext absolute top-1/2 left-4/6 -rotate-12">
-                <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-1 font-bold text-nowrap lg:pt-2 lg:text-xl">
+                <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-1 font-bold text-nowrap text-rose-200 lg:pt-2 lg:text-xl">
                   Flexible Editor
                 </span>
               </div>
             </div>
-            <p className="text-md mt-7 max-w-96 lg:text-xl">
+            <p className="text-md text-foreground/60 mt-7 max-w-96 lg:text-xl">
               Crop, add padding, change colors, set background images, and
               adjust roundness and shadows — all with a few clicks to make your
               visuals truly stand out.
@@ -41,7 +41,7 @@ const Screen6 = () => {
             muted
             loop
             preload="auto"
-            className="bg-foreground/10"
+            className="bg-foreground/5"
           />
         </div>
       </div>

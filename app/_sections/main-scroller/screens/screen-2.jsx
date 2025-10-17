@@ -47,7 +47,7 @@ const Screen2 = () => {
           <FeatureButton title="Annotate" />
         </div>
 
-        <div className="text-foreground absolute right-5 bottom-0 font-semibold max-md:hidden">
+        <div className="text-foreground/10 absolute right-5 bottom-0 text-8xl font-semibold max-md:hidden">
           #2025
         </div>
       </div>

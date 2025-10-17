@@ -31,6 +31,7 @@ const MainScroller = () => {
         }}
       >
         <div className="pointer-events-none absolute inset-0 bg-black/90" />
+        <div className="grain-overlay opacity-50" />
         <Screen1 />
         <Screen2 />
         <Screen3 />

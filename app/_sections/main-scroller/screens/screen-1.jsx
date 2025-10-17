@@ -93,7 +93,7 @@ const Screen1 = () => {
 
       <div>
         <div className="items-center lg:mx-10 lg:flex">
-          <div className="gif-box border-foreground/20 inline-flex w-full justify-center overflow-hidden rounded-lg border max-lg:mb-16 lg:mr-10 lg:max-w-2/3">
+          <div className="gif-box border-foreground/10 inline-flex w-full justify-center overflow-hidden rounded-lg border max-lg:mb-16 lg:mr-10 lg:max-w-2/3">
             <video src="/intro.mp4" autoPlay muted loop preload="auto" />
           </div>
 
