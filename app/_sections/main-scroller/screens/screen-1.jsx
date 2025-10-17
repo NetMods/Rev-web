@@ -61,12 +61,16 @@ const Screen1 = () => {
   }, []);
 
   return (
-    <div
+    <section
       id="screen-1"
-      className="screen flex min-w-full flex-col pt-16 max-md:pb-20 lg:h-screen lg:overflow-hidden lg:pt-32"
+      aria-labelledby="hero-heading"
+      className="screen flex min-w-full flex-col pt-16 max-md:pb-20 lg:h-screen lg:pt-32"
     >
-      <div className="flex size-full items-center justify-center">
-        <div className="heading-group relative my-16 font-sans tracking-tighter max-lg:hidden">
+      <div className="flex w-full items-center justify-center">
+        <h1
+          id="hero-heading"
+          className="heading-group relative my-16 font-sans tracking-tighter max-lg:hidden"
+        >
           {heading.split("").map((char, i) => (
             <span
               key={i}
@@ -80,35 +84,40 @@ const Screen1 = () => {
               {char === " " ? "\u00A0" : char}
             </span>
           ))}
-        </div>
+        </h1>
 
-        <div className="hidden text-center max-lg:block">
+        <h1 className="hidden text-center max-lg:block">
           <span className="heading-group relative my-10 flex w-full flex-col items-center justify-center text-3xl font-bold tracking-tighter md:text-5xl">
             {heading.split(",").map((line, i) => (
               <span key={i}>{line}</span>
             ))}
           </span>
-        </div>
+        </h1>
       </div>
 
-      <div>
-        <div className="items-center lg:mx-10 lg:flex">
-          <div className="gif-box border-foreground/10 inline-flex w-full justify-center overflow-hidden rounded-lg border max-lg:mb-16 lg:mr-10 lg:max-w-2/3">
-            <video src="/intro.mp4" autoPlay muted loop preload="auto" />
-          </div>
+      <div className="size-full items-center lg:mx-10 lg:flex">
+        <figure className="gif-box border-foreground/10 inline-flex w-full justify-center overflow-hidden rounded-lg border max-lg:mb-16 lg:mr-10 lg:max-w-2/3">
+          <video
+            src="/intro.mp4"
+            autoPlay
+            muted
+            loop
+            preload="auto"
+            aria-label="Revord demo showing automatic zoom and pan while screen recording"
+          />
+        </figure>
 
-          <div className="w-full place-content-center-safe lg:w-1/2">
-            <p className="lorem-text text-md text-foreground/70 text-center text-balance min-lg:text-xl">
-              Record your screen with precise automatic zoom and pan, capture
-              perfect screenshots to share, and draw or annotate on screen in
-              realtime effortlessly — Revord provides all in one seamless
-              desktop experience. Perfect for creators, teams, and educators who
-              want clarity without the clutter
-            </p>
-          </div>
-        </div>
+        <article className="w-full place-content-center-safe lg:w-1/2">
+          <p className="lorem-text text-md text-foreground/70 text-center text-balance min-lg:text-xl">
+            Record your screen with precise automatic zoom and pan, capture
+            perfect screenshots to share, and draw or annotate on screen in
+            realtime effortlessly — Revord provides all in one seamless desktop
+            experience. Perfect for creators, teams, and educators who want
+            clarity without the clutter
+          </p>
+        </article>
       </div>
-    </div>
+    </section>
   );
 };
 

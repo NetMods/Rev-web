@@ -9,9 +9,13 @@ const Screen6 = () => {
   useStaggerAnimation(screenRef, listRef, 0.2);
 
   return (
-    <div ref={screenRef} className="screen relative min-w-full">
+    <section
+      aria-labelledby="screen6-heading"
+      ref={screenRef}
+      className="screen relative min-w-full"
+    >
       <div className="flex h-full w-full flex-col gap-4 overflow-hidden lg:flex-row">
-        <div className="flex items-end justify-center max-md:py-28 lg:w-1/2 lg:pb-40">
+        <article className="flex items-end justify-center max-md:py-28 lg:w-1/2 lg:pb-40">
           <div className="flex flex-col">
             <div className="relative max-w-fit">
               <h2 className="text-foreground z-10 font-serif text-5xl font-bold lg:text-7xl">
@@ -29,12 +33,9 @@ const Screen6 = () => {
               visuals truly stand out.
             </p>
           </div>
-        </div>
+        </article>
 
-        <div className="relative flex h-[50vh] w-full shrink-0 justify-center lg:h-auto lg:w-1/2 lg:shrink-0">
-          <div className="absolute top-0 left-0 z-20 text-4xl font-extrabold mix-blend-difference lg:top-1/6 lg:-left-36 lg:text-6xl">
-            Image <br className="lg:hidden" /> Editor
-          </div>
+        <figure className="relative flex h-[50vh] w-full shrink-0 justify-center lg:h-auto lg:w-1/2 lg:shrink-0">
           <video
             src="/ss-editor.mp4"
             autoPlay
@@ -42,8 +43,12 @@ const Screen6 = () => {
             loop
             preload="auto"
             className="bg-foreground/5"
+            aria-label="Screenshot editor demonstration"
           />
-        </div>
+          <figcaption className="absolute top-0 left-0 z-20 text-4xl font-extrabold mix-blend-difference lg:top-1/6 lg:-left-36 lg:text-6xl">
+            Image <br className="lg:hidden" /> Editor
+          </figcaption>
+        </figure>
       </div>
 
       <svg
@@ -57,6 +62,7 @@ const Screen6 = () => {
         clipRule="evenodd"
         strokeLinejoin="round"
         strokeMiterlimit="2"
+        aria-hidden="true"
       >
         <g fill="#ffffff" transform="matrix(1,0,0,1,-635,-97)">
           <g transform="matrix(1,0,0,1,635.007,109.053)">
@@ -73,7 +79,7 @@ const Screen6 = () => {
           </g>
         </g>
       </svg>
-    </div>
+    </section>
   );
 };
 

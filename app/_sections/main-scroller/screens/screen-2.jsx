@@ -11,12 +11,13 @@ const Screen2 = () => {
   useParallaxEffect(screenRef, imageRef, textRef);
 
   return (
-    <div
+    <section
       ref={screenRef}
       className="screen relative flex size-full min-w-full items-center justify-center pt-16 lg:pt-32"
+      aria-labelledby="screen2-heading"
     >
       <div className="flex h-full w-full max-lg:flex-col">
-        <div className="relative inline-flex h-full justify-center lg:w-1/2">
+        <figure className="relative inline-flex h-full justify-center lg:w-1/2">
           <div className="parallax-bg-2 relative h-full w-full rounded-xl lg:w-2/3">
             <video
               ref={imageRef}
@@ -29,29 +30,45 @@ const Screen2 = () => {
               preload="auto"
               src={"/aio.mp4"}
             />
-            <div
+            <figcaption
               ref={textRef}
               className="text-foreground absolute z-10 text-center text-4xl font-black mix-blend-difference max-lg:right-0 max-lg:bottom-0 lg:top-0 lg:left-4/5 lg:text-6xl"
             >
-              One Tool
-              <p> For </p>
-              Everything
-            </div>
+              <span>One Tool</span>
+              <p>For</p>
+              <p> Everything</p>
+            </figcaption>
           </div>
-        </div>
+        </figure>
 
         <div className="flex-col items-center justify-center max-lg:mt-10 max-lg:flex lg:w-1/2 lg:place-content-center">
-          <FeatureButton title="Screen Recorder" />
-          <FeatureButton title="Video Editor" />
-          <FeatureButton title="Screenshot" />
-          <FeatureButton title="Annotate" />
+          <ul
+            className="flex w-full flex-col gap-0.5"
+            aria-label="Key features of Revord"
+          >
+            <li>
+              <FeatureButton title="Screen Recorder" />
+            </li>
+            <li>
+              <FeatureButton title="Video Editor" />
+            </li>
+            <li>
+              <FeatureButton title="Screenshot" />
+            </li>
+            <li>
+              <FeatureButton title="Annotate" />
+            </li>
+          </ul>
         </div>
 
-        <div className="text-foreground/10 absolute right-5 bottom-0 text-8xl font-semibold max-md:hidden">
+        <div
+          aria-hidden="true"
+          className="text-foreground/10 absolute right-5 bottom-0 text-8xl font-semibold max-md:hidden"
+        >
           #2025
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

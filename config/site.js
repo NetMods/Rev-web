@@ -3,15 +3,15 @@ const site_url = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 export const socialLinks = {
   twitter: "",
   github: "",
-  linkedin: "",
-  email: "mailto:netmods.ltd@gmail.com",
+  email: "mailto:support@revord.org",
 };
 
 export const siteConfig = {
-  title: "Rev | Demo screen recorder",
-  name: "Rev",
+  title: "Revord - All-in-One Tool",
+  name: "Revord",
   baseUrl: site_url,
-  description: "About our screen recorder",
+  description:
+    "Revord is an all-in-one screen recording and screenshot tool with annotation, editing, and sharing capabilities. Perfect for creating tutorials, demos, and presentations effortlessly.",
   links: { ...socialLinks },
-  mailSupport: "netmods.ltd@gmail.com",
+  mailSupport: "support@revord.org",
 };

@@ -31,7 +31,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="relative min-h-screen">
+    <section aria-label="Revord homepage" className="relative min-h-screen">
       <div
         aria-hidden={isLoading}
         style={{
@@ -43,6 +43,6 @@ export default function HomePage() {
       </div>
 
       {isLoading && <Preloader onAnimationComplete={handleAnimationComplete} />}
-    </div>
+    </section>
   );
 }

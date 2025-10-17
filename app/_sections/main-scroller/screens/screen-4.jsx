@@ -1,6 +1,5 @@
 import { useRef } from "react";
 
-import { isDev } from "@/lib/utils";
 import { useParallaxEffect } from "@/hooks/use-parallax-effect";
 import { useRotateOnScroll } from "@/hooks/use-rotate-onscroll";
 
@@ -14,11 +13,12 @@ const Screen4 = () => {
   useRotateOnScroll(screenRef, floatRef, { start: 6, end: -20 });
 
   return (
-    <div
+    <section
       ref={screenRef}
       className="screen relative size-full min-w-full overflow-hidden lg:mr-10 lg:flex"
+      aria-labelledby="screen4-heading"
     >
-      <div className="relative flex h-1/2 items-center justify-center overflow-hidden lg:w-1/2">
+      <article className="relative flex h-1/2 items-center justify-center overflow-hidden lg:w-1/2">
         <div className="screen-4-main-content">
           <div className="relative max-w-fit lg:pt-32">
             <h2 className="text-foreground font-serif text-5xl font-bold lg:text-7xl">
@@ -39,9 +39,10 @@ const Screen4 = () => {
             sizes
           </p>
         </div>
-      </div>
+      </article>
 
       <svg
+        aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         className="rotate-svg absolute bottom-0 left-0 hidden size-96 origin-center opacity-80 lg:block"
         version="1.1"
@@ -53,7 +54,7 @@ const Screen4 = () => {
         />
       </svg>
 
-      <div className="relative flex justify-center max-lg:h-1/2 lg:w-1/2">
+      <figure className="relative flex justify-center max-lg:h-1/2 lg:w-1/2">
         <div className="parallax-bg-4 relative h-full w-full rounded-xl">
           <video
             ref={imageRef}
@@ -65,16 +66,17 @@ const Screen4 = () => {
             playsInline
             preload="auto"
             src={"/annotation.mp4"}
+            aria-label="Revord annotation panel demonstration"
           />
-          <div
+          <figcaption
             ref={textRef}
             className="screen-4-text absolute bottom-0 left-0 z-20 text-4xl font-extrabold mix-blend-difference lg:right-3/5 lg:bottom-1/12 lg:text-6xl"
           >
             Annotation <br /> Panel
-          </div>
+          </figcaption>
         </div>
-      </div>
-    </div>
+      </figure>
+    </section>
   );
 };
 

@@ -162,14 +162,25 @@ const PreloaderSection = ({ onAnimationComplete }) => {
   }, [isMobile, isTablet]);
 
   return (
-    <div className="bg-foreground text-background absolute inset-0 flex size-full flex-col items-center justify-center gap-4 overflow-hidden px-4">
-      <div className="brand-name absolute inline-flex w-full scale-100 items-center justify-center opacity-0">
-        <img src="/rev-b.svg" alt="logo" className="max-w-none" />
+    <section
+      aria-label="Loading screen"
+      className="bg-foreground text-background absolute inset-0 flex size-full flex-col items-center justify-center gap-4 overflow-hidden px-4"
+    >
+      {/* Logo */}
+      <div
+        className="brand-name absolute inline-flex w-full scale-100 items-center justify-center opacity-0"
+        aria-hidden="true"
+      >
+        <img src="/rev-b.svg" alt="Revord logo" className="max-w-none" />
       </div>
 
       {/* Loader Spinner */}
-      <div className="loader-spinner absolute opacity-0">
-        <div className="border-background/20 border-t-background h-12 w-12 rounded-full border-4"></div>
+      <div
+        className="loader-spinner absolute opacity-0"
+        role="status"
+        aria-label="Loading animation"
+      >
+        <div className="border-background/20 border-t-background h-12 w-12 rounded-full border-4" />
       </div>
 
       <Tagline className="tagline-first">
@@ -181,19 +192,19 @@ const PreloaderSection = ({ onAnimationComplete }) => {
       <Tagline className="tagline-third">
         📸 Snap. Mark. Share. The smarter way to screen record.
       </Tagline>
-    </div>
+    </section>
   );
 };
 
 export const Tagline = ({ className, children }) => (
-  <div
+  <p
     className={cn(
       "w-full max-w-2xl translate-y-5 text-center text-lg font-semibold opacity-0 md:text-xl",
       className,
     )}
   >
     {children}
-  </div>
+  </p>
 );
 
 export default PreloaderSection;

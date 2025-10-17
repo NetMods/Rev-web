@@ -9,12 +9,14 @@ const Screen5 = () => {
   useStaggerAnimation(screenRef, listRef, 0.5);
 
   return (
-    <div id="screen-5" ref={screenRef} className="screen relative min-w-full">
+    <section
+      aria-labelledby="screen5-heading"
+      id="screen-5"
+      ref={screenRef}
+      className="screen relative min-w-full"
+    >
       <div className="flex h-full w-full flex-col items-center gap-4 overflow-hidden max-lg:pt-10 lg:flex-row">
-        <div className="bg-foreground/5 relative h-full place-content-center">
-          <div className="absolute z-20 text-4xl font-extrabold mix-blend-difference max-lg:top-0 max-lg:left-0 min-lg:-right-32 min-lg:bottom-0 lg:text-6xl">
-            Video <br className="lg:hidden" /> Editor
-          </div>
+        <figure className="bg-foreground/5 relative h-full place-content-center">
           <div className="overflow-hidden rounded-lg">
             <video
               src="/video-editor.mp4"
@@ -23,13 +25,17 @@ const Screen5 = () => {
               loop
               preload="auto"
               className="relative place-content-baseline"
+              aria-label="Revord built-in video editor demonstration"
             />
+            <figcaption className="absolute z-20 text-4xl font-extrabold mix-blend-difference max-lg:top-0 max-lg:left-0 min-lg:-right-32 min-lg:bottom-0 lg:text-6xl">
+              Video <br className="lg:hidden" /> Editor
+            </figcaption>
           </div>
-        </div>
+        </figure>
 
-        <div className="flex w-full flex-col justify-center-safe overflow-auto py-10 max-md:py-28 lg:pb-20">
+        <article className="flex w-full flex-col justify-center-safe overflow-auto py-10 max-md:py-28 lg:pb-20">
           <div className="mx-auto flex flex-col text-left">
-            <div className="relative max-w-fit">
+            <header className="relative max-w-fit">
               <h2 className="text-foreground z-10 font-serif text-5xl font-bold lg:text-7xl">
                 Precision <br /> Motion
               </h2>
@@ -38,21 +44,24 @@ const Screen5 = () => {
                   Built-In Video Editor
                 </span>
               </div>
-            </div>
+            </header>
             <p className="text-md text-foreground/60 mt-7 max-w-96 lg:text-xl">
               Revord automatically applies precise zooms and pans to every mouse
               click and drag, giving you full control to edit and export your
               video in stunning, high-resolution quality.
             </p>
           </div>
-        </div>
+        </article>
 
-        <div className="text-foreground absolute right-30 hidden text-xl font-semibold lg:bottom-0 lg:block">
+        <div
+          aria-hidden="true"
+          className="text-foreground absolute right-30 hidden text-xl font-semibold lg:bottom-0 lg:block"
+        >
           {" "}
           02{" "}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

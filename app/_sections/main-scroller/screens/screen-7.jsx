@@ -1,11 +1,11 @@
 import {
-  AppStoreLogo,
+  AppStoreLogoIcon,
   DownloadIcon,
   LinuxLogoIcon,
   WindowsLogoIcon,
 } from "@phosphor-icons/react";
 
-import { cn, isDev } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { useDetectOS } from "@/hooks/use-detect-os";
 
 const AnimatedBox = ({
@@ -17,12 +17,13 @@ const AnimatedBox = ({
   current,
 }) => {
   return (
-    <div
+    <article
       className={cn(
         "bg-foreground relative flex h-full cursor-pointer items-center justify-center overflow-hidden rounded-2xl transition-all duration-500 ease-in-out",
         current && "border-foreground/20 border-2",
       )}
       style={{ position: "relative" }}
+      aria-current={current ? "true" : undefined}
     >
       <div
         className="absolute inset-0"
@@ -33,12 +34,13 @@ const AnimatedBox = ({
           backgroundSize: "cover",
         }}
       ></div>
+
       <div className="relative z-10 flex size-full flex-col items-center justify-center font-normal backdrop-blur-sm backdrop-brightness-75 transition-all ease-linear hover:backdrop-brightness-50">
-        <div className="w-2/3 text-center">
-          <span className="inline-flex w-full items-center justify-center text-4xl lg:text-5xl">
+        <header className="w-2/3 text-center">
+          <h3 className="inline-flex w-full items-center justify-center text-4xl lg:text-5xl">
             <Icon className="mr-3" />
             {label}
-          </span>
+          </h3>
           <div className="mt-2 text-sm text-gray-300">
             <p className="mt-1 text-xs">{systemReq}</p>
           </div>
@@ -48,9 +50,9 @@ const AnimatedBox = ({
               Coming Soon
             </button>
           </div>
-        </div>
+        </header>
       </div>
-    </div>
+    </article>
   );
 };
 
@@ -58,9 +60,10 @@ const Screen7 = () => {
   const os = useDetectOS();
 
   return (
-    <div
+    <section
       id="screen-7"
       className="screen relative h-full min-w-full px-4 max-lg:py-10"
+      aria-labelledby="download-heading"
     >
       <div className="h-full w-full overflow-hidden">
         <div className="flex h-full w-full flex-col lg:flex-row">
@@ -76,7 +79,7 @@ const Screen7 = () => {
             <AnimatedBox
               label="MacOS"
               bgImage="/macos.jpg"
-              icon={AppStoreLogo}
+              icon={AppStoreLogoIcon}
               buttonLabel="Download (.dmg)"
               systemReq="macOS 12 Monterey or later, 4 GB RAM, 500 MB free space"
               current={os === "MacOS"}
@@ -92,7 +95,7 @@ const Screen7 = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

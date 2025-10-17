@@ -1,15 +1,25 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "404",
-  description: "Error 404",
+  title: "404 - Page Not Found | Revord",
+  description: "The page you’re looking for doesn’t exist or has been moved.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function NotFound() {
   return (
-    <section className="flex h-screen items-center justify-center">
+    <section
+      aria-labelledby="page-title"
+      className="flex h-screen items-center justify-center"
+    >
       <div>
-        <h1 className="mb-8 text-2xl font-medium tracking-tight">
+        <h1
+          id="page-title"
+          className="mb-8 text-2xl font-medium tracking-tight"
+        >
           404 - Page not found
         </h1>
         <p className="mb-4">
