@@ -1,7 +1,5 @@
 import { useRef } from "react";
-import Image from "next/image";
 
-import { isDev } from "@/lib/utils";
 import useStaggerAnimation from "@/hooks/use-stagger-animatation";
 
 const Screen6 = () => {
@@ -17,18 +15,18 @@ const Screen6 = () => {
           <div className="flex flex-col">
             <div className="relative max-w-fit">
               <h2 className="text-foreground z-10 font-serif text-5xl font-bold lg:text-7xl">
-                Join & <br /> Fuck
+                Perfect <br /> Screenshots
               </h2>
               <div className="screen-3-floatingtext absolute top-1/2 left-4/6 -rotate-12">
                 <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-1 font-bold text-nowrap lg:pt-2 lg:text-xl">
-                  Built-In Editor
+                  Flexible Editor
                 </span>
               </div>
             </div>
             <p className="text-md mt-7 max-w-96 lg:text-xl">
-              Record in crisp quality, add edits and doodles on the fly, and
-              zoom right into the action — perfect for creators who want to
-              teach, share, or just show off in style.
+              Crop, add padding, change colors, set background images, and
+              adjust roundness and shadows — all with a few clicks to make your
+              visuals truly stand out.
             </p>
           </div>
         </div>

@@ -93,17 +93,17 @@ const Screen1 = () => {
 
       <div>
         <div className="items-center lg:mx-10 lg:flex">
-          <div className="gif-box inline-flex w-full justify-center overflow-hidden rounded-lg max-lg:mb-16 lg:mr-10 lg:max-w-2/3">
+          <div className="gif-box border-foreground/20 inline-flex w-full justify-center overflow-hidden rounded-lg border max-lg:mb-16 lg:mr-10 lg:max-w-2/3">
             <video src="/intro.mp4" autoPlay muted loop preload="auto" />
           </div>
 
           <div className="w-full place-content-center-safe lg:w-1/2">
-            <p className="lorem-text text-md text-center text-balance min-lg:text-xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              feugiat, risus nec aliquam gravida, eros urna laoreet elit, vitae
-              accumsan odio arcu a nunc. Donec suscipit augue et metus placerat,
-              nec malesuada sapien iaculis. Integer nec ex eget massa porta
-              viverra sit amet nec urna. Suspendisse potenti.
+            <p className="lorem-text text-md text-foreground/70 text-center text-balance min-lg:text-xl">
+              Record your screen with precise automatic zoom and pan, capture
+              perfect screenshots to share, and draw or annotate on screen in
+              realtime effortlessly — Revord provides all in one seamless
+              desktop experience. Perfect for creators, teams, and educators who
+              want clarity without the clutter
             </p>
           </div>
         </div>

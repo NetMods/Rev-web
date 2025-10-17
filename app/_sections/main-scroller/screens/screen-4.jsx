@@ -22,20 +22,21 @@ const Screen4 = () => {
         <div className="screen-4-main-content">
           <div className="relative max-w-fit lg:pt-32">
             <h2 className="text-foreground font-serif text-5xl font-bold lg:text-7xl">
-              Lively & <br /> Colorful
+              Draw & <br /> Explain
             </h2>
             <div
               className="screen-4-floatingtext absolute top-1/2 left-5/6"
               ref={floatRef}
             >
               <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 font-bold text-nowrap lg:text-xl">
-                Just Draw it
+                Visual presentation
               </span>
             </div>
           </div>
           <p className="text-md mt-7 max-w-96 lg:text-xl">
-            Highlight, draw, and point with ease while recording or presenting —
-            make your screen talk, not just show.
+            Turn your screen into a canvas — Highlight your ideas effortlessly
+            with pencils, arrows, and text boxes with dynamic colors and brush
+            sizes
           </p>
         </div>
       </div>

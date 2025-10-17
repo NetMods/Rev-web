@@ -46,21 +46,21 @@ const Screen3 = () => {
         <div className="screen-3-main-content">
           <div className="relative max-w-fit">
             <h2 className="text-foreground z-10 font-serif text-5xl font-bold lg:text-7xl">
-              Edit & <br /> Merge
+              Capture <br /> Everything
             </h2>
             <div
               className="screen-3-floatingtext absolute top-1/2 left-4/6"
               ref={floatRef}
             >
               <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-2 font-bold text-nowrap lg:text-xl">
-                Built-In Editor
+                Smart Recorder
               </span>
             </div>
           </div>
           <p className="text-md mt-7 max-w-96 lg:text-xl">
-            Record in crisp quality, add edits and doodles on the fly, and zoom
-            right into the action — perfect for creators who want to teach,
-            share, or just show off in style.
+            Revord captures every detail in stunning quality, automatically
+            adjusting focus and framing so you can stay in the moment. Just
+            record and let the magic unfold
           </p>
         </div>
       </div>

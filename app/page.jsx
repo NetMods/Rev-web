@@ -1,7 +1,6 @@
-// pages/HomePage.jsx
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import MainScroller from "./_sections/main-scroller";
 import Preloader from "./_sections/preloader";
@@ -11,9 +10,25 @@ export default function HomePage() {
     process.env.NODE_ENV === "production",
   );
 
-  const handleAnimationComplete = () => {
-    setIsLoading(false);
-  };
+  const handleAnimationComplete = () => setIsLoading(false);
+
+  useEffect(() => {
+    let timeout;
+    const handleResize = () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        if (window.innerWidth < 1000) {
+          window.location.reload();
+        }
+      }, 300);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className="relative min-h-screen">

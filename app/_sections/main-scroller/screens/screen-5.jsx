@@ -31,18 +31,18 @@ const Screen5 = () => {
           <div className="mx-auto flex flex-col text-left">
             <div className="relative max-w-fit">
               <h2 className="text-foreground z-10 font-serif text-5xl font-bold lg:text-7xl">
-                Suck & <br /> Fuck
+                Precision <br /> Motion
               </h2>
               <div className="screen-3-floatingtext absolute top-1/2 left-4/6 rotate-10">
                 <span className="text-md z-20 w-full transform bg-rose-600 px-2 pt-1 font-bold text-nowrap lg:pt-2 lg:text-xl">
-                  Built-In Editor
+                  Built-In Video Editor
                 </span>
               </div>
             </div>
             <p className="text-md mt-7 max-w-96 lg:text-xl">
-              Record in crisp quality, add edits and doodles on the fly, and
-              zoom right into the action — perfect for creators who want to
-              teach, share, or just show off in style.
+              Revord automatically applies precise zooms and pans to every mouse
+              click and drag, giving you full control to edit and export your
+              video in stunning, high-resolution quality.
             </p>
           </div>
         </div>
@@ -57,19 +57,3 @@ const Screen5 = () => {
 };
 
 export default Screen5;
-
-// <div className="flex flex-col items-center justify-center">
-//   <h2 className="mb-8 font-serif text-5xl font-extrabold">
-//     Video Editor
-//   </h2>
-//   <ul
-//     ref={listRef}
-//     className="*:border-b-foreground/50 *:hover:border-b-foreground w-full flex-1 space-y-2 text-2xl font-bold *:cursor-pointer *:border-b *:py-2 max-lg:px-2 lg:w-2/3"
-//   >
-//     <li>Auto-zoom</li>
-//     <li>Auto-pan</li>
-//     <li>Export in high quality</li>
-//     <li>Aesthetic Background</li>
-//     <li>Annotate while recording</li>
-//   </ul>
-// </div>
