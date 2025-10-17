@@ -171,7 +171,7 @@ const PreloaderSection = ({ onAnimationComplete }) => {
         className="brand-name absolute inline-flex w-full scale-100 items-center justify-center opacity-0"
         aria-hidden="true"
       >
-        <img src="/rev-b.svg" alt="Revord logo" className="max-w-none" />
+        <img src="/black-revord.svg" alt="Revord logo" className="max-w-none" />
       </div>
 
       {/* Loader Spinner */}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
@@ -56,7 +57,16 @@ const Navbar = ({ className }) => {
         className,
       )}
     >
-      <div className="word-logo text-foreground relative text-3xl font-semibold">
+      <div className="word-logo text-foreground relative inline-flex items-center justify-center text-3xl font-semibold">
+        <figure>
+          <Image
+            src={"/icons/white-icon-filled.svg"}
+            alt="logo"
+            width={40}
+            height={40}
+            className="mr-2"
+          />
+        </figure>
         Revord
       </div>
 

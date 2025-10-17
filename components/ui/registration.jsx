@@ -10,6 +10,7 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 export default function Register({ isOpen, onClose }) {
@@ -41,7 +42,7 @@ export default function Register({ isOpen, onClose }) {
   };
 
   return (
-    <div
+    <article
       className={cn(
         "pointer-events-auto fixed inset-0 z-[80] bg-black/50 backdrop-blur-md transition-opacity duration-300 ease-in-out",
         isOpen ? "opacity-100" : "pointer-events-none opacity-0",
@@ -72,7 +73,7 @@ export default function Register({ isOpen, onClose }) {
                 <XIcon />
               </button>
             </div>
-            <p className="mb-6 text-sm text-gray-200">
+            <p className="text-foreground/70 mb-6 text-sm">
               Revord is coming! Want to try it first-hand?
             </p>
 
@@ -141,9 +142,12 @@ export default function Register({ isOpen, onClose }) {
                 )}
               </button>
             </div>
+            <div className="text-foreground/60 w-full cursor-pointer pt-4 text-center text-sm hover:underline">
+              <a href={siteConfig.links.email}> Connect with us </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
