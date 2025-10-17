@@ -35,7 +35,7 @@ const AnimatedBox = ({
         }}
       ></div>
 
-      <div className="relative z-10 flex size-full flex-col items-center justify-center font-normal backdrop-blur-sm backdrop-brightness-75 transition-all ease-linear hover:backdrop-brightness-50">
+      <div className="relative flex size-full flex-col items-center justify-center font-normal backdrop-blur-sm backdrop-brightness-75 transition-all ease-linear hover:backdrop-brightness-50">
         <header className="w-2/3 text-center">
           <h3 className="inline-flex w-full items-center justify-center text-4xl lg:text-5xl">
             <Icon className="mr-3" />

@@ -27,7 +27,7 @@ const Screen5 = () => {
               className="relative place-content-baseline"
               aria-label="Revord built-in video editor demonstration"
             />
-            <figcaption className="absolute z-20 text-4xl font-extrabold mix-blend-difference max-lg:top-0 max-lg:left-0 min-lg:-right-32 min-lg:bottom-0 lg:text-6xl">
+            <figcaption className="absolute text-4xl font-extrabold mix-blend-difference max-lg:top-0 max-lg:left-0 min-lg:-right-32 min-lg:bottom-0 lg:text-6xl">
               Video <br className="lg:hidden" /> Editor
             </figcaption>
           </div>

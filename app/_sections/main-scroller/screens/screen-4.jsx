@@ -70,7 +70,7 @@ const Screen4 = () => {
           />
           <figcaption
             ref={textRef}
-            className="screen-4-text absolute bottom-0 left-0 z-20 text-4xl font-extrabold mix-blend-difference lg:right-3/5 lg:bottom-1/12 lg:text-6xl"
+            className="screen-4-text absolute bottom-0 left-0 text-4xl font-extrabold mix-blend-difference lg:right-3/5 lg:bottom-1/12 lg:text-6xl"
           >
             Annotation <br /> Panel
           </figcaption>

@@ -32,7 +32,7 @@ const Screen2 = () => {
             />
             <figcaption
               ref={textRef}
-              className="text-foreground absolute z-10 text-center text-4xl font-black mix-blend-difference max-lg:right-0 max-lg:bottom-0 lg:top-0 lg:left-4/5 lg:text-6xl"
+              className="text-foreground absolute z-0 text-center text-4xl font-black mix-blend-difference max-lg:right-0 max-lg:bottom-0 lg:top-0 lg:left-4/5 lg:text-6xl"
             >
               <span>One Tool</span>
               <p>For</p>

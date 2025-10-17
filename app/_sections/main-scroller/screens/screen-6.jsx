@@ -45,7 +45,7 @@ const Screen6 = () => {
             className="bg-foreground/5"
             aria-label="Screenshot editor demonstration"
           />
-          <figcaption className="absolute top-0 left-0 z-20 text-4xl font-extrabold mix-blend-difference lg:top-1/6 lg:-left-36 lg:text-6xl">
+          <figcaption className="absolute top-0 left-0 text-4xl font-extrabold mix-blend-difference lg:top-1/6 lg:-left-36 lg:text-6xl">
             Image <br className="lg:hidden" /> Editor
           </figcaption>
         </figure>

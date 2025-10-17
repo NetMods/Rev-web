@@ -33,7 +33,7 @@ const Screen3 = () => {
         />
         <figcaption
           ref={textRef}
-          className="screen-3-text absolute right-0 bottom-0 z-20 text-4xl font-extrabold mix-blend-difference lg:-right-1/6 lg:bottom-1/12 lg:text-6xl"
+          className="screen-3-text absolute right-0 bottom-0 text-4xl font-extrabold mix-blend-difference lg:-right-1/6 lg:bottom-1/12 lg:text-6xl"
         >
           Screen <br /> Recorder
         </figcaption>

@@ -13,21 +13,23 @@ export default function HomePage() {
   const handleAnimationComplete = () => setIsLoading(false);
 
   useEffect(() => {
-    let timeout;
+    let previousWidth = window.innerWidth;
+
     const handleResize = () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        if (window.innerWidth < 1000) {
-          window.location.reload();
-        }
-      }, 300);
+      const currentWidth = window.innerWidth;
+      const THRESHOLD = 1024;
+      if (
+        (previousWidth < THRESHOLD && currentWidth >= THRESHOLD) ||
+        (previousWidth >= THRESHOLD && currentWidth < THRESHOLD)
+      ) {
+        window.location.reload();
+      }
+      previousWidth = currentWidth;
     };
 
     window.addEventListener("resize", handleResize);
-    return () => {
-      clearTimeout(timeout);
-      window.removeEventListener("resize", handleResize);
-    };
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (

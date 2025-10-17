@@ -57,14 +57,14 @@ const Navbar = ({ className }) => {
         className,
       )}
     >
-      <div className="word-logo text-foreground relative inline-flex items-center justify-center text-3xl font-semibold">
+      <div className="word-logo text-foreground relative inline-flex items-center justify-center text-3xl font-semibold max-md:text-xl">
         <figure>
           <Image
             src={"/icons/white-icon-filled.svg"}
             alt="logo"
             width={40}
             height={40}
-            className="mr-2"
+            className="mr-2 scale-75"
           />
         </figure>
         Revord
@@ -72,7 +72,7 @@ const Navbar = ({ className }) => {
 
       <div className="pointer-events-auto relative block">
         <button
-          className="hover:bg-foreground/90 bg-foreground/90 text-background inline-flex cursor-pointer items-center justify-center rounded-md px-5 pt-2.5 pb-2 transition-all ease-linear active:scale-95"
+          className="hover:bg-foreground/90 bg-foreground/90 text-background inline-flex cursor-pointer items-center justify-center rounded-md px-5 pt-2.5 pb-2 transition-all ease-linear active:scale-95 max-md:scale-[83%]"
           onClick={() => setShowExport(true)}
         >
           Join waitlist
