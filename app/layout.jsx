@@ -20,7 +20,7 @@ export const metadata = {
   openGraph: {
     images: [
       {
-        url: "/og",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "Revord - Screen Recorder and Screenshot Tool",
@@ -39,7 +39,7 @@ export const metadata = {
     title: siteConfig.title,
     description:
       "Revord - The all-in-one screen recorder, screenshot, and annotation tool.",
-    images: ["/og"],
+    images: ["/og.png"],
     site: "",
     creator: "",
   },
