@@ -53,7 +53,7 @@ const Navbar = ({ className }) => {
   return (
     <div
       className={cn(
-        "max-[1000px]:bg-background/10 pointer-events-none fixed top-0 left-0 z-50 flex w-full items-center justify-around max-[1000px]:backdrop-blur-xl",
+        "max-[1000px]:bg-background/10 pointer-events-none fixed top-0 left-0 z-[200] flex w-full items-center justify-around max-[1000px]:backdrop-blur-xl",
         className,
       )}
     >

@@ -3,7 +3,6 @@ import "@/styles/fonts.css";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { ThemeProvider } from "next-themes";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -130,18 +129,11 @@ export default function RootLayout({ children }) {
           process.env.NODE_ENV === "development" && "debug-screens",
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <main>
-            {children}
-            <Analytics />
-            <SpeedInsights />
-          </main>
-        </ThemeProvider>
+        <main>
+          {children}
+          <Analytics />
+          <SpeedInsights />
+        </main>
       </body>
     </html>
   );
