@@ -1,4 +1,4 @@
-import { metaData } from "config/site";
+import { siteConfig } from "@/config/site";
 
 export default function robots() {
   return {
@@ -8,6 +8,6 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: `${metaData.baseUrl}/sitemap.xml`,
+    sitemap: `${siteConfig.baseUrl}/sitemap.xml`,
   };
 }
