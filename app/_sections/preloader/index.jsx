@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
-const PreloaderSection = ({ onAnimationComplete }) => {
+const PreloaderSection = ({ onLoadingComplete }) => {
   const { isMobile, isTablet } = useMediaQuery();
 
   const calculateDynamicScale = () => {
@@ -72,7 +72,7 @@ const PreloaderSection = ({ onAnimationComplete }) => {
     const runAnimation = () => {
       const animationTimeline = gsap.timeline({
         onComplete: () => {
-          onAnimationComplete();
+          onLoadingComplete();
         },
       });
 

@@ -1,16 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useLoading } from "@/contexts/loading";
 
 import MainScroller from "./_sections/main-scroller";
 import Preloader from "./_sections/preloader";
 
 export default function HomePage() {
-  const [isLoading, setIsLoading] = useState(
-    process.env.NODE_ENV === "production",
-  );
-
-  const handleAnimationComplete = () => setIsLoading(false);
+  const { isLoading, onLoadingComplete } = useLoading();
 
   useEffect(() => {
     let previousWidth = window.innerWidth;
@@ -44,7 +41,7 @@ export default function HomePage() {
         <MainScroller />
       </div>
 
-      {isLoading && <Preloader onAnimationComplete={handleAnimationComplete} />}
+      {isLoading && <Preloader onLoadingComplete={onLoadingComplete} />}
     </section>
   );
 }

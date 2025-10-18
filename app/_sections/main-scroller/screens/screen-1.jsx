@@ -1,3 +1,4 @@
+import { useLoading } from "@/contexts/loading";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
@@ -6,38 +7,52 @@ import { cn } from "@/lib/utils";
 const heading = "Your Screen Story, Told With Clarity";
 
 const Screen1 = () => {
+  const { isLoading, isBackgroundReady, onAnimationDone } = useLoading();
+
   useGSAP(() => {
-    gsap.from(".heading-letter", {
+    if (isLoading || !isBackgroundReady) return;
+
+    const tl = gsap.timeline({
+      onComplete: () => onAnimationDone(),
+    });
+
+    tl.from(".heading-letter", {
       opacity: 0,
       y: 40,
       stagger: 0.05,
       ease: "power3.out",
       duration: 0.8,
-    });
-
-    gsap.from(".share-text", {
-      x: -100,
-      opacity: 0,
-      duration: 1,
-      delay: 1.2,
-      ease: "power3.out",
-    });
-
-    gsap.from(".gif-box", {
-      scaleY: 0,
-      transformOrigin: "bottom",
-      duration: 1,
-      delay: 1.5,
-      ease: "power2.out",
-    });
-
-    gsap.from(".lorem-text", {
-      opacity: 0,
-      y: 20,
-      duration: 1,
-      delay: 2,
-      ease: "power2.out",
-    });
+    })
+      .from(
+        ".share-text",
+        {
+          x: -100,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "-=0.6",
+      )
+      .from(
+        ".gif-box",
+        {
+          scaleY: 0,
+          transformOrigin: "bottom",
+          duration: 1,
+          ease: "power2.out",
+        },
+        "-=0.5",
+      )
+      .from(
+        ".lorem-text",
+        {
+          opacity: 0,
+          y: 20,
+          duration: 1,
+          ease: "power2.out",
+        },
+        "-=0.5",
+      );
 
     gsap.to(".heading-group", {
       xPercent: 0,
@@ -58,13 +73,13 @@ const Screen1 = () => {
         start: "top top",
       },
     });
-  }, []);
+  }, [isLoading, isBackgroundReady]);
 
   return (
     <section
       id="screen-1"
       aria-labelledby="hero-heading"
-      className="screen flex min-w-full flex-col pt-16 max-md:pb-20 lg:h-screen lg:pt-32"
+      className={` ${!isBackgroundReady && "opacity-0"} screen flex min-w-full flex-col pt-16 max-md:pb-20 lg:h-screen lg:pt-32`}
     >
       <div className="flex w-full items-center justify-center">
         <h1
@@ -96,7 +111,7 @@ const Screen1 = () => {
       </div>
 
       <div className="size-full items-center lg:mx-10 lg:flex">
-        <figure className="gif-box border-foreground/10 inline-flex w-full justify-center overflow-hidden rounded-lg border max-lg:mb-16 lg:mr-10 lg:max-w-2/3">
+        <figure className="gif-box border-foreground/10 inline-flex w-full justify-center overflow-hidden rounded-lg border max-lg:mb-16 lg:mr-0 lg:max-w-2/3">
           <video
             src="/intro.mp4"
             autoPlay
