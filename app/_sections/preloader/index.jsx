@@ -38,29 +38,35 @@ const PreloaderSection = ({ onAnimationComplete }) => {
       const images = Array.from(document.querySelectorAll("img"));
       const videos = Array.from(document.querySelectorAll("video"));
 
-      console.log("vides elements", videos);
+      const TIMEOUT_MS = 10000;
 
-      const imagePromises = images.map((img) => {
-        if (img.complete) return Promise.resolve();
-        return new Promise((resolve) => {
-          img.onload = img.onerror = resolve;
-        });
-      });
+      const imagePromises = images.map((img) =>
+        Promise.race([
+          new Promise((resolve) => {
+            if (img.complete) return resolve();
+            img.onload = img.onerror = resolve;
+          }),
+          new Promise((resolve) => setTimeout(resolve, TIMEOUT_MS)),
+        ]),
+      );
 
-      const videoPromises = videos.map((video) => {
-        if (video.readyState >= 3) return Promise.resolve();
-        return new Promise((resolve) => {
-          const handle = () => {
-            video.removeEventListener("canplaythrough", handle);
-            video.removeEventListener("error", handle);
-            resolve();
-          };
-          video.addEventListener("canplaythrough", handle);
-          video.addEventListener("error", handle);
-        });
-      });
+      const videoPromises = videos.map((video) =>
+        Promise.race([
+          new Promise((resolve) => {
+            if (video.readyState >= 3) return resolve();
+            const handle = () => {
+              video.removeEventListener("canplay", handle);
+              video.removeEventListener("error", handle);
+              resolve();
+            };
+            video.addEventListener("canplay", handle);
+            video.addEventListener("error", handle);
+          }),
+          new Promise((resolve) => setTimeout(resolve, TIMEOUT_MS)),
+        ]),
+      );
 
-      return Promise.allSettled([...imagePromises, ...videoPromises]);
+      return Promise.all([...imagePromises, ...videoPromises]);
     };
 
     const runAnimation = () => {
