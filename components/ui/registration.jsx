@@ -142,9 +142,6 @@ export default function Register({ isOpen, onClose }) {
                 )}
               </button>
             </div>
-            <div className="text-foreground/60 w-full cursor-pointer pt-4 text-center text-sm hover:underline">
-              <a href={siteConfig.links.email}> Connect with us </a>
-            </div>
           </div>
         </div>
       </div>
