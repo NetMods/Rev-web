@@ -10,7 +10,6 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 
-import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 export default function Register({ isOpen, onClose }) {
@@ -18,6 +17,7 @@ export default function Register({ isOpen, onClose }) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [response, setResponse] = useState("");
   const modalRef = useRef(null);
 
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
@@ -28,9 +28,10 @@ export default function Register({ isOpen, onClose }) {
 
     try {
       setLoading(true);
-      await UpdateWaitlist({ os: selectedOS, email });
+      const res = await UpdateWaitlist({ os: selectedOS, email });
       setLoading(false);
       setSuccess(true);
+      setResponse(res.data.status);
     } catch (err) {
       console.error("Waitlist update failed:", err);
       setLoading(false);
@@ -46,6 +47,7 @@ export default function Register({ isOpen, onClose }) {
       className={cn(
         "pointer-events-auto fixed inset-0 z-[80] bg-black/50 backdrop-blur-md transition-opacity duration-300 ease-in-out",
         isOpen ? "opacity-100" : "pointer-events-none opacity-0",
+        loading && "cursor-wait",
       )}
       onClick={handleOutsideClick}
     >
@@ -141,6 +143,9 @@ export default function Register({ isOpen, onClose }) {
                   <ArrowRightIcon />
                 )}
               </button>
+            </div>
+            <div className="text-foreground mt-2 text-sm">
+              {response.length > 0 && response}
             </div>
           </div>
         </div>
