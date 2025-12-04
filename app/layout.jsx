@@ -2,8 +2,6 @@ import "@/styles/globals.css";
 import "@/styles/fonts.css";
 
 import { LoadingProvider } from "@/contexts/loading";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -131,11 +129,7 @@ export default function RootLayout({ children }) {
         )}
       >
         <LoadingProvider>
-          <main>
-            {children}
-            <Analytics />
-            <SpeedInsights />
-          </main>
+          <main>{children}</main>
         </LoadingProvider>
       </body>
     </html>
