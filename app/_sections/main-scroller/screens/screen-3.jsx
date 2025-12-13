@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { useLoading } from "@/contexts/loading";
 
 import { useParallaxEffect } from "@/hooks/use-parallax-effect";
 import { useRotateOnScroll } from "@/hooks/use-rotate-onscroll";
@@ -9,7 +8,6 @@ const Screen3 = () => {
   const imageRef = useRef(null);
   const textRef = useRef(null);
   const floatRef = useRef(null);
-  const { isAnimationDone } = useLoading();
 
   useParallaxEffect(screenRef, imageRef, textRef);
   useRotateOnScroll(screenRef, floatRef, { start: -1, end: 10 });
@@ -17,7 +15,7 @@ const Screen3 = () => {
   return (
     <section
       ref={screenRef}
-      className={`${!isAnimationDone ? "hidden" : "lg:flex"} screen relative size-full min-w-full max-lg:mt-16`}
+      className={`screen relative size-full min-w-full max-lg:mt-16`}
       aria-labelledby="screen3-heading"
     >
       <figure className="parallax-bg-3 relative h-1/2 max-w-[55rem] rounded-xl lg:size-full lg:w-2/3">

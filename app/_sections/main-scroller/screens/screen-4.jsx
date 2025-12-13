@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { useLoading } from "@/contexts/loading";
 
 import { useParallaxEffect } from "@/hooks/use-parallax-effect";
 import { useRotateOnScroll } from "@/hooks/use-rotate-onscroll";
@@ -12,15 +11,13 @@ const Screen4 = () => {
   const textRef = useRef(null);
   const floatRef = useRef(null);
 
-  const { isAnimationDone } = useLoading();
-
   useParallaxEffect(screenRef, imageRef, textRef);
   useRotateOnScroll(screenRef, floatRef, { start: 6, end: -20 });
 
   return (
     <section
       ref={screenRef}
-      className={`screen relative size-full min-w-full overflow-hidden lg:mr-10 ${!isAnimationDone ? "hidden" : "lg:flex"}`}
+      className={`screen relative size-full min-w-full overflow-hidden lg:mr-10`}
       aria-labelledby="screen4-heading"
     >
       <article className="relative flex h-1/2 items-center justify-center overflow-hidden lg:w-1/2">

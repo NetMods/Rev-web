@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { useLoading } from "@/contexts/loading";
 
 import { useParallaxEffect } from "@/hooks/use-parallax-effect";
 import FeatureButton from "@/components/ui/feature-button";
@@ -8,14 +7,13 @@ const Screen2 = () => {
   const screenRef = useRef(null);
   const imageRef = useRef(null);
   const textRef = useRef(null);
-  const { isAnimationDone } = useLoading();
 
   useParallaxEffect(screenRef, imageRef, textRef);
 
   return (
     <section
       ref={screenRef}
-      className={`${!isAnimationDone && "hidden"} screen relative flex size-full min-w-full items-center justify-center pt-16 lg:pt-32`}
+      className={`screen relative flex size-full min-w-full items-center justify-center pt-16 lg:pt-32`}
       aria-labelledby="screen2-heading"
     >
       <div className="flex h-full w-full max-lg:flex-col">

@@ -1,14 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import { useLoading } from "@/contexts/loading";
 
 import MainScroller from "./_sections/main-scroller";
-import Preloader from "./_sections/preloader";
 
 export default function HomePage() {
-  const { isLoading, onLoadingComplete } = useLoading();
-
   useEffect(() => {
     let previousWidth = window.innerWidth;
 
@@ -31,17 +27,7 @@ export default function HomePage() {
 
   return (
     <section aria-label="Revord homepage" className="relative min-h-screen">
-      <div
-        aria-hidden={isLoading}
-        style={{
-          visibility: isLoading ? "hidden" : "visible",
-          pointerEvents: isLoading ? "none" : "auto",
-        }}
-      >
-        <MainScroller />
-      </div>
-
-      {isLoading && <Preloader onLoadingComplete={onLoadingComplete} />}
+      <MainScroller />
     </section>
   );
 }

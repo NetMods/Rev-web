@@ -1,12 +1,10 @@
 import { useRef } from "react";
-import { useLoading } from "@/contexts/loading";
 
 import useStaggerAnimation from "@/hooks/use-stagger-animatation";
 
 const Screen5 = () => {
   const screenRef = useRef(null);
   const listRef = useRef(null);
-  const { isAnimationDone } = useLoading();
 
   useStaggerAnimation(screenRef, listRef, 0.5);
 
@@ -15,7 +13,7 @@ const Screen5 = () => {
       aria-labelledby="screen5-heading"
       id="screen-5"
       ref={screenRef}
-      className={`screen relative min-w-full ${!isAnimationDone && "hidden"}`}
+      className={`screen relative min-w-full`}
     >
       <div className="flex h-full w-full flex-col items-center gap-4 overflow-hidden max-lg:pt-10 lg:flex-row">
         <figure className="bg-foreground/5 relative h-full place-content-center">

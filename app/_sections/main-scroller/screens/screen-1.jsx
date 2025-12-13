@@ -1,136 +1,48 @@
-import { useLoading } from "@/contexts/loading";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-
-import { cn } from "@/lib/utils";
-
-const heading = "Your Screen Story, Told With Clarity";
+import { Banner } from "@/components/layout/banner";
 
 const Screen1 = () => {
-  const { isLoading, isBackgroundReady, onAnimationDone } = useLoading();
-
-  useGSAP(() => {
-    if (isLoading || !isBackgroundReady) return;
-
-    const tl = gsap.timeline({
-      onComplete: () => onAnimationDone(),
-    });
-
-    tl.from(".heading-letter", {
-      opacity: 0,
-      y: 40,
-      stagger: 0.05,
-      ease: "power3.out",
-      duration: 0.8,
-    })
-      .from(
-        ".share-text",
-        {
-          x: -100,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out",
-        },
-        "-=0.6",
-      )
-      .from(
-        ".gif-box",
-        {
-          scaleY: 0,
-          transformOrigin: "bottom",
-          duration: 1,
-          ease: "power2.out",
-        },
-        "-=0.5",
-      )
-      .from(
-        ".lorem-text",
-        {
-          opacity: 0,
-          y: 20,
-          duration: 1,
-          ease: "power2.out",
-        },
-        "-=0.5",
-      );
-
-    gsap.to(".heading-group", {
-      xPercent: 0,
-      scrollTrigger: {
-        trigger: "#screen-1",
-        markers: false,
-        scrub: 4,
-        start: "top top",
-      },
-    });
-
-    gsap.to(".share-text", {
-      xPercent: -25,
-      scrollTrigger: {
-        trigger: "#screen-1",
-        markers: false,
-        scrub: 4,
-        start: "top top",
-      },
-    });
-  }, [isLoading, isBackgroundReady]);
+  const heading = "Your Screen Story, Told With Clarity";
 
   return (
     <section
       id="screen-1"
       aria-labelledby="hero-heading"
-      className={` ${!isBackgroundReady && "opacity-0"} screen flex min-w-full flex-col pt-16 max-md:pb-20 lg:h-screen lg:pt-32`}
+      className={`flex min-w-full`}
     >
-      <div className="flex w-full items-center justify-center">
-        <h1
-          id="hero-heading"
-          className="heading-group relative my-16 font-sans tracking-tighter max-lg:hidden"
-        >
-          {heading.split("").map((char, i) => (
-            <span
-              key={i}
-              className={cn(
-                `heading-letter`,
-                char === "S" || char === "C"
-                  ? "font-cursive pr-1 text-[6.5rem] leading-none text-red-500"
-                  : "text-6xl",
-              )}
-            >
-              {char === " " ? "\u00A0" : char}
-            </span>
-          ))}
-        </h1>
+      <Banner />
 
-        <h1 className="hidden text-center max-lg:block">
-          <span className="heading-group relative my-10 flex w-full flex-col items-center justify-center text-3xl font-bold tracking-tighter md:text-5xl">
-            {heading.split(",").map((line, i) => (
-              <span key={i}>{line}</span>
-            ))}
-          </span>
-        </h1>
-      </div>
+      <div className="flex h-full flex-col font-sans">
+        <div className="flex w-full items-center justify-center">
+          <h1
+            id="hero-heading"
+            className="relative my-16 text-6xl tracking-tighter max-lg:text-5xl"
+          >
+            {heading}
+          </h1>
+        </div>
 
-      <div className="size-full items-center lg:mx-10 lg:flex">
-        <figure className="gif-box border-foreground/10 inline-flex w-full justify-center overflow-hidden rounded-lg border max-lg:mb-16 lg:mr-0 lg:max-w-2/3">
-          <video
-            src="/intro.mp4"
-            autoPlay
-            muted
-            loop
-            preload="auto"
-            aria-label="Revord demo showing automatic zoom and pan while screen recording"
-          />
-        </figure>
+        <div className="size-full grid-cols-5 lg:grid">
+          <figure className="col-span-3 self-center">
+            <video
+              src="/intro.mp4"
+              muted
+              loop
+              preload="auto"
+              className="border-foreground/10 frame"
+              aria-label="Revord demo showing automatic zoom and pan while screen recording"
+            />
+          </figure>
 
-        <article className="w-full place-content-center-safe lg:w-1/2">
-          <p className="lorem-text text-md text-foreground/70 text-center text-balance min-lg:text-xl">
-            Record your screen with precise automatic zoom and pan, capture
-            perfect screenshots to share, and draw or annotate on screen in
-            realtime effortlessly — Revord provides all in one seamless desktop
-            experience. Perfect for creators, teams, and educators who want
-            clarity without the clutter
-          </p>
-        </article>
+          <article className="col-span-2 self-end">
+            <p className="text-md text-foreground/70 py-10 text-center text-balance lg:text-xl">
+              Record your screen with precise automatic zoom and pan, capture
+              perfect screenshots to share, and draw or annotate on screen in
+              realtime effortlessly, Revord provides all in one seamless desktop
+              experience. Perfect for creators, teams, and educators who want
+              clarity without the clutter.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
   );

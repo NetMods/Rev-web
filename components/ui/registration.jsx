@@ -55,7 +55,9 @@ export default function Register({ isOpen, onClose }) {
         <div
           ref={modalRef}
           className={cn(
-            "relative w-full max-w-xl overflow-hidden rounded-lg border border-white/15 bg-black/40 text-white shadow-2xl backdrop-blur-lg",
+            "bg-background relative w-full max-w-xl overflow-hidden rounded-lg border border-white/15",
+            "text-foreground shadow-2xl backdrop-blur-lg transition-all",
+            isOpen ? "translate-0" : "translate-y-5",
           )}
         >
           <Image
@@ -63,7 +65,7 @@ export default function Register({ isOpen, onClose }) {
             alt="image"
             width={400}
             height={400}
-            className="absolute inset-0 z-[-10] size-full rotate-180 opacity-40"
+            className="absolute inset-0 z-[-10] size-full rotate-180 opacity-60"
           />
           <div className="px-6 py-6">
             <div className="flex justify-between">

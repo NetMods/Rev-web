@@ -1,4 +1,3 @@
-import { useLoading } from "@/contexts/loading";
 import {
   AppStoreLogoIcon,
   DownloadIcon,
@@ -58,13 +57,12 @@ const AnimatedBox = ({
 };
 
 const Screen7 = () => {
-  const { isAnimationDone } = useLoading();
   const os = useDetectOS();
 
   return (
     <section
       id="screen-7"
-      className={`screen relative h-full min-w-full px-4 max-lg:py-10 ${!isAnimationDone && "hidden"}`}
+      className={`screen relative h-full min-w-full px-4 max-lg:py-10`}
       aria-labelledby="download-heading"
     >
       <div className="h-full w-full overflow-hidden">
