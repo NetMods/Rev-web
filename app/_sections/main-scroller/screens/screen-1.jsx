@@ -1,7 +1,11 @@
 import Balancer from "react-wrap-balancer";
 
+import { cn } from "@/lib/utils";
+import { useMediaQuery } from "@/hooks/use-media-query";
+
 const Screen1 = () => {
   const heading = "Your Screen Story, Told With Clarity";
+  const { isMobile } = useMediaQuery();
 
   return (
     <section
@@ -24,7 +28,10 @@ const Screen1 = () => {
               loop
               autoPlay
               preload="auto"
-              className="border-foreground/10 frame hero-clip aspect-video"
+              className={cn(
+                `hero-clip border-foreground/10 object-cover max-lg:aspect-video`,
+                !isMobile && "frame",
+              )}
               aria-label="Revord demo showing automatic zoom and pan while screen recording"
             />
           </figure>
