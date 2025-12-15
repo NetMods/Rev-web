@@ -22,6 +22,7 @@ const Screen5 = () => {
           <video
             src="/video-editor.mp4"
             muted
+            autoPlay
             loop
             preload="auto"
             className="relative h-full w-full object-cover"

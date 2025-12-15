@@ -75,6 +75,7 @@ const Screen4 = () => {
               style={{ objectPosition: "10% 50%" }}
               loop
               muted
+              autoPlay
               playsInline
               preload="auto"
               src={"/annotation.mp4"}

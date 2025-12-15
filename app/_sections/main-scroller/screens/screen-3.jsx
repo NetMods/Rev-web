@@ -29,6 +29,7 @@ const Screen3 = () => {
               (isTablet || isSm) && "frame",
             )}
             style={{ objectPosition: "70% 50%" }}
+            autoPlay
             loop
             muted
             playsInline

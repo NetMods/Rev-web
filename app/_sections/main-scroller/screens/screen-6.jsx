@@ -42,6 +42,7 @@ const Screen6 = () => {
             src="/ss-editor.mp4"
             muted
             loop
+            autoPlay
             preload="auto"
             className="blank-with-lines no-border"
             aria-label="Screenshot editor demonstration"

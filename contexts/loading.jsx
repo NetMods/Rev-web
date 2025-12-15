@@ -15,7 +15,7 @@ export const useLoading = () => {
 
 export const LoadingProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(
-    process.env.NODE_ENV !== "production",
+    process.env.NODE_ENV === "production",
   );
 
   const onLoadingComplete = () => setIsLoading(false);

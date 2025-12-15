@@ -22,6 +22,7 @@ const Screen1 = () => {
               src="/intro.mp4"
               muted
               loop
+              autoPlay
               preload="auto"
               className="border-foreground/10 frame hero-clip aspect-video"
               aria-label="Revord demo showing automatic zoom and pan while screen recording"

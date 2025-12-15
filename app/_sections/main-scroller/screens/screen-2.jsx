@@ -33,6 +33,7 @@ const Screen2 = () => {
               style={{ objectPosition: "80% 50%" }}
               loop
               muted
+              autoPlay
               playsInline
               preload="auto"
               src={"/aio.mp4"}
