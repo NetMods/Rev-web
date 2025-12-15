@@ -1,5 +1,7 @@
 import "@/styles/globals.css";
 
+import { LoadingProvider } from "@/contexts/loading";
+
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -121,11 +123,13 @@ export default function RootLayout({ children }) {
     >
       <body
         className={cn(
-          `relative antialiased`,
+          `relative overflow-x-hidden antialiased`,
           process.env.NODE_ENV === "development" && "debug-screens",
         )}
       >
-        <main>{children}</main>
+        <LoadingProvider>
+          <main>{children}</main>
+        </LoadingProvider>
       </body>
     </html>
   );

@@ -78,11 +78,11 @@ export function useHorizontalScroll({
     target.current = el.scrollLeft;
     current.current = el.scrollLeft;
 
-    el.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("keydown", handleKey);
 
     return () => {
-      el.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("keydown", handleKey);
       if (raf.current) cancelAnimationFrame(raf.current);
     };
