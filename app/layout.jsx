@@ -121,7 +121,7 @@ export default function RootLayout({ children }) {
     >
       <body
         className={cn(
-          `relative h-screen overflow-x-hidden antialiased`,
+          `relative antialiased`,
           process.env.NODE_ENV === "development" && "debug-screens",
         )}
       >

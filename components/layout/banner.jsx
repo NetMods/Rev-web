@@ -1,28 +1,26 @@
 export const Banner = () => {
   const basetext = "• join the waitlist now ";
-  const text = basetext.repeat(10);
+  const text = basetext.repeat(20);
 
   return (
-    <div className="bg-foreground/10 mr-4 flex w-20 flex-col items-center justify-center overflow-hidden">
-      <span className="vertical text-foreground/70 ml-1 tracking-wide whitespace-nowrap uppercase">
-        {text}
-      </span>
-      <style jsx>{`
-        .vertical {
-          writing-mode: sideways-lr;
-          animation: moveup 20s linear infinite;
-        }
+    <>
+      <div
+        className="absolute left-0 z-30 mr-4 flex h-full w-6 flex-col items-center justify-center overflow-hidden select-none max-lg:hidden"
+        style={{ backgroundColor: "#d6d6d6" }}
+      >
+        <span className="vertical text-foreground/70 ml-1 tracking-wide whitespace-nowrap uppercase">
+          {text}
+        </span>
+      </div>
 
-        @keyframes moveup {
-          from {
-            transform: translateY(0);
-          }
-
-          to {
-            transform: translateY(10%);
-          }
-        }
-      `}</style>
-    </div>
+      <div
+        className="fixed bottom-0 z-100 flex w-screen overflow-hidden select-none lg:hidden"
+        style={{ backgroundColor: "#d6d6d6" }}
+      >
+        <span className="horizontal text-foreground/70 ml-1 tracking-wide whitespace-nowrap uppercase">
+          {text}
+        </span>
+      </div>
+    </>
   );
 };

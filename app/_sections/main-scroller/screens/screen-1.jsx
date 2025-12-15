@@ -1,4 +1,4 @@
-import { Banner } from "@/components/layout/banner";
+import Balancer from "react-wrap-balancer";
 
 const Screen1 = () => {
   const heading = "Your Screen Story, Told With Clarity";
@@ -7,34 +7,32 @@ const Screen1 = () => {
     <section
       id="screen-1"
       aria-labelledby="hero-heading"
-      className={`flex min-w-full`}
+      className={"relative min-w-full"}
     >
-      <Banner />
-
-      <div className="flex h-full flex-col font-sans">
-        <div className="flex w-full items-center justify-center">
-          <h1
+      <div className="font-sans">
+        <div className="inline-flex w-full items-center justify-center">
+          <Balancer
             id="hero-heading"
-            className="relative my-16 text-6xl tracking-tighter max-lg:text-5xl"
+            className="relative my-8 text-center text-4xl tracking-tighter md:text-5xl lg:my-16 xl:text-6xl"
           >
             {heading}
-          </h1>
+          </Balancer>
         </div>
 
-        <div className="size-full grid-cols-5 lg:grid">
+        <div className="grid-cols-5 lg:ml-8 lg:grid">
           <figure className="col-span-3 self-center">
             <video
               src="/intro.mp4"
               muted
               loop
               preload="auto"
-              className="border-foreground/10 frame"
+              className="border-foreground/10 frame aspect-video"
               aria-label="Revord demo showing automatic zoom and pan while screen recording"
             />
           </figure>
 
-          <article className="col-span-2 self-end">
-            <p className="text-md text-foreground/70 py-10 text-center text-balance lg:text-xl">
+          <article className="col-span-2 self-center">
+            <p className="md:text-md text-foreground/70 py-10 text-center text-sm text-balance xl:text-xl">
               Record your screen with precise automatic zoom and pan, capture
               perfect screenshots to share, and draw or annotate on screen in
               realtime effortlessly, Revord provides all in one seamless desktop

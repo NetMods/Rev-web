@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef } from "react";
 
 import useStaggerAnimation from "@/hooks/use-stagger-animatation";
@@ -14,20 +16,20 @@ const Screen6 = () => {
       ref={screenRef}
       className={`screen relative min-w-full`}
     >
-      <div className="flex h-full w-full flex-col gap-4 overflow-hidden lg:flex-row">
-        <article className="flex items-end justify-center max-md:py-28 lg:w-1/2 lg:pb-40">
+      <div className="flex h-full w-full flex-col overflow-hidden lg:flex-row">
+        <article className="flex items-center justify-center max-lg:mb-5 lg:w-1/2">
           <div className="flex flex-col">
             <div className="relative max-w-fit">
-              <h2 className="text-foreground z-10 font-serif text-5xl font-bold lg:text-7xl">
+              <h2 className="text-foreground font-serif text-4xl md:text-5xl lg:text-7xl">
                 Perfect <br /> Screenshots
               </h2>
-              <div className="screen-3-floatingtext absolute top-1/2 left-4/6 -rotate-12">
-                <span className="text-md z-20 w-full rotate-6 transform bg-rose-600 px-2 pt-1 font-bold text-nowrap text-rose-200 lg:pt-2 lg:text-xl">
+              <div className="absolute top-1/4 left-2/3 -rotate-12">
+                <span className="md:text-md z-20 w-full transform bg-rose-600 px-2 text-sm text-nowrap text-rose-200 lg:text-xl">
                   Flexible Editor
                 </span>
               </div>
             </div>
-            <p className="text-md text-foreground/60 mt-7 max-w-96 lg:text-xl">
+            <p className="md:text-md text-foreground/60 mt-7 max-w-96 text-sm lg:text-xl">
               Crop, add padding, change colors, set background images, and
               adjust roundness and shadows — all with a few clicks to make your
               visuals truly stand out.
@@ -35,27 +37,27 @@ const Screen6 = () => {
           </div>
         </article>
 
-        <figure className="relative flex h-[50vh] w-full shrink-0 justify-center lg:h-auto lg:w-1/2 lg:shrink-0">
+        <figure className="relative flex w-full shrink-0 justify-center lg:h-auto lg:w-1/2 lg:shrink-0">
           <video
             src="/ss-editor.mp4"
-            autoPlay
             muted
             loop
             preload="auto"
-            className="bg-foreground/5"
+            className="blank-with-lines no-border"
             aria-label="Screenshot editor demonstration"
           />
-          <figcaption className="absolute top-0 left-0 text-4xl font-extrabold mix-blend-difference lg:top-1/6 lg:-left-36 lg:text-6xl">
-            Image <br className="lg:hidden" /> Editor
-          </figcaption>
         </figure>
+      </div>
+
+      <div className="text-foreground/10 absolute top-0 left-5 text-right text-7xl leading-16 font-semibold tracking-tight max-lg:hidden">
+        Image Editor
       </div>
 
       <svg
         viewBox="0 0 101 126.25"
         version="1.1"
         xmlSpace="preserve"
-        className="rotate-svg absolute -left-1/6 hidden size-[30rem] origin-center opacity-80 lg:top-12 lg:block"
+        className="rotate-svg absolute -left-30 hidden size-[30rem] origin-center opacity-80 lg:-bottom-25 lg:block"
         x="0px"
         y="0px"
         fillRule="evenodd"
@@ -64,7 +66,7 @@ const Screen6 = () => {
         strokeMiterlimit="2"
         aria-hidden="true"
       >
-        <g fill="#ffffff" transform="matrix(1,0,0,1,-635,-97)">
+        <g fill="#d6d6d6" transform="matrix(1,0,0,1,-635,-97)">
           <g transform="matrix(1,0,0,1,635.007,109.053)">
             <rect x="0" y="0" width="100" height="100" fill="none" />
             <g transform="matrix(1.58993,0,0,1.58993,-25.3215,-36.041)">

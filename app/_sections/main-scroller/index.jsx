@@ -1,5 +1,7 @@
+"use client";
+
+import { cn } from "@/lib/utils";
 import { useHorizontalScroll } from "@/hooks/use-horizantal-scroll";
-import Navbar from "@/components/layout/navbar";
 
 import Screen1 from "./screens/screen-1";
 import Screen2 from "./screens/screen-2";
@@ -9,26 +11,35 @@ import Screen5 from "./screens/screen-5";
 import Screen6 from "./screens/screen-6";
 import Screen7 from "./screens/screen-7";
 
-const MainScroller = () => {
+const MainScroller = ({ className }) => {
   const container = useHorizontalScroll({
     ease: 0.05, // smaller = smoother/slower
     multiplier: 1.5, // wheel sensitivity
   });
 
+  const DotBreak = (
+    <div className="blank-with-dots mx-10 hidden h-full min-w-52 lg:block"></div>
+  );
+
   return (
-    <section aria-label="Revord feature showcase" className="lg:h-screen">
-      <header className="relative z-200">
-        <Navbar className="h-16" />
-      </header>
-
-      <div ref={container} className="flex h-full py-16">
-        <Screen1 />
-      </div>
-
-      <footer className="relative z-200">
-        <div className="blank fixed bottom-0 h-16 w-full" />
-      </footer>
-    </section>
+    <div
+      role="region"
+      aria-label="Interactive feature scroller"
+      ref={container}
+      className={cn("flex max-lg:flex-col", className)}
+    >
+      <Screen1 />
+      {DotBreak}
+      <Screen2 />
+      <Screen3 />
+      {DotBreak}
+      <Screen4 />
+      {DotBreak}
+      <Screen5 />
+      {DotBreak}
+      <Screen6 />
+      <Screen7 />
+    </div>
   );
 };
 

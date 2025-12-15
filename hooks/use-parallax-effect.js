@@ -32,7 +32,7 @@ export const useParallaxEffect = (screenRef, imageRef, textRef) => {
             const maxShift = 500;
             const xPos = progress * maxShift * parallaxSpeed;
 
-            imageRef.current.style.objectPosition = `calc(70% + ${xPos}px) 50%`;
+            imageRef.current.style.objectPosition = `calc(80% + ${xPos}px) 50%`;
           }
 
           if (textRef?.current) {

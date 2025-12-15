@@ -14,7 +14,6 @@
 
 @theme {
   --font-cursive: '"Corinthia", "Arial"';
-
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
@@ -26,7 +25,6 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 .frame {
@@ -49,7 +47,7 @@ body {
   transform-origin: center center;
 }
 
-.blank {
+.blank-with-lines {
   border: solid rgba(0, 0, 0, 0.08) 1px;
   background: repeating-linear-gradient(
     45deg,
@@ -61,6 +59,20 @@ body {
   background-size: 15px 15px;
 }
 
+.blank-with-dots {
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0.2) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 25px 25px;
+  background-position: center;
+}
+
+.no-border {
+  border-top: solid 0px !important;
+  border-bottom: solid 0px !important;
+}
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -68,5 +80,56 @@ body {
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.noscrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.noscrollbar ::-webkit-scrollbar {
+  display: none;
+}
+
+.vertical {
+  writing-mode: sideways-lr;
+  animation: movedown 10s linear infinite;
+}
+
+.horizontal {
+  animation: moveright 10s linear infinite;
+}
+
+.vertical-fast {
+  writing-mode: sideways-lr;
+  animation: movedown 5s linear infinite;
+}
+
+.horizontal-fast {
+  animation: moveright 5s linear infinite;
+}
+
+@keyframes moveright {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-5%);
+  }
+}
+
+@keyframes movedown {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(5%);
   }
 }

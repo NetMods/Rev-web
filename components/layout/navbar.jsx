@@ -16,7 +16,7 @@ const Navbar = ({ className }) => {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className={cn("blank fixed top-0 left-0 w-full", className)}>
+    <div className={className}>
       <div
         className={cn(
           "flex h-full items-center justify-between gap-2 font-sans",
@@ -33,8 +33,8 @@ const Navbar = ({ className }) => {
             <Image
               src={"/icons/black-icon-filled.svg"}
               alt="logo"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
               className="mr-2 hover:animate-spin"
             />
           </figure>
