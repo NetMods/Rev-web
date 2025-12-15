@@ -1,12 +1,11 @@
 import "@/styles/globals.css";
-import "@/styles/fonts.css";
 
 import { LoadingProvider } from "@/contexts/loading";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import { fontCursive } from "./fonts";
+import { fontSans, fontSerif } from "./fonts";
 
 export const metadata = {
   metadataBase: new URL(siteConfig.baseUrl),
@@ -120,11 +119,11 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn(fontCursive.variable)}
+      className={cn(fontSans.variable, fontSerif.variable)}
     >
       <body
         className={cn(
-          `relative h-screen overflow-x-hidden antialiased`,
+          `relative overflow-x-hidden antialiased`,
           process.env.NODE_ENV === "development" && "debug-screens",
         )}
       >

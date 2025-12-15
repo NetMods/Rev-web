@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import Image from "next/image";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { UpdateWaitlist } from "@/actions/waitlist";
 import {
   AppStoreLogoIcon,
@@ -9,6 +8,7 @@ import {
   WindowsLogoIcon,
   XIcon,
 } from "@phosphor-icons/react";
+import Balancer from "react-wrap-balancer";
 
 import { cn } from "@/lib/utils";
 
@@ -42,10 +42,26 @@ export default function Register({ isOpen, onClose }) {
     if (modalRef.current && !modalRef.current.contains(e.target)) onClose();
   };
 
+  const handleKeyDown = (e) => {
+    if (!isOpen) return;
+
+    if (e.key === "Escape" || ((e.ctrlKey || e.metaKey) && e.key === "c")) {
+      e.preventDefault();
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
   return (
     <article
       className={cn(
-        "pointer-events-auto fixed inset-0 z-[80] bg-black/50 backdrop-blur-md transition-opacity duration-300 ease-in-out",
+        "pointer-events-auto fixed inset-0 z-80 bg-black/50 backdrop-blur-md transition-opacity duration-100 ease-linear",
         isOpen ? "opacity-100" : "pointer-events-none opacity-0",
         loading && "cursor-wait",
       )}
@@ -55,29 +71,38 @@ export default function Register({ isOpen, onClose }) {
         <div
           ref={modalRef}
           className={cn(
-            "relative w-full max-w-xl overflow-hidden rounded-lg border border-white/15 bg-black/40 text-white shadow-2xl backdrop-blur-lg",
+            "bg-background relative m-4 h-fit w-full max-w-4xl min-w-[352px] overflow-hidden md:h-1/2",
+            "text-foreground grid-cols-2 transition-all md:grid",
           )}
         >
-          <Image
-            src={"/wave.jpg"}
-            alt="image"
-            width={400}
-            height={400}
-            className="absolute inset-0 z-[-10] size-full rotate-180 opacity-40"
-          />
-          <div className="px-6 py-6">
+          <div
+            className="bg-foreground/10 flex w-full justify-center object-contain max-md:hidden"
+            style={{
+              backgroundImage: "url('myself-bg.jpg')",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "right top",
+              backgroundAttachment: "fixed",
+            }}
+          >
+            <img src={"myself.png"} alt="revord" className="object-cover" />
+          </div>
+
+          <div className="p-2 md:p-3">
             <div className="flex justify-between">
-              <h2 className="mb-1 text-3xl font-semibold">Join the waitlist</h2>
+              <h2 className="mb-1 text-3xl tracking-tighter">
+                Join the waitlist
+              </h2>
               <button
-                className="bg-foreground/10 hover:bg-foreground/20 cursor-pointer rounded-md px-3"
+                className="bg-foreground/10 hover:bg-foreground/20 cursor-pointer px-3"
                 onClick={onClose}
               >
                 <XIcon />
               </button>
             </div>
-            <p className="text-foreground/70 mb-6 text-sm">
+
+            <Balancer className="text-foreground/70 mb-6 text-sm">
               Revord is coming! Want to try it first-hand?
-            </p>
+            </Balancer>
 
             <div className="mb-6 flex flex-wrap justify-start gap-3 *:cursor-pointer">
               {[
@@ -88,8 +113,8 @@ export default function Register({ isOpen, onClose }) {
                 <button
                   key={name}
                   className={cn(
-                    "inline-flex items-center justify-center gap-2 rounded-md border border-white/10 bg-white/10 px-4 py-2 text-sm transition hover:bg-white/30",
-                    selectedOS === name && "border-white/20 bg-white/25",
+                    "border-foreground/10 bg-foreground/5 inline-flex items-center justify-center gap-2 border px-4 py-2 text-sm transition hover:bg-white/30",
+                    selectedOS === name && "border-foreground/20 bg-white/30",
                   )}
                   onClick={() => setSelectedOS(name)}
                 >
@@ -98,7 +123,7 @@ export default function Register({ isOpen, onClose }) {
               ))}
             </div>
 
-            <div className="flex items-center gap-2 rounded-md bg-white/20 p-1">
+            <div className="bg-foreground/20 flex items-center gap-2 p-1">
               <input
                 type="email"
                 name="email"
@@ -106,11 +131,12 @@ export default function Register({ isOpen, onClose }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={loading || success}
-                className="text-md flex-1 border-none bg-transparent px-4 py-2 text-white placeholder-gray-300 outline-none focus:ring-0"
+                className="text-md text-foreground placeholder-foreground/60 flex-1 border-none bg-transparent px-4 py-2 outline-none focus:ring-0"
               />
               <button
                 className={cn(
-                  "flex h-[42px] w-[42px] cursor-pointer items-center justify-center rounded-md bg-white/90 px-3 py-3 text-black transition disabled:cursor-not-allowed disabled:opacity-50",
+                  "bg-background flex h-[42px] w-[42px] cursor-pointer items-center justify-center",
+                  "text-foreground px-3 py-3 transition disabled:cursor-not-allowed disabled:bg-white disabled:opacity-50",
                   !isValid && "cursor-not-allowed opacity-50",
                 )}
                 onClick={handleSubmit}
@@ -144,9 +170,10 @@ export default function Register({ isOpen, onClose }) {
                 )}
               </button>
             </div>
-            <div className="text-foreground mt-2 text-sm">
-              {response.length > 0 && response}
-            </div>
+
+            {response.length > 0 && (
+              <div className="text-foreground mt-2 text-sm"> {response} </div>
+            )}
           </div>
         </div>
       </div>

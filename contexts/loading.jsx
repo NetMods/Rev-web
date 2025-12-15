@@ -15,28 +15,13 @@ export const useLoading = () => {
 
 export const LoadingProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(
-    process.env.NODE_ENV === "production",
+    process.env.NODE_ENV !== "production",
   );
-  const [isBackgroundReady, setIsBackgroundReady] = useState(false);
-  const [isAnimationDone, setIsAnimationDone] = useState(false);
 
   const onLoadingComplete = () => setIsLoading(false);
-  const onBackgroundReady = () => setIsBackgroundReady(true);
-  const onAnimationDone = () => {
-    setIsAnimationDone(true);
-  };
 
   return (
-    <LoadingContext.Provider
-      value={{
-        isLoading,
-        onLoadingComplete,
-        isBackgroundReady,
-        onBackgroundReady,
-        isAnimationDone,
-        onAnimationDone,
-      }}
-    >
+    <LoadingContext.Provider value={{ isLoading, onLoadingComplete }}>
       {children}
     </LoadingContext.Provider>
   );

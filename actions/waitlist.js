@@ -33,16 +33,6 @@ export const UpdateWaitlist = async (data) => {
     transaction.rpush(waitlistKey, JSON.stringify(entry)); // Add full data to the List.
     await transaction.exec();
 
-    fetch("https://ntfy.sh/revord-waitlist-notify", {
-      method: "POST",
-      body: `New user joined: ${email}`,
-      headers: {
-        Title: "One more guy!",
-        Priority: "high",
-        Tags: "tada,email",
-      },
-    }).catch((err) => console.error("Failed to send notification:", err));
-
     return {
       success: true,
       data: {
@@ -59,16 +49,5 @@ export const UpdateWaitlist = async (data) => {
       },
       error: error.message,
     };
-  }
-};
-
-export const GetWaitlist = async () => {
-  try {
-    const list = await redis.lrange("revord-waitlist", 0, -1);
-    const parsedList = list.map((item) => JSON.parse(item));
-    return { success: true, data: parsedList };
-  } catch (error) {
-    console.error("Failed to fetch waitlist:", error);
-    return { success: false, error: error.message };
   }
 };
