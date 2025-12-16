@@ -13,7 +13,7 @@ import Balancer from "react-wrap-balancer";
 import { cn } from "@/lib/utils";
 
 export default function Register({ isOpen, onClose }) {
-  const [selectedOS, setSelectedOS] = useState("");
+  const [selectedOS, setSelectedOS] = useState([]);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -22,6 +22,16 @@ export default function Register({ isOpen, onClose }) {
 
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
   const isValid = selectedOS && isValidEmail(email);
+
+  const handleOsSelection = (name) => {
+    setSelectedOS((prev) => {
+      if (prev.indexOf(name) === -1) {
+        return [...prev, name];
+      } else {
+        return prev.filter((val) => val != name);
+      }
+    });
+  };
 
   const handleSubmit = async () => {
     if (!isValid || loading) return;
@@ -114,9 +124,10 @@ export default function Register({ isOpen, onClose }) {
                   key={name}
                   className={cn(
                     "border-foreground/10 bg-foreground/5 inline-flex items-center justify-center gap-2 border px-4 py-2 text-sm transition hover:bg-white/30",
-                    selectedOS === name && "border-foreground/20 bg-white/30",
+                    selectedOS.includes(name) &&
+                      "border-foreground/80 bg-white/30",
                   )}
-                  onClick={() => setSelectedOS(name)}
+                  onClick={() => handleOsSelection(name)}
                 >
                   <Icon size={20} /> {name}
                 </button>
