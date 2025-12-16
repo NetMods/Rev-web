@@ -1,0 +1,350 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
+class PerlinNoise {
+  permutation;
+  constructor() {
+    const p = [];
+    for (let i = 0; i < 256; i++) {
+      p[i] = Math.floor(Math.random() * 256);
+    }
+    this.permutation = [...p, ...p];
+  }
+  fade(t) {
+    return t * t * t * (t * (t * 6 - 15) + 10);
+  }
+  lerp(t, a, b) {
+    return a + t * (b - a);
+  }
+  grad(hash, x, y) {
+    const h = hash & 3;
+    const u = h < 2 ? x : y;
+    const v = h < 2 ? y : x;
+    return (h & 1 ? -u : u) + (h & 2 ? -2.0 * v : 2.0 * v);
+  }
+  noise(x, y) {
+    const X = Math.floor(x) & 255;
+    const Y = Math.floor(y) & 255;
+    x -= Math.floor(x);
+    y -= Math.floor(y);
+    const u = this.fade(x);
+    const v = this.fade(y);
+    const a = this.permutation[X] + Y;
+    const aa = this.permutation[a];
+    const ab = this.permutation[a + 1];
+    const b = this.permutation[X + 1] + Y;
+    const ba = this.permutation[b];
+    const bb = this.permutation[b + 1];
+    return this.lerp(
+      v,
+      this.lerp(
+        u,
+        this.grad(this.permutation[aa], x, y),
+        this.grad(this.permutation[ba], x - 1, y),
+      ),
+      this.lerp(
+        u,
+        this.grad(this.permutation[ab], x, y - 1),
+        this.grad(this.permutation[bb], x - 1, y - 1),
+      ),
+    );
+  }
+}
+
+const FluidLines = ({
+  className = "",
+  backgroundColor = "#000000",
+  lineColor = "#FFFFFF",
+  gap = 25,
+  radius = 250,
+  force = 6,
+  gravity = 0.3,
+  waveSpeed = 8000,
+  mouseInteraction = "smear",
+  effects = "wind",
+  rotation = 45,
+}) => {
+  const canvasRef = useRef(null);
+  const mouseRef = useRef({ x: -1000, y: -1000 });
+  const prevMouseRef = useRef({ x: -1000, y: -1000 });
+  const pointsRef = useRef([]);
+  const animationRef = useRef(0);
+  const noiseGenerator = useRef(new PerlinNoise());
+
+  // Ref to track grid dimensions to help with centering logic
+  const gridDimensionsRef = useRef({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (!canvasRef.current) return;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const resizeCanvas = () => {
+      const { innerWidth, innerHeight } = window;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = innerWidth * dpr;
+      canvas.height = innerHeight * dpr;
+      canvas.style.width = `${innerWidth}px`;
+      canvas.style.height = `${innerHeight}px`;
+      ctx.scale(dpr, dpr);
+      initPoints();
+    };
+
+    const initPoints = () => {
+      const { innerWidth, innerHeight } = window;
+
+      // Calculate the diagonal to ensure the grid covers the screen when rotated
+      const diagonal = Math.sqrt(
+        innerWidth * innerWidth + innerHeight * innerHeight,
+      );
+
+      // Add some buffer to the grid size
+      const gridSize = diagonal + 100;
+      gridDimensionsRef.current = { width: gridSize, height: gridSize };
+
+      const cols = Math.ceil(gridSize / gap);
+      const rows = Math.ceil(gridSize / gap);
+
+      pointsRef.current = [];
+      for (let i = 0; i <= cols; i++) {
+        const column = [];
+        for (let j = 0; j <= rows; j++) {
+          column.push({
+            x: i * gap,
+            y: j * gap,
+            dx: 0,
+            dy: 0,
+            vx: 0,
+            vy: 0,
+          });
+        }
+        pointsRef.current.push(column);
+      }
+    };
+
+    resizeCanvas();
+
+    const setMouseMove = (event) => {
+      const rect = canvas.getBoundingClientRect();
+      const { width: gridW, height: gridH } = gridDimensionsRef.current;
+      const { width: canvasW, height: canvasH } = rect;
+
+      // 1. Get raw mouse position relative to canvas top-left
+      const mouseX = event.clientX - rect.left;
+      const mouseY = event.clientY - rect.top;
+
+      // 2. Calculate distance from center of canvas
+      const centerX = canvasW / 2;
+      const centerY = canvasH / 2;
+      const relX = mouseX - centerX;
+      const relY = mouseY - centerY;
+
+      // 3. Counter-rotate these coordinates
+      // We rotate the mouse INPUT by -angle to match the un-rotated grid logic
+      const angleRad = (rotation * Math.PI) / 180;
+      const rotatedX = relX * Math.cos(-angleRad) - relY * Math.sin(-angleRad);
+      const rotatedY = relX * Math.sin(-angleRad) + relY * Math.cos(-angleRad);
+
+      // 4. Map back to grid coordinates (0,0 is top-left of the grid)
+      // Since the grid is centered, we add half the grid size
+      const finalX = rotatedX + gridW / 2;
+      const finalY = rotatedY + gridH / 2;
+
+      prevMouseRef.current = { ...mouseRef.current };
+      mouseRef.current = { x: finalX, y: finalY };
+    };
+
+    const setMouseLeave = () => {
+      mouseRef.current = { x: -1000, y: -1000 };
+      prevMouseRef.current = { x: -1000, y: -1000 };
+    };
+
+    function clamp(value, options) {
+      if (options.min !== undefined && value < options.min) return options.min;
+      if (options.max !== undefined && value > options.max) return options.max;
+      return value;
+    }
+
+    const updatePoints = () => {
+      const mouseX = mouseRef.current.x;
+      const mouseY = mouseRef.current.y;
+      const prevX = prevMouseRef.current.x;
+      const prevY = prevMouseRef.current.y;
+
+      pointsRef.current.forEach((column) => {
+        column.forEach((point) => {
+          let now = performance.now() / waveSpeed;
+          let noiseValue;
+
+          switch (effects) {
+            case "wind":
+              noiseValue = noiseGenerator.current.noise(
+                (point.x + point.dx) * 0.005 + now,
+                (point.y + point.dy) * 0.005 - now,
+              );
+              point.vx += noiseValue * -3;
+              point.vy += noiseValue * 3;
+              break;
+            case "waves":
+              noiseValue = noiseGenerator.current.noise(
+                point.x * 0.01 + now,
+                point.y * 0.00005 + now / 10,
+              );
+              point.vx += noiseValue * -3;
+              point.vy += noiseValue * 3;
+              break;
+            case "oregeny":
+              const timing = 8000;
+              now = Math.floor(performance.now() / timing) * timing;
+              const amplitude = (performance.now() % timing) / timing;
+              noiseValue = noiseGenerator.current.noise(
+                point.x * 0.008 + now,
+                point.y * 0.008 + now,
+              );
+              point.vx = noiseValue * -amplitude;
+              point.vy = noiseValue * 5 * amplitude;
+              break;
+          }
+
+          const dx = point.x - mouseX;
+          const dy = point.y - mouseY;
+          const distance = Math.sqrt(dx ** 2 + dy ** 2);
+
+          if (distance < radius) {
+            const ratio = 1 - distance / radius;
+            switch (mouseInteraction) {
+              case "diverge":
+                const ratio3 = Math.pow(ratio, 3);
+                point.vx += Math.sign(point.x - mouseX) * force * ratio3 * 0.1;
+                point.vy += Math.sign(point.y - mouseY) * force * ratio3;
+                break;
+              case "converge":
+                const ratio2 = Math.pow(ratio, 2);
+                point.vx += (mouseX - point.x) * gravity * ratio2;
+                point.vy += (mouseY - point.y) * gravity * ratio2;
+                break;
+              case "smear":
+                const mouseDeltaX = mouseX - prevX;
+                const mouseDeltaY = mouseY - prevY;
+                point.vx += clamp(mouseDeltaX * ratio, {
+                  min: -force,
+                  max: force,
+                });
+                point.vy += clamp(mouseDeltaY * ratio, {
+                  min: -force,
+                  max: force,
+                });
+                break;
+            }
+          }
+
+          point.vx *= 0.7;
+          point.vy *= 0.7;
+          point.vx += point.dx * -0.1;
+          point.vy += point.dy * -0.1;
+          point.dx += point.vx;
+          point.dy += point.vy;
+        });
+      });
+    };
+
+    const animate = () => {
+      // Clear entire screen
+      ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset transform to clear safely
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = backgroundColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      updatePoints();
+
+      // Setup Rotation
+      const { innerWidth, innerHeight } = window;
+      const { width: gridW, height: gridH } = gridDimensionsRef.current;
+
+      ctx.save();
+      // 1. Move to center of screen
+      ctx.translate(innerWidth / 2, innerHeight / 2);
+      // 2. Rotate
+      ctx.rotate((rotation * Math.PI) / 180);
+      // 3. Move back by half the grid size so the grid is centered
+      ctx.translate(-gridW / 2, -gridH / 2);
+
+      ctx.strokeStyle = lineColor;
+      ctx.lineWidth = 1;
+
+      if (pointsRef.current[0]) {
+        for (
+          let rowIndex = 0;
+          rowIndex < pointsRef.current[0].length;
+          rowIndex++
+        ) {
+          ctx.beginPath();
+          for (
+            let colIndex = 0;
+            colIndex < pointsRef.current.length;
+            colIndex++
+          ) {
+            const point = pointsRef.current[colIndex][rowIndex];
+            if (!point) continue;
+            const x = point.x + point.dx;
+            const y = point.y + point.dy;
+            if (colIndex === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              const prevPoint = pointsRef.current[colIndex - 1][rowIndex];
+              if (prevPoint) {
+                const px = prevPoint.x + prevPoint.dx;
+                const py = prevPoint.y + prevPoint.dy;
+                const cx = (px + x) / 2;
+                const cy = (py + y) / 2;
+                ctx.quadraticCurveTo(px, py, cx, cy);
+              }
+            }
+          }
+          ctx.stroke();
+        }
+      }
+
+      ctx.restore();
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("mousemove", setMouseMove);
+    window.addEventListener("mouseleave", setMouseLeave);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("mousemove", setMouseMove);
+      window.removeEventListener("mouseleave", setMouseLeave);
+    };
+  }, [
+    backgroundColor,
+    lineColor,
+    gap,
+    radius,
+    force,
+    gravity,
+    waveSpeed,
+    mouseInteraction,
+    effects,
+    rotation,
+  ]); // Added rotation to dependency array
+
+  return (
+    <canvas
+      className={className}
+      ref={canvasRef}
+      style={{ display: "block" }}
+    />
+  );
+};
+
+export default FluidLines;

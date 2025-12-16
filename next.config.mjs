@@ -1,16 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   devIndicators: false,
-  images: {
-    remotePatterns: [
+  async rewrites() {
+    return [
       {
-        protocol: "https",
-        hostname: "placewaifu.com",
-        port: "",
-        pathname: "/image/**",
-        search: "",
+        source: "/ingest/:path*",
+        destination: `${process.env.NEXT_PUBLIC_POSTHOG_HOST}/:path*`,
       },
-    ],
+    ];
   },
 };
 

@@ -9,6 +9,7 @@ import { useHorizontalScroll } from "@/hooks/use-horizantal-scroll";
 import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
+import FluidLines from "@/components/shared/lines";
 
 import MainScroller from "./_sections/main-scroller";
 import Preloader from "./_sections/preloader";
@@ -105,7 +106,7 @@ export default function HomePage() {
           "relative grid h-screen w-full min-w-[360px] grid-rows-[auto,1fr,auto]",
         )}
       >
-        <header className="bg-background header z-50 w-full">
+        <header className="bg-background header relative z-50 w-full">
           <Navbar className="blank-with-lines h-full min-h-[4.4rem]" />
         </header>
 
@@ -126,4 +127,22 @@ export default function HomePage() {
       {isLoading && <Preloader onLoadingComplete={onLoadingComplete} />}
     </>
   );
+}
+
+{
+  /*
+          <FluidLines
+            className="absolute z-60"
+            backgroundColor={'#ededed'}
+            lineColor={'#0a0a0a'}
+            gap={20}
+            radius={160}
+            force={6}
+            gravity={0.3}
+            waveSpeed={8000}
+            mouseInteraction={'diverge'}
+            effects={'none'}
+            rotation={45}
+          />
+    */
 }
