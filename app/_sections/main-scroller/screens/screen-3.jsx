@@ -32,7 +32,6 @@ const Screen3 = () => {
             autoPlay
             loop
             muted
-            playsInline
             preload="auto"
             src="/recording.mp4"
             aria-label="Revord screen recording preview in action"

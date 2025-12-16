@@ -76,7 +76,6 @@ const Screen4 = () => {
               loop
               muted
               autoPlay
-              playsInline
               preload="auto"
               src={"/annotation.mp4"}
               aria-label="Revord annotation panel demonstration"

@@ -34,7 +34,6 @@ const Screen2 = () => {
               loop
               muted
               autoPlay
-              playsInline
               preload="auto"
               src={"/aio.mp4"}
             />
