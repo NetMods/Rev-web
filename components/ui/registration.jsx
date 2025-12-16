@@ -21,7 +21,7 @@ export default function Register({ isOpen, onClose }) {
   const modalRef = useRef(null);
 
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
-  const isValid = selectedOS && isValidEmail(email);
+  const isValid = selectedOS.length > 0 && isValidEmail(email);
 
   const handleOsSelection = (name) => {
     setSelectedOS((prev) => {
