@@ -41,7 +41,7 @@ const Screen3 = () => {
         <div className="flex w-full flex-col items-center justify-center max-lg:mt-5 max-lg:h-1/2 lg:w-1/2">
           <article className="max-sm:px-4">
             <header className="relative max-w-fit">
-              <h2 className="text-foreground z-10 font-serif text-4xl md:text-5xl lg:text-7xl">
+              <h2 className="text-foreground tall-narrow:text-5xl z-10 font-serif text-4xl md:text-5xl lg:text-7xl">
                 Capture <br /> Everything
               </h2>
               <div className="absolute top-1/2 left-4/6 rotate-6">
@@ -51,7 +51,7 @@ const Screen3 = () => {
               </div>
             </header>
 
-            <p className="md:text-md text-foreground/60 mt-7 max-w-96 text-sm lg:text-xl">
+            <p className="md:text-md text-foreground/60 tall-narrow:text-sm mt-7 max-w-96 text-sm lg:text-xl">
               Revord captures every detail in stunning quality, automatically
               adjusting focus and framing so you can stay in the moment. Just
               record and let the magic unfold.
@@ -63,7 +63,7 @@ const Screen3 = () => {
       <div
         ref={textRef}
         aria-hidden="true"
-        className="text-foreground/10 absolute right-5 bottom-0 text-7xl leading-16 font-semibold tracking-tight max-lg:hidden"
+        className="text-foreground/10 tall-narrow:text-5xl tall-narrow:leading-10 absolute right-5 bottom-0 text-7xl leading-16 font-semibold tracking-tight max-lg:hidden"
       >
         Screen <br /> Recorder
       </div>

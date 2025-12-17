@@ -13,16 +13,16 @@ export default function NotFound() {
   return (
     <section
       aria-labelledby="page-title"
-      className="flex h-screen items-center justify-center"
+      className="flex h-screen items-center justify-center font-sans"
     >
       <div>
         <h1
           id="page-title"
-          className="mb-8 text-2xl font-medium tracking-tight"
+          className="mb-4 text-2xl font-medium tracking-tight"
         >
           404 - Page not found
         </h1>
-        <p className="mb-4">
+        <p className="mb-2">
           Oops! The page you&apos;re looking for doesn&apos;t seem to exist.
         </p>
         <Link href="/" className="underline">

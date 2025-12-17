@@ -34,9 +34,9 @@ const AnimatedBox = ({
         }}
       ></div>
 
-      <div className="bg-background border-foreground/15 relative flex w-full flex-col items-center justify-center border py-10 font-normal lg:border-y-0 xl:h-1/4">
+      <div className="bg-background border-foreground/15 tall-narrow:h-1/3 relative flex w-full flex-col items-center justify-center border py-10 font-normal lg:border-y-0 xl:h-1/4">
         <header className="w-2/3 text-center">
-          <h3 className="text-foreground inline-flex w-full items-center justify-center text-3xl lg:text-4xl xl:text-5xl">
+          <h3 className="text-foreground tall-narrow:text-4xl inline-flex w-full items-center justify-center text-3xl lg:text-4xl xl:text-5xl">
             <Icon className="mr-3" />
             {label}
           </h3>

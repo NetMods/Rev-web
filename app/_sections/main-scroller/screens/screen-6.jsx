@@ -20,7 +20,7 @@ const Screen6 = () => {
         <article className="flex items-center justify-center max-lg:mb-5 lg:w-1/2">
           <div className="flex flex-col">
             <div className="relative max-w-fit">
-              <h2 className="text-foreground font-serif text-4xl md:text-5xl lg:text-7xl">
+              <h2 className="text-foreground tall-narrow:text-5xl font-serif text-4xl md:text-5xl lg:text-7xl">
                 Perfect <br /> Screenshots
               </h2>
               <div className="absolute top-1/4 left-2/3 -rotate-12">
@@ -29,7 +29,7 @@ const Screen6 = () => {
                 </span>
               </div>
             </div>
-            <p className="md:text-md text-foreground/60 mt-7 max-w-96 text-sm lg:text-xl">
+            <p className="md:text-md text-foreground/60 tall-narrow:text-sm mt-7 max-w-96 text-sm lg:text-xl">
               Crop, add padding, change colors, set background images, and
               adjust roundness and shadows — all with a few clicks to make your
               visuals truly stand out.
@@ -50,7 +50,7 @@ const Screen6 = () => {
         </figure>
       </div>
 
-      <div className="text-foreground/10 absolute top-0 left-5 text-right text-7xl leading-16 font-semibold tracking-tight max-lg:hidden">
+      <div className="text-foreground/10 tall-narrow:text-5xl tall-narrow:leading-10 absolute top-0 left-5 text-right text-7xl leading-16 font-semibold tracking-tight max-lg:hidden">
         Image Editor
       </div>
 
@@ -58,7 +58,7 @@ const Screen6 = () => {
         viewBox="0 0 101 126.25"
         version="1.1"
         xmlSpace="preserve"
-        className="rotate-svg absolute -left-30 hidden size-[30rem] origin-center opacity-80 lg:-bottom-25 lg:block"
+        className="rotate-svg tall-narrow:size-[20rem] absolute -left-30 hidden size-[30rem] origin-center opacity-80 lg:-bottom-25 lg:block"
         x="0px"
         y="0px"
         fillRule="evenodd"

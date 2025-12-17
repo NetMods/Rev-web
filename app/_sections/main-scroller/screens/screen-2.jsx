@@ -50,7 +50,7 @@ const Screen2 = () => {
             ref={textRef}
             className={cn(
               "text-foreground text-center text-3xl tracking-tight uppercase md:text-5xl xl:text-6xl",
-              "top-10 left-1/2 max-lg:ml-5 lg:absolute lg:translate-x-[-50%]",
+              "tall-narrow:text-4xl tall-narrow:top-2 top-10 left-1/2 max-lg:ml-5 lg:absolute lg:translate-x-[-50%]",
             )}
           >
             <p>One Tool</p>
@@ -71,7 +71,7 @@ const Screen2 = () => {
 
         <div
           aria-hidden="true"
-          className="text-foreground/10 absolute right-5 bottom-0 text-8xl font-semibold select-none max-lg:hidden"
+          className="text-foreground/10 tall-narrow:text-5xl absolute right-5 bottom-0 text-8xl font-semibold select-none max-lg:hidden"
         >
           #2025
         </div>

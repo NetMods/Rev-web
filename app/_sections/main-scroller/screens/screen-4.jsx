@@ -24,7 +24,7 @@ const Screen4 = () => {
         <article className="relative flex items-center justify-center overflow-hidden max-lg:mb-5 max-sm:px-4 lg:w-1/2">
           <div>
             <div className="relative max-w-fit">
-              <h2 className="text-foreground font-serif text-4xl md:text-5xl lg:text-7xl">
+              <h2 className="text-foreground tall-narrow:text-5xl font-serif text-4xl md:text-5xl lg:text-7xl">
                 Draw & <br /> Explain
               </h2>
               <div className="absolute top-1/2 left-5/6 -rotate-6">
@@ -33,7 +33,7 @@ const Screen4 = () => {
                 </span>
               </div>
             </div>
-            <p className="md:text-md text-foreground/60 mt-7 max-w-96 text-sm lg:text-xl">
+            <p className="md:text-md text-foreground/60 tall-narrow:text-sm mt-7 max-w-96 text-sm lg:text-xl">
               Turn your screen into a canvas by highlighting your ideas
               effortlessly with pencils, arrows, and text boxes with dynamic
               colors and brush sizes.
@@ -44,7 +44,7 @@ const Screen4 = () => {
         <svg
           viewBox="0 0 524 544"
           xmlns="http://www.w3.org/2000/svg"
-          className="rotate-svg absolute -top-15 -left-15 hidden size-96 origin-center scale-50 opacity-80 lg:block"
+          className="rotate-svg tall-narrow:size-72 absolute -top-15 -left-15 hidden size-96 origin-center scale-50 opacity-80 lg:block"
         >
           <path d="M208.809 544V0H313.809V544H208.809Z" fill="#D6D6D6" />
           <path
@@ -59,7 +59,7 @@ const Screen4 = () => {
 
         <div
           ref={textRef}
-          className="text-foreground/10 absolute bottom-0 left-5 text-right text-7xl leading-16 font-semibold tracking-tight max-lg:hidden"
+          className="text-foreground/10 tall-narrow:text-5xl tall-narrow:leading-10 absolute bottom-0 left-5 text-right text-7xl leading-16 font-semibold tracking-tight max-lg:hidden"
         >
           Annotation <br /> Panel
         </div>

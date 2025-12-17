@@ -19,7 +19,7 @@ const Screen1 = () => {
             className={cn(
               "hero-heading relative text-center text-4xl tracking-tighter",
               "my-8 md:text-5xl lg:my-16 xl:text-6xl",
-              "",
+              "tall-narrow:my-2.5 tall-narrow:text-4xl",
             )}
           >
             {heading}
@@ -43,7 +43,7 @@ const Screen1 = () => {
           </figure>
 
           <article className="hero-subheading col-span-2 self-center">
-            <p className="md:text-md text-foreground/70 py-10 text-center text-sm text-balance xl:text-xl">
+            <p className="md:text-md text-foreground/70 tall-narrow:text-sm py-10 text-center text-sm text-balance xl:text-xl">
               Record your screen with precise automatic zoom and pan, capture
               perfect screenshots to share, and draw or annotate on screen in
               realtime effortlessly, Revord provides all in one seamless desktop

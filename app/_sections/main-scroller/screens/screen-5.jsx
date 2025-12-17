@@ -33,7 +33,7 @@ const Screen5 = () => {
         <div className="flex w-full flex-col items-center justify-center max-lg:my-5 max-lg:h-1/2 lg:w-1/2">
           <article className="max-sm:px-4">
             <header className="relative max-w-fit">
-              <h2 className="text-foreground z-10 font-serif text-4xl md:text-5xl lg:text-7xl">
+              <h2 className="text-foreground tall-narrow:text-5xl z-10 font-serif text-4xl md:text-5xl lg:text-7xl">
                 Precision <br /> Motion
               </h2>
               <div className="absolute top-1/2 left-4/6 rotate-6">
@@ -43,7 +43,7 @@ const Screen5 = () => {
               </div>
             </header>
 
-            <p className="md:text-md text-foreground/60 mt-7 max-w-96 text-sm lg:text-xl">
+            <p className="md:text-md text-foreground/60 tall-narrow:text-sm mt-7 max-w-96 text-sm lg:text-xl">
               Revord automatically applies precise zooms and pans to every mouse
               click and drag, giving you full control to edit and export your
               video in stunning, high-resolution quality.
@@ -58,7 +58,7 @@ const Screen5 = () => {
           02
         </div>
 
-        <div className="text-foreground/10 absolute top-0 right-5 text-right text-7xl leading-16 font-semibold tracking-tight max-lg:hidden">
+        <div className="text-foreground/10 tall-narrow:text-5xl tall-narrow:leading-10 absolute top-0 right-5 text-right text-7xl leading-16 font-semibold tracking-tight max-lg:hidden">
           Video Editor
         </div>
       </div>
