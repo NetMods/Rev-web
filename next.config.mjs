@@ -5,7 +5,7 @@ const nextConfig = {
     return [
       {
         source: "/ingest/:path*",
-        destination: `https://is.i.posthog.com/:path*`,
+        destination: `https://us.i.posthog.com/:path*`,
       },
     ];
   },

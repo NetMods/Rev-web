@@ -15,7 +15,13 @@ const Screen1 = () => {
     >
       <div className="font-sans">
         <div className="inline-flex w-full items-center justify-center">
-          <Balancer className="hero-heading relative my-8 text-center text-4xl tracking-tighter md:text-5xl lg:my-16 xl:text-6xl">
+          <Balancer
+            className={cn(
+              "hero-heading relative text-center text-4xl tracking-tighter",
+              "my-8 md:text-5xl lg:my-16 xl:text-6xl",
+              "",
+            )}
+          >
             {heading}
           </Balancer>
         </div>
