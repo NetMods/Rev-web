@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useLoading } from "@/contexts/loading";
 
 import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
@@ -14,11 +15,15 @@ const Screen2 = () => {
 
   useParallaxEffect(screenRef, imageRef, textRef);
   const { isTablet, isSm } = useMediaQuery();
+  const { isAnimationDone } = useLoading();
 
   return (
     <section
       ref={screenRef}
-      className={"relative min-w-full font-sans"}
+      className={cn(
+        "relative min-w-full font-sans",
+        isAnimationDone ? "opacity-100" : "opacity-0",
+      )}
       aria-labelledby="screen2-heading"
     >
       <div className="flex size-full max-lg:flex-col">

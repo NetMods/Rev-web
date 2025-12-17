@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLoading } from "@/contexts/loading";
 import gsap from "gsap";
 
@@ -9,19 +9,16 @@ import { useHorizontalScroll } from "@/hooks/use-horizantal-scroll";
 import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
-import FluidLines from "@/components/shared/lines";
 
 import MainScroller from "./_sections/main-scroller";
 import Preloader from "./_sections/preloader";
 
 export default function HomePage() {
-  const { isLoading, onLoadingComplete } = useLoading();
-  const [isAnimationDone, setIsAnimationDone] = useState(false);
+  const { isLoading, onLoadingComplete, isAnimationDone, setIsAnimationDone } =
+    useLoading();
 
   const runAnimation = () => {
-    const animationTimeline = gsap.timeline({
-      onComplete: () => setIsAnimationDone(true),
-    });
+    const animationTimeline = gsap.timeline({});
 
     animationTimeline
       .fromTo(
@@ -58,7 +55,12 @@ export default function HomePage() {
       .fromTo(
         ".hero-clip",
         { scale: 1.2 },
-        { scale: 1, duration: 1, ease: "expo.inOut" },
+        {
+          scale: 1,
+          duration: 1,
+          ease: "expo.inOut",
+          onStart: () => setIsAnimationDone(true),
+        },
         "<",
       )
       .fromTo(".banner", { x: -20 }, { x: 0, duration: 1, ease: "expo.inOut" });
@@ -106,7 +108,7 @@ export default function HomePage() {
           "relative grid h-screen w-full min-w-[360px] grid-rows-[auto,1fr,auto]",
         )}
       >
-        <header className="bg-background header relative z-50 w-full">
+        <header className="header relative z-50 w-full max-lg:max-h-16">
           <Navbar className="blank-with-lines h-full min-h-[4.4rem]" />
         </header>
 
@@ -127,22 +129,4 @@ export default function HomePage() {
       {isLoading && <Preloader onLoadingComplete={onLoadingComplete} />}
     </>
   );
-}
-
-{
-  /*
-          <FluidLines
-            className="absolute z-60"
-            backgroundColor={'#ededed'}
-            lineColor={'#0a0a0a'}
-            gap={20}
-            radius={160}
-            force={6}
-            gravity={0.3}
-            waveSpeed={8000}
-            mouseInteraction={'diverge'}
-            effects={'none'}
-            rotation={45}
-          />
-    */
 }

@@ -17,11 +17,19 @@ export const LoadingProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(
     process.env.NODE_ENV === "production",
   );
+  const [isAnimationDone, setIsAnimationDone] = useState(false);
 
   const onLoadingComplete = () => setIsLoading(false);
 
   return (
-    <LoadingContext.Provider value={{ isLoading, onLoadingComplete }}>
+    <LoadingContext.Provider
+      value={{
+        isLoading,
+        onLoadingComplete,
+        isAnimationDone,
+        setIsAnimationDone,
+      }}
+    >
       {children}
     </LoadingContext.Provider>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 import Screen1 from "./screens/screen-1";
 import Screen2 from "./screens/screen-2";
@@ -15,6 +16,8 @@ const MainScroller = ({ className, container, isAnimationDone }) => {
     <div className="blank-with-dots mx-10 hidden h-full min-w-52 lg:block"></div>
   );
 
+  const { isMobile } = useMediaQuery();
+
   return (
     <div
       role="region"
@@ -23,10 +26,12 @@ const MainScroller = ({ className, container, isAnimationDone }) => {
       className={cn("main-scrollable flex max-lg:flex-col", className)}
     >
       <Screen1 />
+      {isMobile && <Screen2 />}
+
       {isAnimationDone && (
         <>
           {DotBreak}
-          <Screen2 />
+          {!isMobile && <Screen2 />}
           <Screen3 />
           {DotBreak}
           <Screen4 />
