@@ -1,4 +1,4 @@
-import { useEffect, useEffectEvent, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { UpdateWaitlist } from "@/actions/waitlist";
 import {
   AppStoreLogoIcon,
@@ -9,6 +9,7 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 import Balancer from "react-wrap-balancer";
+import validator from "validator";
 
 import { cn } from "@/lib/utils";
 
@@ -20,7 +21,7 @@ export default function Register({ isOpen, onClose }) {
   const [response, setResponse] = useState("");
   const modalRef = useRef(null);
 
-  const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
+  const isValidEmail = (email) => validator.isEmail(email);
   const isValid = selectedOS.length > 0 && isValidEmail(email);
 
   const handleOsSelection = (name) => {
