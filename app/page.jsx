@@ -108,7 +108,7 @@ export default function HomePage() {
           "relative grid h-screen w-full min-w-[360px] grid-rows-[auto,1fr,auto]",
         )}
       >
-        <header className="header relative z-50 w-full max-lg:max-h-16">
+        <header className="header bg-background relative z-50 w-full max-lg:max-h-16">
           <Navbar className="blank-with-lines h-full min-h-[4.4rem]" />
         </header>
 
