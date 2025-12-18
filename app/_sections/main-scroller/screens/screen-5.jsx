@@ -18,14 +18,14 @@ const Screen5 = () => {
       className={`screen border- relative min-w-full`}
     >
       <div className="flex size-full max-lg:flex-col">
-        <figure className="relative lg:w-1/2">
+        <figure className="relative flex w-full shrink-0 justify-center lg:h-auto lg:w-1/2">
           <video
             src="/video-editor.mp4"
             muted
             autoPlay
             loop
             preload="auto"
-            className="relative h-full w-full object-cover"
+            className="relative object-cover"
             aria-label="Revord built-in video editor demonstration"
           />
         </figure>
