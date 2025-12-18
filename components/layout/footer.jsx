@@ -1,9 +1,15 @@
 "use client";
 
+import { useRef } from "react";
+
+import { FluidLines } from "../shared/lines";
+
 export const Footer = ({ className }) => {
+  const footerRef = useRef(null);
+
   return (
-    <footer className={className} suppressHydrationWarning>
-      <div className="footer blank-with-lines h-full min-h-[4.4rem]" />
+    <footer className={className} suppressHydrationWarning ref={footerRef}>
+      <div className="blank-with-lines h-full min-h-[4.4rem]" />
 
       <div className="indicator absolute -top-2 bottom-0 flex w-3 justify-center">
         <div

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { createPortal } from "react-dom";
 
@@ -10,13 +10,13 @@ import Register from "../ui/registration";
 
 const Navbar = ({ className }) => {
   const [showModal, setShowModal] = useState(false);
-
+  const navbarRef = useRef(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className={className}>
+    <div className={className} ref={navbarRef}>
       <div
         className={cn(
           "flex h-full items-center justify-between gap-2 font-sans",

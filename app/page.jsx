@@ -63,7 +63,7 @@ export default function HomePage() {
         },
         "<",
       )
-      .fromTo(".banner", { x: -20 }, { x: 0, duration: 1, ease: "expo.inOut" });
+      .fromTo(".banner", { x: -25 }, { x: 0, duration: 1, ease: "expo.inOut" });
   };
 
   useEffect(() => {
