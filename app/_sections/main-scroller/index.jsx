@@ -11,7 +11,7 @@ import Screen5 from "./screens/screen-5";
 import Screen6 from "./screens/screen-6";
 import Screen7 from "./screens/screen-7";
 
-const MainScroller = ({ className, container, isAnimationDone }) => {
+const MainScroller = ({ className, container, isAnimationDone, showModal }) => {
   const DotBreak = (
     <div className="blank-with-dots mx-10 hidden h-full min-w-52 lg:block"></div>
   );
@@ -39,7 +39,7 @@ const MainScroller = ({ className, container, isAnimationDone }) => {
           <Screen5 />
           {DotBreak}
           <Screen6 />
-          <Screen7 />
+          <Screen7 showModal={showModal} />
         </>
       )}
     </div>

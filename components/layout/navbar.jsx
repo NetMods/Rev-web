@@ -1,19 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { createPortal } from "react-dom";
 
 import { cn } from "@/lib/utils";
 
-import Register from "../ui/registration";
-
-const Navbar = ({ className }) => {
-  const [showModal, setShowModal] = useState(false);
+const Navbar = ({ className, showModal }) => {
   const navbarRef = useRef(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
 
   return (
     <div className={className} ref={navbarRef}>
@@ -47,18 +40,12 @@ const Navbar = ({ className }) => {
               "bg-foreground/90 text-background inline-flex cursor-pointer",
               "items-center justify-center px-5 pt-2.5 pb-2 transition-all ease-linear active:scale-95 max-md:scale-[83%]",
             )}
-            onClick={() => setShowModal(true)}
+            onClick={showModal}
           >
             Join waitlist
           </button>
         </div>
       </div>
-
-      {mounted &&
-        createPortal(
-          <Register isOpen={showModal} onClose={() => setShowModal(false)} />,
-          document.body,
-        )}
     </div>
   );
 };

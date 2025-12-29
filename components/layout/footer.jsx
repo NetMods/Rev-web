@@ -2,8 +2,6 @@
 
 import { useRef } from "react";
 
-import { FluidLines } from "../shared/lines";
-
 export const Footer = ({ className }) => {
   const footerRef = useRef(null);
 

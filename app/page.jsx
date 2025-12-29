@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLoading } from "@/contexts/loading";
 import gsap from "gsap";
 
 import { cn } from "@/lib/utils";
 import { useHorizontalScroll } from "@/hooks/use-horizantal-scroll";
+import Register from "@/components/ui/registration";
 import { Banner } from "@/components/layout/banner";
 import { Footer } from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
@@ -16,6 +17,10 @@ import Preloader from "./_sections/preloader";
 export default function HomePage() {
   const { isLoading, onLoadingComplete, isAnimationDone, setIsAnimationDone } =
     useLoading();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = () => setIsModalOpen(false);
+  const showModal = () => setIsModalOpen(true);
 
   const runAnimation = () => {
     const animationTimeline = gsap.timeline({});
@@ -109,13 +114,17 @@ export default function HomePage() {
         )}
       >
         <header className="header bg-background relative z-50 w-full max-lg:max-h-16">
-          <Navbar className="blank-with-lines h-full min-h-[4.4rem]" />
+          <Navbar
+            className="blank-with-lines h-full min-h-[4.4rem]"
+            showModal={showModal}
+          />
         </header>
 
         <MainScroller
           className="noscrollbar z-10 h-full lg:overflow-y-hidden"
           isAnimationDone={isAnimationDone}
           container={container}
+          showModal={showModal}
         />
 
         <Footer
@@ -127,6 +136,8 @@ export default function HomePage() {
       </section>
 
       {isLoading && <Preloader onLoadingComplete={onLoadingComplete} />}
+
+      <Register isOpen={isModalOpen} onClose={closeModal} />
     </>
   );
 }

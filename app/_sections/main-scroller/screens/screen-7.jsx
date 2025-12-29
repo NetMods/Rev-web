@@ -6,7 +6,6 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 
 import { cn } from "@/lib/utils";
-import { useDetectOS } from "@/hooks/use-detect-os";
 
 const AnimatedBox = ({
   label,
@@ -14,7 +13,7 @@ const AnimatedBox = ({
   icon: Icon,
   systemReq,
   buttonLabel,
-  current,
+  onClick,
 }) => {
   return (
     <article
@@ -22,7 +21,6 @@ const AnimatedBox = ({
         "bg-background relative flex h-full items-end justify-center overflow-hidden font-sans transition-all duration-500 ease-in-out",
       )}
       style={{ position: "relative" }}
-      aria-current={current ? "true" : undefined}
     >
       <div
         className="absolute inset-0 hidden lg:block"
@@ -47,8 +45,9 @@ const AnimatedBox = ({
             <button
               className={cn(
                 "inline-flex w-full items-center justify-center gap-3 py-2 backdrop-blur-2xl transition-all ease-linear",
-                "hover:text-background bg-background hover:bg-foreground border-foreground lg:border",
+                "hover:text-background bg-background hover:bg-foreground border-foreground cursor-pointer lg:border",
               )}
+              onClick={onClick}
             >
               <DownloadIcon size={25} />
               Coming Soon
@@ -60,9 +59,7 @@ const AnimatedBox = ({
   );
 };
 
-const Screen7 = () => {
-  const os = useDetectOS();
-
+const Screen7 = ({ showModal }) => {
   return (
     <section
       id="screen-7"
@@ -78,7 +75,7 @@ const Screen7 = () => {
               icon={WindowsLogoIcon}
               buttonLabel="Download (.exe)"
               systemReq="Windows 10/11 (64-bit), 4 GB RAM, 500 MB free space"
-              current={os === "Windows"}
+              onClick={showModal}
             />
             <AnimatedBox
               label="MacOS"
@@ -86,7 +83,7 @@ const Screen7 = () => {
               icon={AppStoreLogoIcon}
               buttonLabel="Download (.dmg)"
               systemReq="macOS 12 Monterey or later, 4 GB RAM, 500 MB free space"
-              current={os === "MacOS"}
+              onClick={showModal}
             />
             <AnimatedBox
               label="Linux"
@@ -94,7 +91,7 @@ const Screen7 = () => {
               icon={LinuxLogoIcon}
               systemReq="Any distribution, 4 GB RAM, 500 MB free space"
               buttonLabel="Download (.tar.gz)"
-              current={os === "Linux"}
+              onClick={showModal}
             />
           </div>
         </div>
