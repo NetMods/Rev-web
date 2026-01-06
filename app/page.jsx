@@ -125,7 +125,10 @@ export default function HomePage() {
         />
 
         <footer
-          className={"bg-background footer relative z-50 w-full max-lg:hidden"}
+          className={cn(
+            "bg-background footer relative z-50 w-full max-lg:hidden",
+            isLoading && "hidden",
+          )}
         >
           <Footer className="h-full min-h-[4.4rem]" container={container} />
         </footer>

@@ -31,7 +31,7 @@ const Screen6 = () => {
             </div>
             <p className="md:text-md text-foreground/60 tall-narrow:text-sm mt-7 max-w-96 text-sm lg:text-xl">
               Crop, add padding, change colors, set background images, and
-              adjust roundness and shadows — all with a few clicks to make your
+              adjust roundness and shadows. All with a few clicks to make your
               visuals truly stand out.
             </p>
           </div>
