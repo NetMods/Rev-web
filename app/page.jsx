@@ -114,10 +114,7 @@ export default function HomePage() {
         )}
       >
         <header className="header bg-background relative z-50 w-full max-lg:max-h-16">
-          <Navbar
-            className="blank-with-lines h-full min-h-[4.4rem]"
-            showModal={showModal}
-          />
+          <Navbar className="h-full min-h-[4.4rem]" showModal={showModal} />
         </header>
 
         <MainScroller
@@ -127,10 +124,11 @@ export default function HomePage() {
           showModal={showModal}
         />
 
-        <Footer
+        <footer
           className={"bg-background footer relative z-50 w-full max-lg:hidden"}
-          container={container}
-        />
+        >
+          <Footer className="h-full min-h-[4.4rem]" container={container} />
+        </footer>
 
         <Banner />
       </section>

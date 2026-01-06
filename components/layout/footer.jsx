@@ -1,13 +1,25 @@
 "use client";
 
-import { useRef } from "react";
+import { cn } from "@/lib/utils";
+
+import FluidLines from "../shared/lines";
 
 export const Footer = ({ className }) => {
-  const footerRef = useRef(null);
-
   return (
-    <footer className={className} suppressHydrationWarning ref={footerRef}>
-      <div className="blank-with-lines h-full min-h-[4.4rem]" />
+    <div className={cn(className, "border-t-[0.1rem] border-[#d6d6d6]")}>
+      <FluidLines
+        backgroundColor={"#ededed"}
+        lineColor={"#00000054"}
+        gap={12}
+        radius={160}
+        force={2}
+        gravity={0.3}
+        waveSpeed={8000}
+        rotation={45}
+        lineWidth={0.4}
+        mouseInteraction={"diverge"}
+        effects={"none"}
+      />
 
       <div className="indicator absolute -top-2 bottom-0 flex w-3 justify-center">
         <div
@@ -95,6 +107,6 @@ export const Footer = ({ className }) => {
         `,
         }}
       />
-    </footer>
+    </div>
   );
 };
