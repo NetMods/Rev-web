@@ -374,3 +374,17 @@ const FluidLines = ({
 };
 
 export default FluidLines;
+
+// <FluidLines
+//   backgroundColor={"#ededed"}
+//   lineColor={"#00000054"}
+//   gap={12}
+//   radius={160}
+//   force={2}
+//   gravity={0.3}
+//   waveSpeed={8000}
+//   rotation={45}
+//   lineWidth={0.4}
+//   mouseInteraction={"diverge"}
+//   effects={"none"}
+// />

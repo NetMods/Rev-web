@@ -4,25 +4,11 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-import FluidLines from "../shared/lines";
-
 const Navbar = ({ className, showModal }) => {
   return (
-    <div className={cn(className, "border-b-[0.1rem] border-[#d6d6d6]")}>
-      <FluidLines
-        backgroundColor={"#ededed"}
-        lineColor={"#00000054"}
-        gap={12}
-        radius={160}
-        force={2}
-        gravity={0.3}
-        waveSpeed={8000}
-        rotation={45}
-        lineWidth={0.4}
-        mouseInteraction={"diverge"}
-        effects={"none"}
-      />
-
+    <div
+      className={cn(className, false && "border-b-[0.1rem] border-[#d6d6d6]")}
+    >
       <div
         className={cn(
           "flex h-full items-center justify-between gap-2 font-sans",

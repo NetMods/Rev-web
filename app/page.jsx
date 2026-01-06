@@ -110,11 +110,14 @@ export default function HomePage() {
       <section
         aria-label="Revord feature showcase"
         className={cn(
-          "relative grid h-screen w-full min-w-[360px] grid-rows-[auto,1fr,auto]",
+          "relative grid h-screen w-full min-w-[360px] grid-rows-[auto,1fr,auto] lg:overflow-y-hidden",
         )}
       >
         <header className="header bg-background relative z-50 w-full max-lg:max-h-16">
-          <Navbar className="h-full min-h-[4.4rem]" showModal={showModal} />
+          <Navbar
+            className="blank-with-lines h-full min-h-[4.4rem]"
+            showModal={showModal}
+          />
         </header>
 
         <MainScroller
@@ -130,7 +133,10 @@ export default function HomePage() {
             isLoading && "hidden",
           )}
         >
-          <Footer className="h-full min-h-[4.4rem]" container={container} />
+          <Footer
+            className="blank-with-lines h-full min-h-[4.4rem]"
+            container={container}
+          />
         </footer>
 
         <Banner />

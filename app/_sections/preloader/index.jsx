@@ -9,7 +9,6 @@ const PreloaderSection = ({ onLoadingComplete }) => {
 
   useGSAP(() => {
     const waitForAllMedia = () => {
-      const images = Array.from(document.querySelectorAll("img"));
       const videos = Array.from(document.querySelectorAll("video"));
 
       const TIMEOUT_MS = 15000;
@@ -71,7 +70,7 @@ const PreloaderSection = ({ onLoadingComplete }) => {
           "+=0.5",
         );
 
-      animationTimeline.add(async () => {
+      animationTimeline.call(async () => {
         animationTimeline.pause();
         console.info(
           "Animation paused — showing spinner and waiting for all media to load",
