@@ -130,6 +130,20 @@ export default function RootLayout({ children }) {
         <LoadingProvider>
           <main>{children}</main>
         </LoadingProvider>
+
+        <script
+          src="https://cdn.databuddy.cc/databuddy.js"
+          data-client-id="0633497c-7b54-4570-8d62-e5f6c5138bfd"
+          data-track-hash-changes="true"
+          data-track-attributes="true"
+          data-track-outgoing-links="true"
+          data-track-interactions="true"
+          data-track-scroll-depth="true"
+          data-track-web-vitals="true"
+          data-track-errors="true"
+          crossOrigin="anonymous"
+          async
+        ></script>
       </body>
     </html>
   );
